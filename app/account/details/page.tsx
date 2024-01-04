@@ -58,7 +58,8 @@ function Profile() {
     setSocialMediaLinkError('');
     if (fullName.length < 2) setFullNameError('Please enter a correct full name');
     if (username.length < 4) setUsernameError('the username should at least be 4 chars or more');
-    if (!socialMediaLink && !validateURL(socialMediaLink)) setSocialMediaLinkError('Please enter a valid URL');
+    if (!socialMediaLink && !validateURL(socialMediaLink))
+      setSocialMediaLinkError('Please enter a valid URL');
     else return true;
   };
 
@@ -67,7 +68,9 @@ function Profile() {
     if (formValidator()) {
       setLoad(true);
 
-      selectedImage ? await profileService.updateAvatar(userSession?.id as string, selectedImage) : null;
+      selectedImage
+        ? await profileService.updateAvatar(userSession?.id as string, selectedImage)
+        : null;
       profileService
         .update(userSession?.id as string, {
           full_name: fullName,
@@ -96,7 +99,9 @@ function Profile() {
     <div className="container-custom-screen h-screen mt-20">
       <div>
         <h1 className="text-xl text-slate-50 font-semibold">Profile</h1>
-        <p className="mt-1 text-sm text-slate-400">This information will be displayed publicly so be careful what you share.</p>
+        <p className="mt-1 text-sm text-slate-400">
+          This information will be displayed publicly so be careful what you share.
+        </p>
       </div>
       <div className="mt-14">
         <UploadAvatar
@@ -133,11 +138,20 @@ function Profile() {
             </div>
             <div className="relative">
               <Label>Email</Label>
-              <Input type="email" value={email} onClick={() => setEmailTyping(true)} className="w-full mt-2" disabled={isEmailTyping} />
+              <Input
+                type="email"
+                value={email}
+                onClick={() => setEmailTyping(true)}
+                className="w-full mt-2"
+                disabled={isEmailTyping}
+              />
               {isEmailTyping ? (
                 <span className="absolute left-0 -top-1 text-sm bg-green-500 text-green-50 border border-green-600 rounded-full px-2 py-1">
                   Please{' '}
-                  <a href="https://twitter.com/devhunt_" target="_blank" className="font-medium underline">
+                  <a
+                    href="https://twitter.com/devhunt_"
+                    target="_blank"
+                    className="font-medium underline">
                     contact us
                   </a>{' '}
                   on twitter to change your email
@@ -193,7 +207,9 @@ function Profile() {
               />
               <LabelError className="mt">{aboutError}</LabelError>
             </div>
-            <Button isLoad={isLoad} className="flex justify-center w-full ring-offset-2 ring-orange-500 focus:ring-2 hover:bg-orange-400">
+            <Button
+              isLoad={isLoad}
+              className="flex justify-center w-full ring-offset-2 ring-pink-500 focus:ring-2 hover:bg-pink-400">
               {isLoad ? 'Updating' : 'save'}
             </Button>
           </div>

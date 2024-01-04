@@ -13,7 +13,15 @@ interface CommentTypeProp extends CommentType {
   };
 }
 
-export default ({ comments, slug, productId }: { comments: CommentTypeProp[]; slug: string; productId: string }) => {
+export default ({
+  comments,
+  slug,
+  productId,
+}: {
+  comments: CommentTypeProp[];
+  slug: string;
+  productId: string;
+}) => {
   const { user } = useSupabase();
   const [commentsCollection, setCommentsCollection] = useState<CommentTypeProp[]>(comments);
   useEffect(() => {

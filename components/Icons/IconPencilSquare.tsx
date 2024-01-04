@@ -7,8 +7,7 @@ export const IconPencilSquare = ({ className = '' }: { className?: string }) => 
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className={mergeTW(`h-5 w-5 ${className}`)}
-  >
+    className={mergeTW(`h-5 w-5 ${className}`)}>
     <path
       strokeLinecap="round"
       strokeLinejoin="round"

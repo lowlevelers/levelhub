@@ -3,29 +3,29 @@ import ProductsService from '@/utils/supabase/services/products';
 import { createBrowserClient } from '@/utils/supabase/browser';
 import { Product } from '@/utils/supabase/types';
 import { ExtendedProduct } from '@/utils/supabase/CustomTypes';
-import {checkAuthToken} from "@/pages/api/auth-token";
+import { checkAuthToken } from '@/pages/api/auth-token';
 
 export interface ChatGptDto {
-  status: string
-  message: string
-  data: ChatGtpDtoData
+  status: string;
+  message: string;
+  data: ChatGtpDtoData;
 }
 
 export interface ChatGtpDtoData {
-  date: string
-  tools: ChatGtpDtoDataTool[]
-  footer: string
+  date: string;
+  tools: ChatGtpDtoDataTool[];
+  footer: string;
 }
 
 export interface ChatGtpDtoDataTool {
-  tool_id: number
-  name: string
-  description: string
-  image_link: string
-  date_added: string
-  developer: string
-  upvotes: string
-  upvote_link: string
+  tool_id: number;
+  name: string;
+  description: string;
+  image_link: string;
+  date_added: string;
+  developer: string;
+  upvotes: string;
+  upvote_link: string;
 }
 
 function prepareSuccessDto(input: string, tools: ExtendedProduct[]): ChatGtpDto {
@@ -41,27 +41,30 @@ function prepareSuccessDto(input: string, tools: ExtendedProduct[]): ChatGtpDto 
         data_added: new Date(t.created_at).toISOString().split('T')[0],
         developer: t.profiles.full_name,
         upvotes: t.votes_count || '-',
-        upvote_link: `https://devhunt.org/tool/${t.slug}`
+        upvote_link: `https://devhunt.org/tool/${t.slug}`,
       })),
-      footer: 'Discover your next tool https://devhunt.org/ ![DevHunt](https://ucarecdn.com/e59542d4-3ede-4f62-855e-b668cdbaef02/)'
-    }
+      footer:
+        'Discover your next tool https://devhunt.org/ ![DevHunt](https://ucarecdn.com/e59542d4-3ede-4f62-855e-b668cdbaef02/)',
+    },
   };
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-
   let { input } = req.query;
 
   const errorPayload = {
     status: 'error',
-    data: null
+    data: null,
   };
 
   if (!input) {
     input = '';
   }
 
-  const tools = await new ProductsService(createBrowserClient()).getToolsByNameOrDescription(input as string, 10);
+  const tools = await new ProductsService(createBrowserClient()).getToolsByNameOrDescription(
+    input as string,
+    10
+  );
 
   if (!tools) {
     res.json({ ...errorPayload, message: 'Nothing found' });

@@ -1,12 +1,11 @@
-import mergeTW from '@/utils/mergeTW'
+import mergeTW from '@/utils/mergeTW';
 
 export const IconArrowTopRight = ({ className = '' }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 20 20"
     fill="currentColor"
-    className={mergeTW(`w-5 h-5 ${className}`)}
-  >
+    className={mergeTW(`w-5 h-5 ${className}`)}>
     <path
       fillRule="evenodd"
       d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z"
@@ -18,4 +17,4 @@ export const IconArrowTopRight = ({ className = '' }: { className?: string }) =>
       clipRule="evenodd"
     />
   </svg>
-)
+);

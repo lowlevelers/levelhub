@@ -28,8 +28,9 @@ declare global {
 }
 
 const { title, description, ogImage } = {
-  title: 'Dev Hunt – The best new Dev Tools every day.',
-  description: 'A launchpad for dev tools, built by developers for developers, open source, and fair.',
+  title: 'Panomos - Build your own feature-rich community',
+  description:
+    'A launchpad for dev tools, built by developers for developers, open source, and fair.',
   ogImage: 'https://devhunt.org/devhuntog.png?v=2',
 };
 
@@ -69,53 +70,24 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className="bg-slate-900">
       <head>
-        {process.env.USER_MAVEN_KEY && (
-          <>
-            <Script
-              strategy="afterInteractive"
-              src="https://t.usermaven.com/lib.js"
-              data-key={process.env.USER_MAVEN_KEY}
-              data-tracking-host="https://events.usermaven.com"
-              data-autocapture="true"
-              data-privacy-policy="strict"
-              defer
-            ></Script>
-            <Script
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-            window.usermaven = window.usermaven || (function()
-            {(window.usermavenQ = window.usermavenQ || []).push(arguments)})
-          `,
-              }}
-            />
-            <Script
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "ic87ytbm3p");
-`,
-              }}
-            />
-          </>
-        )}
         <meta httpEquiv="Content-Language" content="en" />
         <meta property="og:locale" content="en_US" />
         <meta name="language" content="English" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0"
+        />
       </head>
       <body className={inter.className}>
         <main>
           <ChatWindow />
           <SupabaseProvider user={profile as Profile} session={session}>
             <SupabaseListener serverAccessToken={session?.access_token} />
-            <ProfileFormModal isModalOpen={user ? (profileNoCache?.social_url == null ? true : false) : false} />
-            <Banner />
+            <ProfileFormModal
+              isModalOpen={user ? (profileNoCache?.social_url == null ? true : false) : false}
+            />
+            {/* <Banner /> */}
             <Navbar />
             <ModalBannerCodeClient />
             {children}

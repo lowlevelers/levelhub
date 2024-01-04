@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import { HTMLAttributes, ReactNode, useEffect } from 'react'
+import { HTMLAttributes, ReactNode, useEffect } from 'react';
 
 interface Props extends HTMLAttributes<HTMLUListElement> {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export const Comments = ({ children, ...props }: Props) => {
-  return <ul {...props}>{children}</ul>
-}
+  return <ul {...props}>{children}</ul>;
+};

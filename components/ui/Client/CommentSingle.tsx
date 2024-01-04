@@ -99,7 +99,10 @@ export default ({ comment, productId }: Props) => {
     <Comment id={`${newComment.id}`} className="items-start gap-x-2">
       {/*TODO add First Letters Like avatars if there is no avatar */}
       <Link className="flex-none" href={`/@${newComment.profiles.username}`}>
-        <CommentUserAvatar alt={newComment.profiles.full_name} src={newComment.profiles.avatar_url} />
+        <CommentUserAvatar
+          alt={newComment.profiles.full_name}
+          src={newComment.profiles.avatar_url}
+        />
       </Link>
       <div className="flex-1">
         <div className="flex items-center gap-x-3">
@@ -107,7 +110,9 @@ export default ({ comment, productId }: Props) => {
             <CommentUserName>{newComment.profiles.full_name}</CommentUserName>
           </Link>
           {newComment.user_id == productId ? (
-            <div className="text-xs px-2 py-0.5 rounded-full bg-indigo-400 border-indigo-600 text-white font-medium">Maker</div>
+            <div className="text-xs px-2 py-0.5 rounded-full bg-indigo-400 border-indigo-600 text-white font-medium">
+              Maker
+            </div>
           ) : (
             ''
           )}
@@ -115,16 +120,24 @@ export default ({ comment, productId }: Props) => {
         <CommentDate className="mt-1">{moment(newComment.created_at).fromNow()}</CommentDate>
         {isEditorActive ? (
           <CommentForm onSubmit={handleEdit}>
-            <CommentTextarea value={content} onChange={e => setContent((e.target as HTMLTextAreaElement).value)} className="mt-2" />
+            <CommentTextarea
+              value={content}
+              onChange={e => setContent((e.target as HTMLTextAreaElement).value)}
+              className="mt-2"
+            />
             <div className="mt-3 flex items-center gap-x-2 justify-end">
-              <Button type="button" onClick={handleCancel} className="text-xs bg-slate-800 hover:bg-slate-700">
+              <Button
+                type="button"
+                onClick={handleCancel}
+                className="text-xs bg-slate-800 hover:bg-slate-700">
                 Cancel
               </Button>
               <Button
                 type="submit"
                 isLoad={isLoad}
-                className={`text-xs hover:bg-orange-400 ${isLoad ? 'pointer-events-none opacity-60' : ''}`}
-              >
+                className={`text-xs hover:bg-pink-400 ${
+                  isLoad ? 'pointer-events-none opacity-60' : ''
+                }`}>
                 Edit comment
               </Button>
             </div>
@@ -134,7 +147,11 @@ export default ({ comment, productId }: Props) => {
         ) : (
           <>
             <CommentContext className="mt-3">{newComment.content}</CommentContext>
-            <CommentLike onClick={() => handleCommentLike(newComment)} className="mt-2" count={newComment.votes_count} />
+            <CommentLike
+              onClick={() => handleCommentLike(newComment)}
+              className="mt-2"
+              count={newComment.votes_count}
+            />
           </>
         )}
       </div>
@@ -143,16 +160,14 @@ export default ({ comment, productId }: Props) => {
           <li>
             <Button
               onClick={() => setEditorActive(true)}
-              className="block w-full py-1 px-3 font-normal text-xs text-slate-300 text-left rounded-none border-t border-slate-700 bg-transparent hover:bg-slate-700"
-            >
+              className="block w-full py-1 px-3 font-normal text-xs text-slate-300 text-left rounded-none border-t border-slate-700 bg-transparent hover:bg-slate-700">
               Edit
             </Button>
           </li>
           <li>
             <Button
               onClick={handleDelete}
-              className="block w-full py-1 px-3 font-normal text-xs text-red-500 text-left rounded-none border-t border-slate-700 bg-transparent hover:text-red-50 hover:bg-red-500"
-            >
+              className="block w-full py-1 px-3 font-normal text-xs text-red-500 text-left rounded-none border-t border-slate-700 bg-transparent hover:text-red-50 hover:bg-red-500">
               Delete
             </Button>
           </li>

@@ -31,15 +31,23 @@ export const Gallery = ({
   return (
     <>
       <ul
-        className={mergeTW(`flex items-center gap-x-3 w-full overflow-auto snap-x cursor-zoom-in ${className}`)}
+        className={mergeTW(
+          `flex items-center gap-x-3 w-full overflow-auto snap-x cursor-zoom-in ${className}`
+        )}
         onClick={() => {
           setZoomActive(true);
-        }}
-      >
+        }}>
         {src ? (
-          <li className={mergeTW(`flex-none w-[459px] h-auto rounded-lg relative snap-start pointer-events-none ${className}`)}>
+          <li
+            className={mergeTW(
+              `flex-none w-[459px] h-auto rounded-lg relative snap-start pointer-events-none ${className}`
+            )}>
             {media[0].includes('youtube') || media[0].includes('youtu.be') ? (
-              <VideoThumbnail src={`https://img.youtube.com/vi/${extractVideoId(src as string)?.id}/mqdefault.jpg`} />
+              <VideoThumbnail
+                src={`https://img.youtube.com/vi/${
+                  extractVideoId(src as string)?.id
+                }/mqdefault.jpg`}
+              />
             ) : (
               <video controls className="w-[459px] h-auto rounded-lg">
                 <source src={src} />
@@ -58,8 +66,7 @@ export const Gallery = ({
               className="absolute z-20 top-4 bg-white text-slate-800 right-4 my-auto md:right-8"
               onClick={() => {
                 setZoomActive(false);
-              }}
-            >
+              }}>
               <IconXmark />
             </ButtonHandler>
             <ul className="relative z-40 flex-1 max-w-5xl">
@@ -67,12 +74,12 @@ export const Gallery = ({
                 {(currentIdx === 0 && media[currentIdx].includes('youtube')) ||
                 media[currentIdx].includes('youtu.be') ||
                 media[currentIdx].includes('.mp4') ? (
-                  media[currentIdx].includes('youtube') || media[currentIdx].includes('youtu.be') ? (
+                  media[currentIdx].includes('youtube') ||
+                  media[currentIdx].includes('youtu.be') ? (
                     <iframe
                       loading="lazy"
                       src={extractVideoId(src as string)?.embed as string}
-                      className="rounded-lg w-full h-full aspect-[3/2]"
-                    ></iframe>
+                      className="rounded-lg w-full h-full aspect-[3/2]"></iframe>
                   ) : (
                     <video controls className="w-full">
                       <source src={src} />
@@ -95,14 +102,19 @@ export const Gallery = ({
                       setCurrentIdx(idx);
                     }}
                     key={idx}
-                    className="flex-none w-14 h-10 hover:scale-110 duration-200"
-                  >
-                    {(idx === 0 && media[idx].includes('youtube')) || media[idx].includes('youtu.be') || media[idx].includes('.mp4') ? (
-                      <div className="w-full h-full bg-orange-600 rounded-lg text-white flex items-center justify-center">
+                    className="flex-none w-14 h-10 hover:scale-110 duration-200">
+                    {(idx === 0 && media[idx].includes('youtube')) ||
+                    media[idx].includes('youtu.be') ||
+                    media[idx].includes('.mp4') ? (
+                      <div className="w-full h-full bg-pink-600 rounded-lg text-white flex items-center justify-center">
                         <IconPlay />
                       </div>
                     ) : (
-                      <img loading="eager" src={src + 1} className="w-full h-full rounded-lg object-cover" />
+                      <img
+                        loading="eager"
+                        src={src + 1}
+                        className="w-full h-full rounded-lg object-cover"
+                      />
                     )}
                   </button>
                 ))}

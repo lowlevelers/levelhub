@@ -7,7 +7,17 @@ import { type ProductType } from '@/type';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default ({ href, className, tool, children }: { href: string; className?: string; tool?: ProductType; children?: ReactNode }) => {
+export default ({
+  href,
+  className,
+  tool,
+  children,
+}: {
+  href: string;
+  className?: string;
+  tool?: ProductType;
+  children?: ReactNode;
+}) => {
   const [isToolViewActive, setToolViewActive] = useState(false);
   const [toolState, setTool] = useState(tool);
 
@@ -47,12 +57,20 @@ export default ({ href, className, tool, children }: { href: string; className?:
   return (
     <>
       <div className="relative group group/card">
-        <div onClick={handleClick} className={mergeTW(`flex items-start gap-x-4 relative py-4 rounded-2xl cursor-pointer ${className}`)}>
+        <div
+          onClick={handleClick}
+          className={mergeTW(
+            `flex items-start gap-x-4 relative py-4 rounded-2xl cursor-pointer ${className}`
+          )}>
           {children}
         </div>
         <div className="absolute -z-10 -inset-2 rounded-2xl group-hover:bg-slate-800/60 opacity-0 group-hover:opacity-100 duration-150 sm:-inset-3"></div>
       </div>
-      {isToolViewActive ? <ToolViewModal close={closeViewModal} tool={toolState as ProductType} href={href} /> : ''}
+      {isToolViewActive ? (
+        <ToolViewModal close={closeViewModal} tool={toolState as ProductType} href={href} />
+      ) : (
+        ''
+      )}
     </>
   );
 };

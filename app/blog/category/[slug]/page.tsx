@@ -17,7 +17,11 @@ function deslugify(str: string) {
   return str.replace(/-/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
 }
 
-export async function generateMetadata({ params: { slug } }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params: { slug },
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const title = `${deslugify(slug)} - DevHunt Blog`;
   return {
     title,
@@ -56,11 +60,11 @@ export default async function Category({
   return (
     <section className="max-w-3xl mt-20 mx-auto px-4 md:px-8">
       <div className="flex flex-wrap items-center gap-2 w-full text-sm mb-4">
-        <a className="text-orange-500 hover:text-orange-400 duration-200" href="/">
+        <a className="text-pink-500 hover:text-pink-400 duration-200" href="/">
           Home
         </a>
         <ChevronRightIcon className="w-4 h-4 text-slate-500" />
-        <Link className="text-orange-500 hover:text-orange-400 duration-200" href="/blog/">
+        <Link className="text-pink-500 hover:text-pink-400 duration-200" href="/blog/">
           Blog
         </Link>
       </div>
@@ -70,7 +74,9 @@ export default async function Category({
           <ArticleCard key={article.id} article={article} />
         ))}
       </ul>
-      {lastPage > 1 && <Pagination slug={`/blog/category/${slug}`} pageNumber={pageNumber} lastPage={lastPage} />}
+      {lastPage > 1 && (
+        <Pagination slug={`/blog/category/${slug}`} pageNumber={pageNumber} lastPage={lastPage} />
+      )}
     </section>
   );
 }

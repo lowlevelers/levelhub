@@ -36,7 +36,7 @@ export default function Home() {
       <>
         <div className="mt-3 text-slate-400 text-sm">This week's tools</div>
         <div className="mt-3 text-slate-400 text-sm">
-          ❗ Vote for your favorite <b className="text-orange-400">↳</b>
+          ❗ Vote for your favorite <b className="text-pink-400">↳</b>
         </div>
         <ul className="mt-3 divide-y divide-slate-800/60">
           {group.products.map((product, idx) => (
@@ -50,7 +50,7 @@ export default function Home() {
   function prevWeekTools(group) {
     return (
       <>
-        <div className="border-t border-slate-800 pt-8 mt-8 text-sm text-orange-500">
+        <div className="border-t border-slate-800 pt-8 mt-8 text-sm text-pink-500">
           <p className="mt-8">Past winners 👑</p>
         </div>
         <ul className="mt-3 divide-y divide-slate-800/60">
@@ -65,7 +65,7 @@ export default function Home() {
   function weekWinnerTools(products) {
     return (
       <>
-        <div className="border-t border-slate-800 pt-8 mt-8 text-sm text-orange-500">
+        <div className="border-t border-slate-800 pt-8 mt-8 text-sm text-pink-500">
           <p className="mt-8">Past winners 👑</p>
         </div>
         <ul className="relative mt-3 divide-y divide-slate-800/60">

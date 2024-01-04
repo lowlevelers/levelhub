@@ -1,6 +1,9 @@
 const categories: { name: string; description: string }[] = [
   { name: 'Open Source', description: 'Tools related to open source development.' },
-  { name: 'DevOps', description: 'Tools for optimizing and automating the software development lifecycle.' },
+  {
+    name: 'DevOps',
+    description: 'Tools for optimizing and automating the software development lifecycle.',
+  },
   { name: 'AI', description: 'Artificial Intelligence and Machine Learning tools.' },
   { name: 'CI', description: 'Continuous Integration tools for automated testing and deployment.' },
   { name: 'Code', description: 'Tools related to coding and programming.' },

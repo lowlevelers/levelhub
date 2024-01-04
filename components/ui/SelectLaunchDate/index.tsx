@@ -14,7 +14,9 @@ interface Props extends HTMLAttributes<HTMLSelectElement> {
 }
 
 export default ({ label, value, className = '', validate, ...props }: Props) => {
-  const [weeks, setWeeks] = useState<{ week: number; startDate: Date; endDate: Date; count: number }[]>([]);
+  const [weeks, setWeeks] = useState<
+    { week: number; startDate: Date; endDate: Date; count: number }[]
+  >([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +26,11 @@ export default ({ label, value, className = '', validate, ...props }: Props) => 
 
       const productsService = new ProductsService(createBrowserClient());
       const startWeek = await productsService.getWeekNumber(startDate, 2);
-      const result = await productsService.getProductsCountByWeek(startWeek + 1, startWeek + 15, startDate.getFullYear());
+      const result = await productsService.getProductsCountByWeek(
+        startWeek + 1,
+        startWeek + 15,
+        startDate.getFullYear()
+      );
       setWeeks(result);
     };
 
@@ -38,15 +44,18 @@ export default ({ label, value, className = '', validate, ...props }: Props) => 
         {...props}
         {...(validate ?? {})}
         value={value}
-        className={`pr-3 pl-12 py-2 appearance-none rounded-lg text-sm bg-slate-800 text-slate-300 outline-none ${mergeTW(className)}`}
-      >
+        className={`pr-3 pl-12 py-2 appearance-none rounded-lg text-sm bg-slate-800 text-slate-300 outline-none ${mergeTW(
+          className
+        )}`}>
         <option value="" disabled selected>
           {label}
         </option>
         {weeks.map(i => (
-          <option disabled={i.count >= 15} value={i.week}>{`${moment(i.startDate).format('LL')} - ${moment(i.endDate).format('LL')} (${
-            i.count
-          }/${i.count > 15 ? i.count : 15})`}</option>
+          <option disabled={i.count >= 15} value={i.week}>{`${moment(i.startDate).format(
+            'LL'
+          )} - ${moment(i.endDate).format('LL')} (${i.count}/${
+            i.count > 15 ? i.count : 15
+          })`}</option>
         ))}
       </select>
     </div>

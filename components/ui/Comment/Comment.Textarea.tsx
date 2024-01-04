@@ -1,9 +1,9 @@
-import mergeTW from '@/utils/mergeTW'
-import { HTMLAttributes } from 'react'
+import mergeTW from '@/utils/mergeTW';
+import { HTMLAttributes } from 'react';
 
 interface Props extends HTMLAttributes<HTMLTextAreaElement> {
-  className?: string
-  value?: string
+  className?: string;
+  value?: string;
 }
 
 export const CommentTextarea = ({ className = '', ...props }: Props) => (
@@ -13,4 +13,4 @@ export const CommentTextarea = ({ className = '', ...props }: Props) => (
       className
     )}`}
   />
-)
+);

@@ -59,7 +59,8 @@ function ProfileFormModal() {
     setSocialMediaLinkError('');
     if (fullName.length < 2) setFullNameError('Please enter a correct full name');
     if (username.length < 4) setUsernameError('the username should at least be 4 chars or more');
-    if (!socialMediaLink && !validateURL(socialMediaLink)) setSocialMediaLinkError('Please enter a valid URL');
+    if (!socialMediaLink && !validateURL(socialMediaLink))
+      setSocialMediaLinkError('Please enter a valid URL');
     else return true;
   };
 
@@ -68,7 +69,9 @@ function ProfileFormModal() {
     if (formValidator()) {
       setLoad(true);
 
-      selectedImage ? await profileService.updateAvatar(userSession?.id as string, selectedImage) : null;
+      selectedImage
+        ? await profileService.updateAvatar(userSession?.id as string, selectedImage)
+        : null;
       profileService
         .update(userSession?.id as string, {
           full_name: fullName,
@@ -99,7 +102,9 @@ function ProfileFormModal() {
       <div>
         <Alert
           variant="warning"
-          context={"We need this to verify that you're a human so that we can monitor the voting and make sure there are no fake upvotes."}
+          context={
+            "We need this to verify that you're a human so that we can monitor the voting and make sure there are no fake upvotes."
+          }
         />
       </div>
       <div className="mt-14">
@@ -160,7 +165,9 @@ function ProfileFormModal() {
               />
               <LabelError className="mt">{aboutError}</LabelError>
             </div>
-            <Button isLoad={isLoad} className="flex justify-center w-full ring-offset-2 ring-orange-500 focus:ring-2 hover:bg-orange-400">
+            <Button
+              isLoad={isLoad}
+              className="flex justify-center w-full ring-offset-2 ring-pink-500 focus:ring-2 hover:bg-pink-400">
               {isLoad ? 'Updating' : 'save'}
             </Button>
           </div>

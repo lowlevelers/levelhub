@@ -1,13 +1,20 @@
 import { type ExtendedProduct } from '@/utils/supabase/CustomTypes';
 import BaseDbService from '@/utils/supabase/services/BaseDbService';
-import { Profile, type InsertProduct, type Product, type UpdateProduct } from '@/utils/supabase/types';
+import {
+  Profile,
+  type InsertProduct,
+  type Product,
+  type UpdateProduct,
+} from '@/utils/supabase/types';
 import { groupByWithRef, omit } from '@/utils/helpers';
 import { cache } from '@/utils/supabase/services/CacheService';
 import UsersService from './users';
 
 export default class ProductsService extends BaseDbService {
-  private readonly DEFULT_PRODUCT_SELECT = '*, product_pricing_types(*), product_categories(name, id)';
-  private readonly EXTENDED_PRODUCT_SELECT = '*, product_pricing_types(*), product_categories(*), profiles (full_name)';
+  private readonly DEFULT_PRODUCT_SELECT =
+    '*, product_pricing_types(*), product_categories(name, id)';
+  private readonly EXTENDED_PRODUCT_SELECT =
+    '*, product_pricing_types(*), product_categories(*), profiles (full_name)';
   public readonly EXTENDED_PRODUCT_SELECT_WITH_CATEGORIES =
     '*, product_pricing_types(*), product_categories!inner(*), profiles (full_name)';
 
@@ -37,7 +44,10 @@ export default class ProductsService extends BaseDbService {
     }));
   }
 
-  async getPrevLaunchDays(launchDate: Date, limit = 1): Promise<{ launchDate: Date; products: ExtendedProduct[] }[]> {
+  async getPrevLaunchDays(
+    launchDate: Date,
+    limit = 1
+  ): Promise<{ launchDate: Date; products: ExtendedProduct[] }[]> {
     const { data, error } = await this.supabase.rpc('get_prev_launch_days', {
       _launch_date: launchDate.toISOString(),
       _limit: limit,
@@ -53,7 +63,10 @@ export default class ProductsService extends BaseDbService {
     }));
   }
 
-  async getNextLaunchDays(launchDate: Date, limit = 1): Promise<{ launchDate: Date; products: ExtendedProduct[] }[]> {
+  async getNextLaunchDays(
+    launchDate: Date,
+    limit = 1
+  ): Promise<{ launchDate: Date; products: ExtendedProduct[] }[]> {
     const { data, error } = await this.supabase.rpc('get_next_launch_days', {
       _launch_date: launchDate.toISOString(),
       _limit: limit,
@@ -85,7 +98,7 @@ export default class ProductsService extends BaseDbService {
     year: number,
     weekStartDay: number,
     launchWeek: number,
-    limit = 1,
+    limit = 1
   ): Promise<{ week: number; startDate: Date; endDate: Date; products: ExtendedProduct[] }[]> {
     const { data, error } = await this.supabase.rpc('get_prev_launch_weeks', {
       _year: year,
@@ -110,7 +123,7 @@ export default class ProductsService extends BaseDbService {
     year: number,
     weekStartDay: number,
     launchWeek: number,
-    limit = 1,
+    limit = 1
   ): Promise<{ week: number; startDate: Date; endDate: Date; products: ExtendedProduct[] }[]> {
     const { data, error } = await this.supabase.rpc('get_next_launch_weeks', {
       _year: year,
@@ -131,7 +144,10 @@ export default class ProductsService extends BaseDbService {
     }));
   }
 
-  async getProductsCountByDay(startDate: Date, endDate: Date): Promise<{ date: Date; count: number }[]> {
+  async getProductsCountByDay(
+    startDate: Date,
+    endDate: Date
+  ): Promise<{ date: Date; count: number }[]> {
     const { data, error } = await this.supabase.rpc('get_products_count_by_date', {
       _start_date: startDate.toISOString(),
       _end_date: endDate.toISOString(),
@@ -143,7 +159,7 @@ export default class ProductsService extends BaseDbService {
   async getProductsCountByWeek(
     startWeek: number,
     endWeek: number,
-    year: number,
+    year: number
   ): Promise<{ week: number; startDate: Date; endDate: Date; count: number }[]> {
     const queryProductsCount = async (startWeek: number, endWeek: number, year: number) => {
       const { data, error } = await this.supabase.rpc('get_products_count_by_week', {
@@ -184,7 +200,7 @@ export default class ProductsService extends BaseDbService {
     pageSize = 20,
     pageNumber = 1,
     categoryId?: number,
-    selectQuery = this.EXTENDED_PRODUCT_SELECT,
+    selectQuery = this.EXTENDED_PRODUCT_SELECT
   ) {
     const key = `products-${sortBy}-${ascending}-${categoryId}-${pageNumber}-${pageSize}-${selectQuery}`;
 
@@ -196,12 +212,16 @@ export default class ProductsService extends BaseDbService {
         products = products.eq('product_categories.id', categoryId);
       }
 
-      return products.range(pageSize * (pageNumber - 1), pageSize * pageNumber - 1).order(sortBy, { ascending });
+      return products
+        .range(pageSize * (pageNumber - 1), pageSize * pageNumber - 1)
+        .order(sortBy, { ascending });
     });
   }
 
   async getSimilarProducts(productId: number): Promise<Product[]> {
-    const { data, error } = await this.supabase.rpc('get_similar_products', { _product_id: productId });
+    const { data, error } = await this.supabase.rpc('get_similar_products', {
+      _product_id: productId,
+    });
     if (error !== null) throw new Error(error.message);
     return data;
   }
@@ -228,9 +248,12 @@ export default class ProductsService extends BaseDbService {
     productId: number,
     categoryNames: { name: string }[],
     sortBy: string,
-    ascending: boolean,
+    ascending: boolean
   ): Promise<ExtendedProduct[]> {
-    const { data: products, error } = await this.getProducts(sortBy, ascending).neq('id', productId);
+    const { data: products, error } = await this.getProducts(sortBy, ascending).neq(
+      'id',
+      productId
+    );
 
     if (error) {
       console.error(error);
@@ -238,30 +261,48 @@ export default class ProductsService extends BaseDbService {
     }
 
     const filteredProducts = products
-      .filter(item => item.product_categories?.some(category => categoryNames.includes(category.name)))
+      .filter(item =>
+        item.product_categories?.some(category => categoryNames.includes(category.name))
+      )
       .slice(0, 8);
 
     return filteredProducts as ExtendedProduct[];
   }
 
   async getUserProductsById(userId: string) {
-    const { data } = await this.supabase.from('products').select(this.DEFULT_PRODUCT_SELECT).eq('owner_id', userId).eq('deleted', false);
+    const { data } = await this.supabase
+      .from('products')
+      .select(this.DEFULT_PRODUCT_SELECT)
+      .eq('owner_id', userId)
+      .eq('deleted', false);
 
     return data;
   }
 
   async getUserVoteById(userId: string, productId: number) {
     if (!userId || !productId) return 0;
-    const { data } = await this.supabase.from('product_votes').select().eq('user_id', userId).eq('product_id', productId).maybeSingle();
+    const { data } = await this.supabase
+      .from('product_votes')
+      .select()
+      .eq('user_id', userId)
+      .eq('product_id', productId)
+      .maybeSingle();
     return data;
   }
 
   async getRandomTools(limit: number): Promise<ExtendedProduct[] | null> {
-    const { data } = await this.supabase.from('products').select(this.EXTENDED_PRODUCT_SELECT).eq('deleted', false).limit(limit);
+    const { data } = await this.supabase
+      .from('products')
+      .select(this.EXTENDED_PRODUCT_SELECT)
+      .eq('deleted', false)
+      .limit(limit);
     return data;
   }
 
-  async getToolsByNameOrDescription(input: string, limit: number): Promise<ExtendedProduct[] | null> {
+  async getToolsByNameOrDescription(
+    input: string,
+    limit: number
+  ): Promise<ExtendedProduct[] | null> {
     const key = `product-search-by-text-${input}-${limit}`;
 
     return cache.get(key, async () => {
@@ -291,7 +332,11 @@ export default class ProductsService extends BaseDbService {
     const key = `product-details-slug-${slug}`;
 
     const product = await cache.get(key, async () => {
-      const { data } = await this.supabase.from('products').select(this.DEFULT_PRODUCT_SELECT).eq('slug', slug).single();
+      const { data } = await this.supabase
+        .from('products')
+        .select(this.DEFULT_PRODUCT_SELECT)
+        .eq('slug', slug)
+        .single();
 
       return data;
     });
@@ -307,7 +352,11 @@ export default class ProductsService extends BaseDbService {
     const key = `product-id-${id}`;
 
     const votersList = await cache.get(key, async () => {
-      let { data } = await this.supabase.from('product_votes').select('*').eq('product_id', id).limit(30);
+      let { data } = await this.supabase
+        .from('product_votes')
+        .select('*')
+        .eq('product_id', id)
+        .limit(30);
       const promises = data?.map(async item => this.getUserProfileById(item.user_id));
       return await Promise.all(promises as []);
     });
@@ -316,7 +365,10 @@ export default class ProductsService extends BaseDbService {
   }
 
   async toggleVote(productId: number, userId: string): Promise<number> {
-    const { data } = await this.supabase.rpc('toggleProductVote', { _product_id: productId, _user_id: userId });
+    const { data } = await this.supabase.rpc('toggleProductVote', {
+      _product_id: productId,
+      _user_id: userId,
+    });
     return data ?? 0;
   }
 
@@ -330,17 +382,32 @@ export default class ProductsService extends BaseDbService {
     if (error !== null) throw new Error(error.message);
 
     if (productCategoryIds.length !== 0) {
-      await Promise.all(productCategoryIds.map(async categoryId => await this._addProductToCategory((data as Product).id, categoryId)));
+      await Promise.all(
+        productCategoryIds.map(
+          async categoryId => await this._addProductToCategory((data as Product).id, categoryId)
+        )
+      );
     }
 
     return data;
   }
 
-  async update(id: number, updates: UpdateProduct, productCategoryIds: number[] = []): Promise<Product> {
+  async update(
+    id: number,
+    updates: UpdateProduct,
+    productCategoryIds: number[] = []
+  ): Promise<Product> {
     const cleanUpdates = omit(updates, ['deleted_at', 'deleted']);
-    const { data, error } = await this.supabase.from('products').update(cleanUpdates).eq('id', id).select().single();
+    const { data, error } = await this.supabase
+      .from('products')
+      .update(cleanUpdates)
+      .eq('id', id)
+      .select()
+      .single();
     await this.supabase.from('product_category_product').delete().eq('product_id', id);
-    await Promise.all(productCategoryIds.map(async categoryId => await this._addProductToCategory(id, categoryId)));
+    await Promise.all(
+      productCategoryIds.map(async categoryId => await this._addProductToCategory(id, categoryId))
+    );
 
     if (error != null) throw new Error(error.message);
 
@@ -360,7 +427,12 @@ export default class ProductsService extends BaseDbService {
   }
 
   async search(searchTerm: string): Promise<Product[] | null> {
-    const { data, error } = await this.supabase.from('products').select('*').ilike('name', `%${searchTerm}%`).eq('deleted', false).limit(8);
+    const { data, error } = await this.supabase
+      .from('products')
+      .select('*')
+      .ilike('name', `%${searchTerm}%`)
+      .eq('deleted', false)
+      .limit(8);
 
     if (error !== null) throw new Error(error.message);
     return data;
@@ -387,7 +459,7 @@ export default class ProductsService extends BaseDbService {
         const { data } = await this.supabase.from('profiles').select().eq('id', id).single();
         return data;
       },
-      180,
+      180
     );
   }
 
@@ -409,7 +481,7 @@ export default class ProductsService extends BaseDbService {
     const groups = groupByWithRef(
       data,
       c => c.products?.id,
-      c => c.products,
+      c => c.products
     );
 
     return Promise.all(
@@ -419,12 +491,17 @@ export default class ProductsService extends BaseDbService {
           full_name: (await this.getUserProfileById(g.items[0].user_id))?.full_name,
           id: (await this.getUserProfileById(g.items[0].user_id))?.id,
         },
-      })),
+      }))
     );
   }
 
   private async _getOne(column: string, value: unknown, select = this.DEFULT_PRODUCT_SELECT) {
-    const { data } = await this.supabase.from('products').select(select).eq('deleted', false).eq(column, value).single();
+    const { data } = await this.supabase
+      .from('products')
+      .select(select)
+      .eq('deleted', false)
+      .eq(column, value)
+      .single();
     return data;
   }
 }

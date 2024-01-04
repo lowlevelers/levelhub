@@ -1,6 +1,10 @@
 'use client';
 
-import { IconFirstWinnerBadge, IconSecondWinnerBadge, IconThirdWinnerBadge } from '@/components/Icons';
+import {
+  IconFirstWinnerBadge,
+  IconSecondWinnerBadge,
+  IconThirdWinnerBadge,
+} from '@/components/Icons';
 import { ProductAward } from '@/utils/supabase/CustomTypes';
 import JSConfetti from 'js-confetti';
 import { useEffect, useRef, useState } from 'react';
@@ -42,7 +46,9 @@ export default ({ weekRank, isLaunchEnd }: { weekRank: number | string; isLaunch
   return isLaunchEnd && (badges as any)[`winner${weekRank}`] ? (
     <div className="text-center text-slate-300 text-sm">
       {(badges as any)[`winner${weekRank}`].badge}
-      <span className="block text-xl text-slate-50 font-semibold mt-2">{(badges as any)[`winner${weekRank}`].rank}</span>
+      <span className="block text-xl text-slate-50 font-semibold mt-2">
+        {(badges as any)[`winner${weekRank}`].rank}
+      </span>
       Product of the week
     </div>
   ) : (

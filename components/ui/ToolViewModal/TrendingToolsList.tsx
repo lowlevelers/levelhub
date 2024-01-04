@@ -45,12 +45,22 @@ export default () => {
                     <ToolName href={tool.demo_url as string}>{tool.name}</ToolName>
                     <Title className="line-clamp-2">{tool.slogan}</Title>
                     <ToolFooter>
-                      <Tags items={[tool.product_pricing_types?.title ?? 'Free', ...(tool.product_categories || []).map(c => c.name)]} />
+                      <Tags
+                        items={[
+                          tool.product_pricing_types?.title ?? 'Free',
+                          ...(tool.product_categories || []).map(c => c.name),
+                        ]}
+                      />
                       <ToolViews count={tool.views_count} />
                     </ToolFooter>
                   </div>
                 </div>
-                <ToolVotes count={tool.votes_count} productId={tool?.id} launchDate={tool.launch_date} launchEnd={tool.launch_end} />
+                <ToolVotes
+                  count={tool.votes_count}
+                  productId={tool?.id}
+                  launchDate={tool.launch_date}
+                  launchEnd={tool.launch_end}
+                />
               </ToolCardLink>
             </li>
           ))}

@@ -26,7 +26,8 @@ export default ({ onLogout, session }: Props) => {
 
   useEffect(() => {
     const handleDropDown = (e: MouseEvent) => {
-      if (profileRef.current && !(profileRef.current as HTMLElement).contains(e.target as Node)) setState(false);
+      if (profileRef.current && !(profileRef.current as HTMLElement).contains(e.target as Node))
+        setState(false);
     };
     document.addEventListener('click', handleDropDown);
   }, []);
@@ -36,29 +37,29 @@ export default ({ onLogout, session }: Props) => {
       <button
         ref={profileRef}
         className=" outline-none rounded-full ring-offset-2 ring-slate-700 lg:focus:ring-2"
-        onClick={() => setState(!state)}
-      >
+        onClick={() => setState(!state)}>
         {user.avatar_url ? (
           <Avatar src={user.avatar_url} />
         ) : (
           <div className="w-10 h-10 rounded-full bg-gradient-to-l from-sky-500 via-indigo-500 to-indigo-500"></div>
         )}
       </button>
-      <ul className={`bg-slate-800 top-14 right-0 absolute rounded-lg w-52 shadow-md space-y-0 overflow-hidden ${state ? '' : 'hidden'}`}>
+      <ul
+        className={`bg-slate-800 top-14 right-0 absolute rounded-lg w-52 shadow-md space-y-0 overflow-hidden ${
+          state ? '' : 'hidden'
+        }`}>
         {navigation.map((item, idx) => (
           <li key={idx}>
             <LinkItem
               href={item.path}
-              className="block w-full py-2 px-3 font-normal text-slate-300 text-left rounded-none hover:bg-slate-700"
-            >
+              className="block w-full py-2 px-3 font-normal text-slate-300 text-left rounded-none hover:bg-slate-700">
               {item.title}
             </LinkItem>
           </li>
         ))}
         <Button
           onClick={onLogout}
-          className="block w-full py-2 px-3 font-normal text-slate-300 text-left rounded-none border-t border-slate-700 bg-transparent hover:bg-slate-700"
-        >
+          className="block w-full py-2 px-3 font-normal text-slate-300 text-left rounded-none border-t border-slate-700 bg-transparent hover:bg-slate-700">
           Logout
         </Button>
       </ul>

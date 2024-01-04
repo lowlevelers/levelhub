@@ -17,7 +17,7 @@ export function groupByWithRef(array, callbackFn, refGetter) {
     if (!res[key]) {
       res[key] = {
         ref: refGetter(item),
-        items: []
+        items: [],
       };
     }
 

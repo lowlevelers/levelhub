@@ -6,8 +6,7 @@ export default () => (
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6 mx-auto"
-    >
+      className="w-6 h-6 mx-auto">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -16,8 +15,10 @@ export default () => (
     </svg>
     <h4 className="font-medium">No results found</h4>
     <p className="text-slate-400">No products found for this search term.</p>
-    <a href="/" className="inline-block bg-slate-800/70 hover:bg-slate-800 rounded-md px-4 py-2 duration-150">
+    <a
+      href="/"
+      className="inline-block bg-slate-800/70 hover:bg-slate-800 rounded-md px-4 py-2 duration-150">
       Find more tools
     </a>
   </div>
-)
+);

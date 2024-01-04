@@ -24,17 +24,13 @@ export default ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
-  return isLoad
-    ? (
+  return isLoad ? (
     <div className="min-h-screen">
-      <IconLoading className="w-7 h-7 text-orange-500 mx-auto mt-16" />
+      <IconLoading className="w-7 h-7 text-pink-500 mx-auto mt-16" />
     </div>
-      )
-    : isTool
-      ? (
-          children
-        )
-      : (
+  ) : isTool ? (
+    children
+  ) : (
     <Page404 />
-        );
+  );
 };

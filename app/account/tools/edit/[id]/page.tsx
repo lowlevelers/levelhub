@@ -132,7 +132,15 @@ export default () => {
   const onSubmit: SubmitHandler<Inputs> = async data => {
     if (validateImages()) {
       setUpdate(true);
-      const { tool_name, tool_website, tool_description, slogan, pricing_type, github_repo, demo_video } = data;
+      const {
+        tool_name,
+        tool_website,
+        tool_description,
+        slogan,
+        pricing_type,
+        github_repo,
+        demo_video,
+      } = data;
 
       const categoryIds: number[] = categories.map(category => category.id);
 
@@ -150,7 +158,7 @@ export default () => {
             logo_url: logoPreview,
             demo_video_url: demo_video,
           },
-          categoryIds,
+          categoryIds
         )
         .then(res => {
           window.alert('Your launch has been updated successfully');
@@ -169,8 +177,7 @@ export default () => {
           <FormLaunchSection
             number={1}
             title="Tell us about your tool"
-            description="Provide basic information to help users understand your tool."
-          >
+            description="Provide basic information to help users understand your tool.">
             <div>
               <LogoUploader isLoad={isLogoLoad} src={logoPreview} onChange={handleUploadLogo} />
               <LabelError className="mt-2">{logoError}</LabelError>
@@ -182,7 +189,9 @@ export default () => {
                 className="w-full mt-2"
                 validate={{ ...register('tool_name', { required: true, minLength: 3 }) }}
               />
-              <LabelError className="mt-2">{errors.tool_name && 'Please enter your tool name'}</LabelError>
+              <LabelError className="mt-2">
+                {errors.tool_name && 'Please enter your tool name'}
+              </LabelError>
             </div>
             <div>
               <Label>Catchy slogan 😎</Label>
@@ -191,7 +200,9 @@ export default () => {
                 className="w-full mt-2"
                 validate={{ ...register('slogan', { required: true, minLength: 20 }) }}
               />
-              <LabelError className="mt-2">{errors.solgan && 'Please enter your tool slogan'}</LabelError>
+              <LabelError className="mt-2">
+                {errors.solgan && 'Please enter your tool slogan'}
+              </LabelError>
             </div>
             <div>
               <Label>Tool website URL</Label>
@@ -205,7 +216,9 @@ export default () => {
                   }),
                 }}
               />
-              <LabelError className="mt-2">{errors.tool_website && 'Please enter your tool website URL'}</LabelError>
+              <LabelError className="mt-2">
+                {errors.tool_website && 'Please enter your tool website URL'}
+              </LabelError>
             </div>
             <div>
               <Label>GitHub repo URL (optional)</Label>
@@ -219,7 +232,9 @@ export default () => {
                   }),
                 }}
               />
-              <LabelError className="mt-2">{errors.github_repo && 'Please enter a valid github repo url'}</LabelError>
+              <LabelError className="mt-2">
+                {errors.github_repo && 'Please enter a valid github repo url'}
+              </LabelError>
             </div>
             <div>
               <Label>Quick Description (max 300 characters)</Label>
@@ -230,14 +245,15 @@ export default () => {
                   ...register('tool_description', { required: true, maxLength: 350 }),
                 }}
               />
-              <LabelError className="mt-2">{errors.tool_description && 'Please enter your tool description'}</LabelError>
+              <LabelError className="mt-2">
+                {errors.tool_description && 'Please enter your tool description'}
+              </LabelError>
             </div>
           </FormLaunchSection>
           <FormLaunchSection
             number={2}
             title="Extra Stuff"
-            description="We'll use this to group your tool with others and share it in newsletters. Plus, users can filter by price and categories!"
-          >
+            description="We'll use this to group your tool with others and share it in newsletters. Plus, users can filter by price and categories!">
             <div>
               <Label>Tool pricing type</Label>
               {pricingType.map((item, idx) => (
@@ -264,14 +280,19 @@ export default () => {
                   )}
                 />
               ))}
-              <LabelError className="mt-2">{errors.pricing_type && 'Please select your tool pricing type'}</LabelError>
+              <LabelError className="mt-2">
+                {errors.pricing_type && 'Please select your tool pricing type'}
+              </LabelError>
             </div>
             <div>
               <Label>Tool categories (optional)</Label>
               <CategoryInput className="mt-2" categories={categories} setCategory={setCategory} />
             </div>
           </FormLaunchSection>
-          <FormLaunchSection number={3} title="Media" description="Show off how awesome your dev tool is with cool images.">
+          <FormLaunchSection
+            number={3}
+            title="Media"
+            description="Show off how awesome your dev tool is with cool images.">
             <div>
               <Label>Demo video (optional)</Label>
               <Input
@@ -284,15 +305,22 @@ export default () => {
                   }),
                 }}
               />
-              <LabelError className="mt-2">{errors.demo_video && 'Please enter a valid demo video url'}</LabelError>
+              <LabelError className="mt-2">
+                {errors.demo_video && 'Please enter a valid demo video url'}
+              </LabelError>
             </div>
             <div>
               <Label>Tool screenshots</Label>
               <p className="text-sm text-slate-400">
-                Upload at least three screenshots showcasing different aspects of functionality. Note that the first image will be used as
-                social preview, so choose wisely!
+                Upload at least three screenshots showcasing different aspects of functionality.
+                Note that the first image will be used as social preview, so choose wisely!
               </p>
-              <ImagesUploader isLoad={isImagesLoad} className="mt-4" files={imagePreviews as []} max={5} onChange={handleUploadImages}>
+              <ImagesUploader
+                isLoad={isImagesLoad}
+                className="mt-4"
+                files={imagePreviews as []}
+                max={5}
+                onChange={handleUploadImages}>
                 {imagePreviews.map((src, idx) => (
                   <ImageUploaderItem
                     src={src}
@@ -309,13 +337,15 @@ export default () => {
           <FormLaunchSection
             number={4}
             title="Launch Week for Your Dev Tool"
-            description="Setting the perfect launch week is essential to make a splash in the dev world."
-          >
+            description="Setting the perfect launch week is essential to make a splash in the dev world.">
             <div>
               <ul className="text-sm text-slate-300">
                 <li className="p-2 rounded-lg border border-slate-800 bg-slate-800/50">
                   The launch date is <b>{moment(getValues('launch_date')).format('LL')}</b> Please{' '}
-                  <a href="https://twitter.com/johnrushx" target="_blank" className="text-orange-500 hover:text-orange-400">
+                  <a
+                    href="https://twitter.com/johnrushx"
+                    target="_blank"
+                    className="text-pink-500 hover:text-pink-400">
                     contact us
                   </a>{' '}
                   if you want to update or cancel the launch.
@@ -335,7 +365,10 @@ export default () => {
               </div> */}
             </div>
             <div className="mt-3">
-              <Button isLoad={isUpdate} type="submit" className="w-full hover:bg-orange-400 ring-offset-2 ring-orange-500 focus:ring">
+              <Button
+                isLoad={isUpdate}
+                type="submit"
+                className="w-full hover:bg-pink-400 ring-offset-2 ring-pink-500 focus:ring">
                 Update
               </Button>
             </div>

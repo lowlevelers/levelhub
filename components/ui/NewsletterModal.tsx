@@ -11,7 +11,13 @@ function isValidEmail(email: string) {
   return pattern.test(email);
 }
 
-export default ({ isActive, closeModal }: { isActive: boolean; closeModal: (val: boolean) => void }) => {
+export default ({
+  isActive,
+  closeModal,
+}: {
+  isActive: boolean;
+  closeModal: (val: boolean) => void;
+}) => {
   const [personalEMail, setPersonalEMail] = useState('');
   const [personalEMailError, setPersonalEMailError] = useState('');
   const [isLoad, setLoad] = useState(false);
@@ -35,10 +41,16 @@ export default ({ isActive, closeModal }: { isActive: boolean; closeModal: (val:
   };
 
   return (
-    <Modal variant="custom" className="p-6 overflow-hidden" isActive={isActive} onCancel={() => closeModal(false)}>
+    <Modal
+      variant="custom"
+      className="p-6 overflow-hidden"
+      isActive={isActive}
+      onCancel={() => closeModal(false)}>
       <BlurBg />
       <div className="flex justify-end">
-        <button onClick={() => closeModal(false)} className="relative z-10 p-1 rounded-md text-gray-400 hover:bg-slate-700 duration-150">
+        <button
+          onClick={() => closeModal(false)}
+          className="relative z-10 p-1 rounded-md text-gray-400 hover:bg-slate-700 duration-150">
           <XMarkIcon className="w-5 h-5" />
         </button>
       </div>
@@ -60,7 +72,7 @@ export default ({ isActive, closeModal }: { isActive: boolean; closeModal: (val:
             ''
           )}
           <span className="block mt-3 text-red-500 text-sm text-left">{personalEMailError}</span>
-          <Button isLoad={isLoad} className="w-full mt-3 hover:bg-orange-400 active:scale-[0.99]">
+          <Button isLoad={isLoad} className="w-full mt-3 hover:bg-pink-400 active:scale-[0.99]">
             {isSubscribingDone ? <CheckIcon className="w-6 h-6 mx-auto" /> : 'Subscribe'}
           </Button>
         </form>
@@ -71,9 +83,21 @@ export default ({ isActive, closeModal }: { isActive: boolean; closeModal: (val:
 
 const BlurBg = () => (
   <div className="absolute w-full -top-16">
-    <svg width="471" height="151" viewBox="0 0 471 151" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="471"
+      height="151"
+      viewBox="0 0 471 151"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_f_247_126)">
-        <rect x="62" y="36" width="347" height="53" fill="url(#paint0_linear_247_126)" fill-opacity="0.15" />
+        <rect
+          x="62"
+          y="36"
+          width="347"
+          height="53"
+          fill="url(#paint0_linear_247_126)"
+          fill-opacity="0.15"
+        />
       </g>
       <defs>
         <filter
@@ -83,13 +107,18 @@ const BlurBg = () => (
           width="471"
           height="177"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
-        >
+          color-interpolation-filters="sRGB">
           <feFlood flood-opacity="0" result="BackgroundImageFix" />
           <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
           <feGaussianBlur stdDeviation="31" result="effect1_foregroundBlur_247_126" />
         </filter>
-        <linearGradient id="paint0_linear_247_126" x1="235.5" y1="26.9787" x2="234.581" y2="134.098" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="paint0_linear_247_126"
+          x1="235.5"
+          y1="26.9787"
+          x2="234.581"
+          y2="134.098"
+          gradientUnits="userSpaceOnUse">
           <stop stop-color="#334155" />
           <stop offset="0.0596354" stop-color="#D1D5DB" />
           <stop offset="0.693271" stop-color="#F97316" />

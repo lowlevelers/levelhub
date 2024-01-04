@@ -102,8 +102,7 @@ export default async function ToolPage({ slug }: { slug: string }): Promise<JSX.
           <LinkShiny
             href={`${addHttpsToUrl(product?.demo_url as string)}?ref=devhunt`}
             target="_blank"
-            className="flex items-center gap-x-2"
-          >
+            className="flex items-center gap-x-2">
             Live preview
             <IconArrowTopRight />
           </LinkShiny>
@@ -115,7 +114,9 @@ export default async function ToolPage({ slug }: { slug: string }): Promise<JSX.
           />
         </div>
       </div>
-      <Tabs ulClassName="container-custom-screen" className="mt-20 sticky pt-2 top-[3.75rem] z-10 bg-slate-900">
+      <Tabs
+        ulClassName="container-custom-screen"
+        className="mt-20 sticky pt-2 top-[3.75rem] z-10 bg-slate-900">
         {tabs.map((item, idx) => (
           <TabLink hash={item.hash} key={idx}>
             {item.name}
@@ -130,14 +131,17 @@ export default async function ToolPage({ slug }: { slug: string }): Promise<JSX.
               <div
                 className="prose text-slate-100 whitespace-pre-wrap"
                 // Use DOMPurify method for XSS sanitizeration
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(product?.description as string) }}
-              ></div>
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(product?.description as string),
+                }}></div>
               {product?.product_categories.length ? (
                 <div className="mt-6 flex flex-wrap gap-3 items-center">
                   <h3 className="text-sm text-slate-400 font-medium">Classified in</h3>
                   <TagsGroup>
                     {product?.product_categories.map((pc: { name: string }) => (
-                      <Tag href={`/tools/${pc.name.toLowerCase().replaceAll(' ', '-')}`}>{pc.name}</Tag>
+                      <Tag href={`/tools/${pc.name.toLowerCase().replaceAll(' ', '-')}`}>
+                        {pc.name}
+                      </Tag>
                     ))}
                   </TagsGroup>
                 </div>
@@ -147,25 +151,39 @@ export default async function ToolPage({ slug }: { slug: string }): Promise<JSX.
             </div>
             {product?.asset_urls?.length && (
               <div
-                className={`max-w-screen-2xl ${product?.asset_urls?.length === 1 ? 'container-custom-screen' : ''} mt-10 mx-auto sm:px-8`}
-              >
-                <Gallery assets={product?.asset_urls} alt={product.name} src={product.demo_video_url as string}>
+                className={`max-w-screen-2xl ${
+                  product?.asset_urls?.length === 1 ? 'container-custom-screen' : ''
+                } mt-10 mx-auto sm:px-8`}>
+                <Gallery
+                  assets={product?.asset_urls}
+                  alt={product.name}
+                  src={product.demo_video_url as string}>
                   {product?.asset_urls &&
                     product?.asset_urls.map((item: string, idx: number) => (
-                      <GalleryImage key={idx} src={item.replaceAll('&fit=max&w=750', '')} alt={product.name} />
+                      <GalleryImage
+                        key={idx}
+                        src={item.replaceAll('&fit=max&w=750', '')}
+                        alt={product.name}
+                      />
                     ))}
                 </Gallery>
               </div>
             )}
           </div>
         </div>
-        <CommentSection productId={product.owner_id as string} comments={comments as any} slug={slug} />
+        <CommentSection
+          productId={product.owner_id as string}
+          comments={comments as any}
+          slug={slug}
+        />
         {/* Keep doing based on Product interface */}
         <div className="container-custom-screen" id="details">
           <h3 className="text-slate-50 font-medium">About this launch</h3>
           <p className="text-slate-300 mt-6">
             {product.name} {isLaunchStarted ? 'was hunted by' : 'by'}{' '}
-            <Link href={`/@${owned?.username}`} className="text-orange-500 hover:text-orange-400 duration-150">
+            <Link
+              href={`/@${owned?.username}`}
+              className="text-pink-500 hover:text-pink-400 duration-150">
               {owned?.full_name}
             </Link>{' '}
             {isLaunchStarted ? 'in ' : 'Will be launched in '}

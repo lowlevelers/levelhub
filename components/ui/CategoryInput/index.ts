@@ -1,1 +1,1 @@
-export { default } from './CategoryInput'
+export { default } from './CategoryInput';

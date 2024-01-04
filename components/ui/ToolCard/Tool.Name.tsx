@@ -23,8 +23,7 @@ export default ({
       href={`${href}?ref=devhunt`}
       onClick={() => window.open(`${href}?ref=devhunt`)}
       target="_blank"
-      className="hidden group-hover/card:block"
-    >
+      className="hidden group-hover/card:block">
       <ArrowTopRightOnSquareIcon className="w-4 h-4 pointer-events-none" />
     </a>
   </h3>

@@ -11,7 +11,14 @@ import UserProfileInfo from '@/components/ui/UserProfileInfo/UserProfileInfo';
 import { type Comment as CommentType, type Product, type Profile } from '@/utils/supabase/types';
 import Page404 from '@/components/ui/Page404/Page404';
 import ToolCardList, { type ITool } from '@/components/ui/ToolCardList/ToolCardList';
-import { Comment, CommentContext, CommentDate, CommentUserAvatar, CommentUserName, Comments } from '@/components/ui/Comment';
+import {
+  Comment,
+  CommentContext,
+  CommentDate,
+  CommentUserAvatar,
+  CommentUserName,
+  Comments,
+} from '@/components/ui/Comment';
 import { createBrowserClient } from '@/utils/supabase/browser';
 import moment from 'moment';
 import Link from 'next/link';
@@ -20,7 +27,9 @@ import { type Metadata } from 'next';
 import ToolCardLink from '@/components/ui/ToolCard/ToolCardLink';
 import dynamic from 'next/dynamic';
 
-const TrendingToolsList = dynamic(() => import('@/components/ui/TrendingToolsList'), { ssr: false });
+const TrendingToolsList = dynamic(() => import('@/components/ui/TrendingToolsList'), {
+  ssr: false,
+});
 
 interface IComment extends CommentType {
   profiles: Profile;
@@ -28,29 +37,33 @@ interface IComment extends CommentType {
 }
 
 // set dynamic metadata
-export async function generateMetadata({ params: { user } }: { params: { user: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params: { user },
+}: {
+  params: { user: string };
+}): Promise<Metadata> {
   const username = decodeURIComponent(user).slice(1);
   const supabaseClient = createServerClient();
   const profileService = new ProfileService(supabaseClient);
   const profile = await profileService.getByUsername(username);
 
   return {
-    title: `${profile?.full_name}'s profile on Dev Hunt - Dev Hunt`,
-    description: `Discover the tools that ${profile?.full_name}, is passionate about on Dev Hunt`,
+    title: `${profile?.full_name}'s profile on Panomos - Panomos`,
+    description: `Discover the tools that ${profile?.full_name}, is passionate about on Panomos`,
     metadataBase: new URL('https://devhunt.org'),
     alternates: {
       canonical: `${decodeURIComponent(user)}`,
     },
     openGraph: {
       type: 'article',
-      title: `${profile?.full_name}'s profile on Dev Hunt - Dev Hunt`,
-      description: `Discover the tools that ${profile?.full_name}, is passionate about on Dev Hunt`,
+      title: `${profile?.full_name}'s profile on Panomos - Panomos`,
+      description: `Discover the tools that ${profile?.full_name}, is passionate about on Panomos`,
       images: [(profile?.avatar_url as string) || ''],
       url: `https://devhunt.org/${decodeURIComponent(user)}`,
     },
     twitter: {
-      title: `${profile?.full_name}'s profile on Dev Hunt - Dev Hunt`,
-      description: `Discover the tools that ${profile?.full_name}, is passionate about on Dev Hunt`,
+      title: `${profile?.full_name}'s profile on Panomos - Panomos`,
+      description: `Discover the tools that ${profile?.full_name}, is passionate about on Panomos`,
       card: 'summary_large_image',
       images: [profile?.avatar_url ?? ''],
     },
@@ -98,13 +111,15 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
                       <Tags
                         items={[
                           (tool.product_pricing_types as { title: string }).title || 'Free',
-                          ...(tool.product_category_product as { name: string }[]).map((c: { name: string }) => c.name),
+                          ...(tool.product_category_product as { name: string }[]).map(
+                            (c: { name: string }) => c.name
+                          ),
                         ]}
                       />
                     </div>
                     <div className="flex-1 self-center flex justify-end">
                       <Votes
-                        className="text-orange-500"
+                        className="text-pink-500"
                         count={tool.votes_count}
                         productId={tool?.id}
                         launchDate={tool.launch_date}
@@ -129,15 +144,27 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
                   <div className="flex-1">
                     <Link href={`/tool/${item.products.slug}/#${item.id}`} className="flex-1">
                       <CommentUserName>{item.profiles.full_name}</CommentUserName>
-                      <CommentDate className="mt-1">Commented {moment(item.created_at).format('LL')}</CommentDate>
-                      <CommentContext className="mt-3 text-slate-400 line-clamp-2">{item.content}</CommentContext>
+                      <CommentDate className="mt-1">
+                        Commented {moment(item.created_at).format('LL')}
+                      </CommentDate>
+                      <CommentContext className="mt-3 text-slate-400 line-clamp-2">
+                        {item.content}
+                      </CommentContext>
                     </Link>
-                    <ToolCardLink className="mt-3 border border-slate-800 px-2 sm:px-4" href={'/tool/' + item.products.slug}>
+                    <ToolCardLink
+                      className="mt-3 border border-slate-800 px-2 sm:px-4"
+                      href={'/tool/' + item.products.slug}>
                       <Link href={'/tool/' + item.products.slug}>
-                        <Logo src={item.products.logo_url || ''} alt={item.products.name} imgClassName="w-12 h-12" />
+                        <Logo
+                          src={item.products.logo_url || ''}
+                          alt={item.products.name}
+                          imgClassName="w-12 h-12"
+                        />
                       </Link>
                       <div className="space-y-1">
-                        <Name toolHref={'/tool/' + item.products.slug} href={item.products.demo_url as string}>
+                        <Name
+                          toolHref={'/tool/' + item.products.slug}
+                          href={item.products.demo_url as string}>
                           {item.products.name}
                         </Name>
                         <Link href={'/tool/' + item.products.slug}>

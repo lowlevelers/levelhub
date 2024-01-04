@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-export default async ({ firstName, personalEMail }: { firstName: string; personalEMail: string }) => {
+export default async ({
+  firstName,
+  personalEMail,
+}: {
+  firstName: string;
+  personalEMail: string;
+}) => {
   const WELCOME_EMAIL_API_KEY = process.env.WELCOME_EMAIL_API_KEY as string;
   const SIGNUP_FORM_ID = process.env.SIGNUP_FORM_ID as string;
 

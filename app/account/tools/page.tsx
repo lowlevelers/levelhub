@@ -64,14 +64,18 @@ export default () => {
       <ul className="mt-6 divide-y divide-slate-800/60">
         {isLoad ? (
           <div>
-            <IconLoading className="w-6 h-6 mx-auto text-orange-500" />
+            <IconLoading className="w-6 h-6 mx-auto text-pink-500" />
           </div>
         ) : tools.length > 0 ? (
           tools.map((tool: ProductType, idx: number) => (
             <>
               <li key={idx} className="py-3">
                 <div className="p-2 flex items-start gap-x-4">
-                  <Logo src={tool.logo_url || ''} alt={tool.name} className="w-14 h-14 sm:w-16 sm:h-16" />
+                  <Logo
+                    src={tool.logo_url || ''}
+                    alt={tool.name}
+                    className="w-14 h-14 sm:w-16 sm:h-16"
+                  />
                   <div>
                     <Link href={`/tool/${tool.slug}`}>
                       <Name>{tool.name}</Name>
@@ -79,23 +83,23 @@ export default () => {
                       <Tags
                         items={[
                           (tool.product_pricing_types as { title: string }).title || 'Free',
-                          ...(tool.product_categories as { name: string }[]).map((c: { name: string }) => c.name),
+                          ...(tool.product_categories as { name: string }[]).map(
+                            (c: { name: string }) => c.name
+                          ),
                         ]}
                       />
                     </Link>
                     <div className="mt-2.5 flex items-center gap-x-4">
                       <Link
                         href={`/account/tools/edit/${tool.id}`}
-                        className="inline-block text-slate-400 hover:text-slate-500 duration-150"
-                      >
+                        className="inline-block text-slate-400 hover:text-slate-500 duration-150">
                         <IconPencilSquare />
                       </Link>
                       <button
                         onClick={() => {
                           handleDeleteConfirm(tool.id, idx);
                         }}
-                        className="inline-block text-slate-400 hover:text-slate-500 duration-150"
-                      >
+                        className="inline-block text-slate-400 hover:text-slate-500 duration-150">
                         <IconTrash />
                       </button>
                       <button
@@ -103,8 +107,7 @@ export default () => {
                           setToolSlug(tool.slug);
                           setModalOpen(true);
                         }}
-                        className="inline-block text-slate-400 hover:text-slate-500 duration-150"
-                      >
+                        className="inline-block text-slate-400 hover:text-slate-500 duration-150">
                         <IconCodeBracket />
                       </button>
                     </div>

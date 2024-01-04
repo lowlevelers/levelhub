@@ -6,3 +6,12 @@ dist
 pnpm-lock.yaml
 prisma/migrations
 **/translations/*.json
+
+**/dist
+**/build
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+**/.next
+**/out

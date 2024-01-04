@@ -7,8 +7,7 @@ export const IconEllipsisVertical = ({ className = '' }: { className?: string })
     viewBox="0 0 24 24"
     strokeWidth="1.5"
     stroke="currentColor"
-    className={mergeTW(`w-5 h-5 ${className}`)}
-  >
+    className={mergeTW(`w-5 h-5 ${className}`)}>
     <path
       strokeLinecap="round"
       strokeLinejoin="round"

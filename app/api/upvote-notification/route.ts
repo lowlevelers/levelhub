@@ -42,7 +42,13 @@ async function getAuthToken() {
   return await axios.request(config);
 }
 
-async function sendNotification(email: string, slug: string, product_name: string, commenter: string, token: string) {
+async function sendNotification(
+  email: string,
+  slug: string,
+  product_name: string,
+  commenter: string,
+  token: string
+) {
   try {
     const response = await axios.post(
       `https://apinie.sensorpro.net/api/Campaign/TriggerEmail/${token}`,
@@ -63,7 +69,7 @@ async function sendNotification(email: string, slug: string, product_name: strin
         headers: {
           'Content-Type': 'application/json',
         },
-      },
+      }
     );
 
     // console.log(JSON.stringify(response.data));
@@ -96,7 +102,10 @@ export async function GET(request: NextRequest) {
       }
     });
 
-    await initUpvoteLogsService.insertUpvoteLogs({ upvotes_number: groups.length, emails_sent: sentEmails.size });
+    await initUpvoteLogsService.insertUpvoteLogs({
+      upvotes_number: groups.length,
+      emails_sent: sentEmails.size,
+    });
   }
 
   return NextResponse.json({ success: true });

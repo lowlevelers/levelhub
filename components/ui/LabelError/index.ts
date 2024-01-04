@@ -1,1 +1,1 @@
-export { default } from './LabelError'
+export { default } from './LabelError';

@@ -1,6 +1,11 @@
 'use client';
 
-import { CommentForm, CommentTextarea, CommentUserAvatar, CommentFormWrapper } from '@/components/ui/Comment';
+import {
+  CommentForm,
+  CommentTextarea,
+  CommentUserAvatar,
+  CommentFormWrapper,
+} from '@/components/ui/Comment';
 import { useSupabase } from '@/components/supabase/provider';
 import Button from '@/components/ui/Button/Button';
 import { type FormEvent, useState } from 'react';
@@ -69,7 +74,11 @@ export default ({
       </CommentFormWrapper>
       <div className="mt-3 flex justify-end">
         {user ? (
-          <Button isLoad={isLoad} className={`text-sm bg-slate-800 hover:bg-slate-700 ${isLoad ? 'pointer-events-none opacity-60' : ''}`}>
+          <Button
+            isLoad={isLoad}
+            className={`text-sm bg-slate-800 hover:bg-slate-700 ${
+              isLoad ? 'pointer-events-none opacity-60' : ''
+            }`}>
             Comment
           </Button>
         ) : (

@@ -7,8 +7,7 @@ export const IconNewsletterEnvolpe = ({ className = '' }: { className?: string }
     height="60"
     viewBox="0 0 60 60"
     fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+    xmlns="http://www.w3.org/2000/svg">
     <rect width="60" height="60" rx="30" fill="#0F172A" />
     <path
       d="M9 23.34V40.5C9 42.0913 9.63214 43.6174 10.7574 44.7426C11.8826 45.8679 13.4087 46.5 15 46.5H45C46.5913 46.5 48.1174 45.8679 49.2426 44.7426C50.3679 43.6174 51 42.0913 51 40.5V23.34L33.144 34.326C32.1985 34.9077 31.1101 35.2157 30 35.2157C28.8899 35.2157 27.8015 34.9077 26.856 34.326L9 23.34Z"
@@ -19,11 +18,23 @@ export const IconNewsletterEnvolpe = ({ className = '' }: { className?: string }
       fill="url(#paint1_linear_248_446)"
     />
     <defs>
-      <linearGradient id="paint0_linear_248_446" x1="30" y1="23.34" x2="30" y2="46.5" gradientUnits="userSpaceOnUse">
+      <linearGradient
+        id="paint0_linear_248_446"
+        x1="30"
+        y1="23.34"
+        x2="30"
+        y2="46.5"
+        gradientUnits="userSpaceOnUse">
         <stop stop-color="#334155" />
         <stop offset="1" stop-color="#64748B" stop-opacity="0" />
       </linearGradient>
-      <linearGradient id="paint1_linear_248_446" x1="30" y1="13.5" x2="30" y2="32.2168" gradientUnits="userSpaceOnUse">
+      <linearGradient
+        id="paint1_linear_248_446"
+        x1="30"
+        y1="13.5"
+        x2="30"
+        y2="32.2168"
+        gradientUnits="userSpaceOnUse">
         <stop stop-color="#334155" />
         <stop offset="1" stop-color="#64748B" stop-opacity="0" />
       </linearGradient>

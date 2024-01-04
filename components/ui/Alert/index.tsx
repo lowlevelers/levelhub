@@ -1,5 +1,10 @@
 import mergeTW from '@/utils/mergeTW';
-import { CheckCircleIcon, ExclamationTriangleIcon, InformationCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
+import {
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  InformationCircleIcon,
+  XCircleIcon,
+} from '@heroicons/react/24/outline';
 import { ReactNode } from 'react';
 
 export default ({
@@ -37,12 +42,13 @@ export default ({
   return (
     <div
       className={mergeTW(
-        `flex justify-between p-4 rounded-md bg-slate-800 border border-slate-700 border-l-4 ${parentVariant[variant]} ${className}`,
-      )}
-    >
+        `flex justify-between p-4 rounded-md bg-slate-800 border border-slate-700 border-l-4 ${parentVariant[variant]} ${className}`
+      )}>
       <div className="flex gap-3">
         <div>{icon || iconVariant[variant]}</div>
-        <p className={`${colorsVariant[variant]} sm:text-sm`} dangerouslySetInnerHTML={{ __html: context as any }}></p>
+        <p
+          className={`${colorsVariant[variant]} sm:text-sm`}
+          dangerouslySetInnerHTML={{ __html: context as any }}></p>
       </div>
     </div>
   );

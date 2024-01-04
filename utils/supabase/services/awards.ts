@@ -1,5 +1,10 @@
 import BaseDbService from './BaseDbService';
-import { type WinnerOfTheDay, type WinnerOfTheWeek, type WinnerOfTheMonth, type ProductAward } from '@/utils/supabase/CustomTypes';
+import {
+  type WinnerOfTheDay,
+  type WinnerOfTheWeek,
+  type WinnerOfTheMonth,
+  type ProductAward,
+} from '@/utils/supabase/CustomTypes';
 import ProductsService from '@/utils/supabase/services/products';
 
 export default class AwardsService extends BaseDbService {
@@ -22,38 +27,66 @@ export default class AwardsService extends BaseDbService {
     return winnersOfAny;
   }
 
-  async getWinnersOfTheDay(day: Date | string, limit: number = 100): Promise<WinnerOfTheDay[] | null> {
-    const { data, error } = await this.supabase.from('winner_of_the_day').select().eq('day', day).limit(limit);
+  async getWinnersOfTheDay(
+    day: Date | string,
+    limit: number = 100
+  ): Promise<WinnerOfTheDay[] | null> {
+    const { data, error } = await this.supabase
+      .from('winner_of_the_day')
+      .select()
+      .eq('day', day)
+      .limit(limit);
     if (error !== null) throw new Error(error.message);
     return await this.fallbackProducts(data);
   }
 
   async getWinnersOfTheWeek(week: number, limit: number = 100): Promise<WinnerOfTheWeek[] | null> {
-    const { data, error } = await this.supabase.from('winner_of_the_week').select().eq('week', week).limit(limit);
+    const { data, error } = await this.supabase
+      .from('winner_of_the_week')
+      .select()
+      .eq('week', week)
+      .limit(limit);
     if (error !== null) throw new Error(error.message);
     return await this.fallbackProducts(data);
   }
 
-  async getWinnersOfTheMonth(month: number, limit: number = 100): Promise<WinnerOfTheMonth[] | null> {
-    const { data, error } = await this.supabase.from('winner_of_the_month').select().eq('month', month).limit(limit);
+  async getWinnersOfTheMonth(
+    month: number,
+    limit: number = 100
+  ): Promise<WinnerOfTheMonth[] | null> {
+    const { data, error } = await this.supabase
+      .from('winner_of_the_month')
+      .select()
+      .eq('month', month)
+      .limit(limit);
     if (error !== null) throw new Error(error.message);
     return await this.fallbackProducts(data);
   }
 
   async getProductRanks(productId: number): Promise<ProductAward[]> {
-    const { data, error } = await this.supabase.from('product_ranks').select().eq('product_id', productId);
+    const { data, error } = await this.supabase
+      .from('product_ranks')
+      .select()
+      .eq('product_id', productId);
     if (error !== null) throw new Error(error.message);
     return data;
   }
 
   async getProductAwards(productId: number): Promise<ProductAward[]> {
-    const { data, error } = await this.supabase.from('product_awards').select().eq('product_id', productId);
+    const { data, error } = await this.supabase
+      .from('product_awards')
+      .select()
+      .eq('product_id', productId);
     if (error !== null) throw new Error(error.message);
     return data;
   }
 
   async getWeeklyRank(productId: number): Promise<ProductAward[]> {
-    const { data, error } = await this.supabase.from('weekly_rank').select().eq('productid', productId).maybeSingle();
+    const { data, error } = await this.supabase
+      .from('weekly_rank')
+      .select()
+      .eq('productid', productId)
+      .maybeSingle();
     if (error !== null) throw new Error(error.message);
     return data;
   }

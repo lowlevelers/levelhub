@@ -1,2 +1,2 @@
-export * from './ImagesUploader'
-export * from './ImageUploaderItem'
+export * from './ImagesUploader';
+export * from './ImageUploaderItem';

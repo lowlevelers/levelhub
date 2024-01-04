@@ -97,7 +97,7 @@ export interface Database {
             isOneToOne: false;
             referencedRelation: 'profiles';
             referencedColumns: ['id'];
-          },
+          }
         ];
       };
       comment_vote: {
@@ -130,7 +130,7 @@ export interface Database {
             isOneToOne: false;
             referencedRelation: 'users';
             referencedColumns: ['id'];
-          },
+          }
         ];
       };
       product_categories: {
@@ -159,7 +159,7 @@ export interface Database {
             isOneToOne: true;
             referencedRelation: 'product_categories';
             referencedColumns: ['id'];
-          },
+          }
         ];
       };
       product_category_product: {
@@ -234,7 +234,7 @@ export interface Database {
             isOneToOne: false;
             referencedRelation: 'winner_of_the_week';
             referencedColumns: ['product_id'];
-          },
+          }
         ];
       };
       product_pricing_types: {
@@ -330,7 +330,7 @@ export interface Database {
             isOneToOne: false;
             referencedRelation: 'users';
             referencedColumns: ['id'];
-          },
+          }
         ];
       };
       products: {
@@ -478,7 +478,7 @@ export interface Database {
             isOneToOne: false;
             referencedRelation: 'product_pricing_types';
             referencedColumns: ['id'];
-          },
+          }
         ];
       };
       profiles: {
@@ -525,7 +525,7 @@ export interface Database {
             isOneToOne: true;
             referencedRelation: 'users';
             referencedColumns: ['id'];
-          },
+          }
         ];
       };
     };
@@ -629,7 +629,7 @@ export interface Database {
             isOneToOne: false;
             referencedRelation: 'product_pricing_types';
             referencedColumns: ['id'];
-          },
+          }
         ];
       };
       weekly_rank: {
@@ -693,7 +693,7 @@ export interface Database {
             isOneToOne: true;
             referencedRelation: 'winner_of_the_week';
             referencedColumns: ['product_id'];
-          },
+          }
         ];
       };
       weekly_winners: {
@@ -752,7 +752,7 @@ export interface Database {
             isOneToOne: true;
             referencedRelation: 'winner_of_the_week';
             referencedColumns: ['product_id'];
-          },
+          }
         ];
       };
       winner_of_the_day: {
@@ -823,7 +823,7 @@ export interface Database {
             isOneToOne: true;
             referencedRelation: 'winner_of_the_week';
             referencedColumns: ['product_id'];
-          },
+          }
         ];
       };
       winner_of_the_month: {
@@ -897,7 +897,7 @@ export interface Database {
             isOneToOne: true;
             referencedRelation: 'winner_of_the_week';
             referencedColumns: ['product_id'];
-          },
+          }
         ];
       };
       winner_of_the_week: {
@@ -971,7 +971,7 @@ export interface Database {
             isOneToOne: true;
             referencedRelation: 'winner_of_the_week';
             referencedColumns: ['product_id'];
-          },
+          }
         ];
       };
     };
@@ -1160,17 +1160,22 @@ export interface Database {
 }
 
 export type Tables<
-  PublicTableNameOrOptions extends keyof (Database['public']['Tables'] & Database['public']['Views']) | { schema: keyof Database },
+  PublicTableNameOrOptions extends
+    | keyof (Database['public']['Tables'] & Database['public']['Views'])
+    | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
-    ? keyof (Database[PublicTableNameOrOptions['schema']]['Tables'] & Database[PublicTableNameOrOptions['schema']]['Views'])
-    : never = never,
+    ? keyof (Database[PublicTableNameOrOptions['schema']]['Tables'] &
+        Database[PublicTableNameOrOptions['schema']]['Views'])
+    : never = never
 > = PublicTableNameOrOptions extends { schema: keyof Database }
-  ? (Database[PublicTableNameOrOptions['schema']]['Tables'] & Database[PublicTableNameOrOptions['schema']]['Views'])[TableName] extends {
+  ? (Database[PublicTableNameOrOptions['schema']]['Tables'] &
+      Database[PublicTableNameOrOptions['schema']]['Views'])[TableName] extends {
       Row: infer R;
     }
     ? R
     : never
-  : PublicTableNameOrOptions extends keyof (Database['public']['Tables'] & Database['public']['Views'])
+  : PublicTableNameOrOptions extends keyof (Database['public']['Tables'] &
+      Database['public']['Views'])
   ? (Database['public']['Tables'] & Database['public']['Views'])[PublicTableNameOrOptions] extends {
       Row: infer R;
     }
@@ -1182,7 +1187,7 @@ export type TablesInsert<
   PublicTableNameOrOptions extends keyof Database['public']['Tables'] | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
     ? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
-    : never = never,
+    : never = never
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends {
       Insert: infer I;
@@ -1201,7 +1206,7 @@ export type TablesUpdate<
   PublicTableNameOrOptions extends keyof Database['public']['Tables'] | { schema: keyof Database },
   TableName extends PublicTableNameOrOptions extends { schema: keyof Database }
     ? keyof Database[PublicTableNameOrOptions['schema']]['Tables']
-    : never = never,
+    : never = never
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? Database[PublicTableNameOrOptions['schema']]['Tables'][TableName] extends {
       Update: infer U;
@@ -1220,7 +1225,7 @@ export type Enums<
   PublicEnumNameOrOptions extends keyof Database['public']['Enums'] | { schema: keyof Database },
   EnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
     ? keyof Database[PublicEnumNameOrOptions['schema']]['Enums']
-    : never = never,
+    : never = never
 > = PublicEnumNameOrOptions extends { schema: keyof Database }
   ? Database[PublicEnumNameOrOptions['schema']]['Enums'][EnumName]
   : PublicEnumNameOrOptions extends keyof Database['public']['Enums']
@@ -1239,13 +1244,18 @@ export type ProductCategory = Database['public']['Tables']['product_categories']
 export type InsertProductCategory = Database['public']['Tables']['product_categories']['Insert'];
 export type UpdateProductCategory = Database['public']['Tables']['product_categories']['Update'];
 
-export type ProductCategoryProduct = Database['public']['Tables']['product_category_product']['Row'];
-export type InsertProductCategoryProduct = Database['public']['Tables']['product_category_product']['Insert'];
-export type UpdateProductCategoryProduct = Database['public']['Tables']['product_category_product']['Update'];
+export type ProductCategoryProduct =
+  Database['public']['Tables']['product_category_product']['Row'];
+export type InsertProductCategoryProduct =
+  Database['public']['Tables']['product_category_product']['Insert'];
+export type UpdateProductCategoryProduct =
+  Database['public']['Tables']['product_category_product']['Update'];
 
 export type ProductPricingType = Database['public']['Tables']['product_pricing_types']['Row'];
-export type InsertProductPricingType = Database['public']['Tables']['product_pricing_types']['Insert'];
-export type UpdateProductPricingType = Database['public']['Tables']['product_pricing_types']['Update'];
+export type InsertProductPricingType =
+  Database['public']['Tables']['product_pricing_types']['Insert'];
+export type UpdateProductPricingType =
+  Database['public']['Tables']['product_pricing_types']['Update'];
 
 export type ProductVote = Database['public']['Tables']['product_votes']['Row'];
 export type InsertProductVote = Database['public']['Tables']['product_votes']['Insert'];

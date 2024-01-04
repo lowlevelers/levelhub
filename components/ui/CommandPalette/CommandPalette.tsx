@@ -46,7 +46,9 @@ export default ({
   }, []);
 
   useEffect(() => {
-    isCommandActive ? document.body.classList.add('overflow-hidden') : document.body.classList.remove('overflow-hidden');
+    isCommandActive
+      ? document.body.classList.add('overflow-hidden')
+      : document.body.classList.remove('overflow-hidden');
   }, [isCommandActive]);
 
   const handleClick = () => {
@@ -88,7 +90,7 @@ export default ({
                     <li key={idx}>
                       <SearchItem onClick={handleClick} item={item} />
                     </li>
-                  )),
+                  ))
                 )}
               </ul>
             </div>

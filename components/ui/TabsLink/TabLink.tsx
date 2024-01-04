@@ -16,7 +16,17 @@ interface Props {
   variant?: 'nonlink' | 'link';
 }
 
-export default ({ children, hash, href, sectionId, className = '', linkClassName, isActive, variant = 'link', ...props }: Props) => {
+export default ({
+  children,
+  hash,
+  href,
+  sectionId,
+  className = '',
+  linkClassName,
+  isActive,
+  variant = 'link',
+  ...props
+}: Props) => {
   const [isLinkActive, setLinkActive] = useState(isActive);
   const [selectedSection, setSelectedSection] = useState('');
   const pathname = usePathname();
@@ -83,15 +93,17 @@ export default ({ children, hash, href, sectionId, className = '', linkClassName
     <li
       className={`flex-none inline-block py-2 border-b ${
         isLinkActive ? 'border-slate-600 text-slate-200' : ' border-transparent'
-      } ${className}`}
-    >
+      } ${className}`}>
       {variant == 'link' ? (
         href ? (
           <Link href={href} className={customClassName}>
             {children}
           </Link>
         ) : (
-          <a {...props} href={`${window && window.location.pathname}${hash}`} className={customClassName}>
+          <a
+            {...props}
+            href={`${window && window.location.pathname}${hash}`}
+            className={customClassName}>
             {children}
           </a>
         )

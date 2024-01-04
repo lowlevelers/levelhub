@@ -1,7 +1,11 @@
 import mergeTW from '@/utils/mergeTW';
 
 export const IconGithub = ({ className = '' }: { className?: string }) => (
-  <svg className={mergeTW(`h-5 w-5 ${className}`)} viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    className={mergeTW(`h-5 w-5 ${className}`)}
+    viewBox="0 0 48 48"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_910_21)">
       <path
         fillRule="evenodd"

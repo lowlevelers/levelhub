@@ -1,2 +1,2 @@
-export * from './FormLaunchSection'
-export * from './FormLaunchWrapper'
+export * from './FormLaunchSection';
+export * from './FormLaunchWrapper';

@@ -52,11 +52,11 @@ export default () => {
   };
 
   const navigation = [
-    { title: 'The Story', path: '/the-story' },
     {
-      title: 'Submit your Dev Tool',
+      title: 'Submit your Project / Idea',
       path: isLoggedin ? '/account/tools' : '/login',
-      className: 'bg-orange-500 hover:bg-orange-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
+      className:
+        'bg-pink-500 hover:bg-pink-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
     },
   ];
 
@@ -88,7 +88,10 @@ export default () => {
               <Brand />
             </Link>
             <div className="flex gap-x-4 items-center lg:hidden">
-              <button aria-label="Search button" onClick={() => setCommandActive(true)} className="text-slate-400 hover:text-slate-200">
+              <button
+                aria-label="Search button"
+                onClick={() => setCommandActive(true)}
+                className="text-slate-400 hover:text-slate-200">
                 <IconSearch />
               </button>
               <ButtonMenu isActive={isActive} setActive={() => setActive(!isActive)} />
@@ -97,12 +100,17 @@ export default () => {
               </div>
             </div>
           </div>
-          <div className={`flex-1 lg:static  ${isActive ? 'w-full fixed top-20 inset-x-0 px-4 lg:px-0' : 'hidden lg:block'}`}>
+          <div
+            className={`flex-1 lg:static  ${
+              isActive ? 'w-full fixed top-20 inset-x-0 px-4 lg:px-0' : 'hidden lg:block'
+            }`}>
             <div className="p-4 px-4 mt-8 text-sm bg-slate-900 rounded-lg lg:block lg:mt-0 lg:p-0 lg:bg-transparent">
               <ul className="justify-end items-center space-y-6 text-slate-400 lg:flex lg:space-x-6 lg:space-y-0">
                 {!isLoggedin ? (
                   <li>
-                    <button onClick={() => setNewsletterModalActive(true)} className="flex items-center gap-x-2 hover:text-slate-200">
+                    <button
+                      onClick={() => setNewsletterModalActive(true)}
+                      className="flex items-center gap-x-2 hover:text-slate-200">
                       <BellIcon className="w-5 h-5" />
                       Subscribe
                     </button>
@@ -114,16 +122,14 @@ export default () => {
                   <div ref={NavMenuRef} className="relative">
                     <button
                       onClick={() => setNavMenuActive(!isNavMenuActive)}
-                      className="flex items-center gap-x-2 hover:text-slate-200 group"
-                    >
+                      className="flex items-center gap-x-2 hover:text-slate-200 group">
                       Browse tools
                       <ChevronDownIcon className="w-4 h-4 transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180" />
                     </button>
                     <div
                       className={`top-8 left-0 text-sm py-4 rounded-lg w-80 lg:px-4 lg:bg-slate-800 lg:absolute ${
                         isNavMenuActive ? '' : 'hidden'
-                      }`}
-                    >
+                      }`}>
                       <div className="space-y-4">
                         <ul className="mt-2 space-y-3">
                           {submenu.map((item, idx) => {
@@ -141,7 +147,9 @@ export default () => {
                           {categories.map((item, idx) => {
                             return (
                               <li key={idx} className="hover:text-slate-200 duration-150">
-                                <Link href={`/tools/${item.name.toLowerCase().replaceAll(' ', '-')}`} className="block">
+                                <Link
+                                  href={`/tools/${item.name.toLowerCase().replaceAll(' ', '-')}`}
+                                  className="block">
                                   {item.name}
                                 </Link>
                               </li>
@@ -162,12 +170,18 @@ export default () => {
                   );
                 })}
                 <li className="hidden lg:block">
-                  <button aria-label="Search button" onClick={() => setCommandActive(true)} className="hover:text-slate-200">
+                  <button
+                    aria-label="Search button"
+                    onClick={() => setCommandActive(true)}
+                    className="hover:text-slate-200">
                     <IconSearch />
                   </button>
                 </li>
                 <li className="hidden w-px h-6 bg-slate-700 lg:block"></li>
-                <li className={`space-y-3 items-center gap-x-6 lg:flex lg:space-y-0 ${isLoggedin ? 'hidden lg:flex' : ''}`}>
+                <li
+                  className={`space-y-3 items-center gap-x-6 lg:flex lg:space-y-0 ${
+                    isLoggedin ? 'hidden lg:flex' : ''
+                  }`}>
                   <Auth onLogout={handleLogout} />
                 </li>
               </ul>
@@ -184,8 +198,7 @@ export default () => {
             <p className="flex-1 text-sm text-slate-300">
               <button
                 onClick={() => setNewsletterModalActive(true)}
-                className="text-slate-100 hover:text-orange-500 duration-150 underline"
-              >
+                className="text-slate-100 hover:text-pink-500 duration-150 underline">
                 Subscribe
               </button>{' '}
               to get weekly email with best new dev tools.
@@ -195,8 +208,7 @@ export default () => {
                 setBannerActive(false);
                 localStorage.setItem('isNewsletterActive', 'true');
               }}
-              className="p-1 rounded-md text-slate-400 hover:bg-slate-700 duration-150"
-            >
+              className="p-1 rounded-md text-slate-400 hover:bg-slate-700 duration-150">
               <XMarkIcon className="w-5 h-5" />
             </button>
           </div>
@@ -215,7 +227,11 @@ export default () => {
         setSearch={handleSearch}
         searchResult={searchResult}
       />
-      <BlurBackground className="lg:hidden z-20" isActive={isActive} setActive={() => setActive(false)} />
+      <BlurBackground
+        className="lg:hidden z-20"
+        isActive={isActive}
+        setActive={() => setActive(false)}
+      />
     </>
   );
 };

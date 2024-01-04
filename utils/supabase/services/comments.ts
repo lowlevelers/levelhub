@@ -83,15 +83,22 @@ export default class CommentService extends BaseDbService {
   }
 
   async toggleVote(commentId: number, userId: string): Promise<boolean> {
-    const { data, error } = await this.supabase.rpc('toggleCommentVote', { _comment_id: commentId, _user_id: userId });
+    const { data, error } = await this.supabase.rpc('toggleCommentVote', {
+      _comment_id: commentId,
+      _user_id: userId,
+    });
     if (error !== null) throw new Error(error.message);
     return data;
   }
 
-  async getCommentsGroupedByProducts(afterDate: Date): Promise<{ product: Partial<Product>; comments: Partial<Comment>[] }[]> {
+  async getCommentsGroupedByProducts(
+    afterDate: Date
+  ): Promise<{ product: Partial<Product>; comments: Partial<Comment>[] }[]> {
     const { data: comments, error } = await this.supabase
       .from('comment')
-      .select('*, profiles (id, full_name, avatar_url, username), products ( id, name, slug, profiles!inner (id) )')
+      .select(
+        '*, profiles (id, full_name, avatar_url, username), products ( id, name, slug, profiles!inner (id) )'
+      )
       .gte('created_at', afterDate.toISOString())
       .eq('deleted', false)
       .order('created_at', { ascending: false });
@@ -107,7 +114,7 @@ export default class CommentService extends BaseDbService {
     const groups = groupByWithRef(
       comments,
       c => c.products?.id,
-      c => c.products,
+      c => c.products
     );
 
     return Object.values(groups).map(g => ({

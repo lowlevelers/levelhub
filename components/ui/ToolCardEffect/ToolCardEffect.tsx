@@ -39,7 +39,12 @@ export default ({ tool }: { tool: ProductType }) => {
               <Title className="line-clamp-2">{tool.slogan}</Title>
             </Link>
             <ToolFooter>
-              <Tags items={[tool.product_pricing_types?.title ?? 'Free', ...(tool.product_categories || []).map(c => c.name)]} />
+              <Tags
+                items={[
+                  tool.product_pricing_types?.title ?? 'Free',
+                  ...(tool.product_categories || []).map(c => c.name),
+                ]}
+              />
               <ToolViews count={tool.views_count} />
             </ToolFooter>
           </div>
@@ -47,9 +52,13 @@ export default ({ tool }: { tool: ProductType }) => {
         <div
           className={`flex-1 self-center flex justify-end duration-1000 delay-150 ${
             isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <Votes count={tool.votes_count} productId={tool?.id} launchDate={tool.launch_date} launchEnd={tool.launch_end as string} />
+          }`}>
+          <Votes
+            count={tool.votes_count}
+            productId={tool?.id}
+            launchDate={tool.launch_date}
+            launchEnd={tool.launch_end as string}
+          />
         </div>
       </ToolCard>
     </li>

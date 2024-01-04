@@ -40,7 +40,9 @@ export default ({ className, categories = [], setCategory = () => [] }: Props) =
   const handleSearch: ChangeEventHandler = e => {
     const inputValue = (e.target as HTMLInputElement).value;
     setValue(inputValue);
-    const getResults: ProductCategory[] = categoryItems.filter(item => item.name?.toLowerCase().includes(inputValue.toLowerCase()));
+    const getResults: ProductCategory[] = categoryItems.filter(item =>
+      item.name?.toLowerCase().includes(inputValue.toLowerCase())
+    );
 
     setNewItems(getResults);
   };
@@ -49,7 +51,9 @@ export default ({ className, categories = [], setCategory = () => [] }: Props) =
     <div className={`relative ${className}`}>
       <ul className="flex flex-wrap items-center gap-2 w-full px-3 py-2 border border-slate-800 rounded-lg">
         {categories.map((item, idx) => (
-          <li key={idx} className="flex-none inline-flex items-center px-3 py-2 bg-slate-800 rounded-lg font-medium text-xs text-slate-300">
+          <li
+            key={idx}
+            className="flex-none inline-flex items-center px-3 py-2 bg-slate-800 rounded-lg font-medium text-xs text-slate-300">
             {item.name}
             <button onClick={() => setCategory(categories.filter((_, i) => i !== idx))}>
               <IconXmark className="w-3 h-3 ml-2" />
@@ -78,8 +82,7 @@ export default ({ className, categories = [], setCategory = () => [] }: Props) =
                   <button
                     key={idx}
                     className="w-full text-left p-2 hover:bg-slate-700 active:bg-slate-600 rounded-lg duration-150"
-                    onClick={() => setCategory([...categories, item])}
-                  >
+                    onClick={() => setCategory([...categories, item])}>
                     {item.name}
                   </button>
                 ))
@@ -91,8 +94,7 @@ export default ({ className, categories = [], setCategory = () => [] }: Props) =
                 <button
                   key={idx}
                   className="w-full text-left p-2 hover:bg-slate-700 active:bg-slate-600 rounded-lg duration-150"
-                  onClick={() => setCategory([...categories, item])}
-                >
+                  onClick={() => setCategory([...categories, item])}>
                   {item.name}
                 </button>
               ))

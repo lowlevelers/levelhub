@@ -9,7 +9,13 @@ export const IconSecondWinnerBadge = ({
   h?: string | number;
   className?: string;
 }) => (
-  <svg className={mergeTW(className)} width={w} height={h} viewBox="0 0 198 297" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    className={mergeTW(className)}
+    width={w}
+    height={h}
+    viewBox="0 0 198 297"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#filter0_d_3_203)">
       <rect x="87.6223" y="145.834" width="12.1035" height="53.9156" fill="#BF7F02" />
       <path
@@ -20,7 +26,15 @@ export const IconSecondWinnerBadge = ({
         d="M79.92 205.481C79.92 201.708 82.9786 198.649 86.7516 198.649H100.596C104.369 198.649 107.428 201.708 107.428 205.481V208.552H79.92V205.481Z"
         fill="#DCAE0C"
       />
-      <rect x="49.9697" y="226.31" width="88.5093" height="30.1924" fill="#F9B50E" stroke="#FFEC86" stroke-width="3.91749" />
+      <rect
+        x="49.9697"
+        y="226.31"
+        width="88.5093"
+        height="30.1924"
+        fill="#F9B50E"
+        stroke="#FFEC86"
+        stroke-width="3.91749"
+      />
       <path d="M55.7132 224.351H97.5253L130.535 258.461H88.7227L55.7132 224.351Z" fill="#FFEC86" />
       <rect x="24.4759" y="271.796" width="137.936" height="13.2038" fill="#DE9300" />
       <path
@@ -50,10 +64,14 @@ export const IconSecondWinnerBadge = ({
         width="197.598"
         height="296.614"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
-      >
+        color-interpolation-filters="sRGB">
         <feFlood flood-opacity="0" result="BackgroundImageFix" />
-        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
         <feOffset dx="5.48449" dy="5.48449" />
         <feGaussianBlur stdDeviation="3.13399" />
         <feComposite in2="hardAlpha" operator="out" />

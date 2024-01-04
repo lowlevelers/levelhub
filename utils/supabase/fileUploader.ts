@@ -18,8 +18,12 @@ export default async ({ files, options }: { files: File | Blob; options?: string
 // Converts asset url into a imgix url to have better pages loading speed
 function getCdnImageUrl(url: string, options?: string) {
   return (
-    url.replace(/'/g, "\\'")
-      .replace('https://marscode.s3.eu-north-1.amazonaws.com/assets/img', 'https://mars-images.imgix.net') +
+    url
+      .replace(/'/g, "\\'")
+      .replace(
+        'https://marscode.s3.eu-north-1.amazonaws.com/assets/img',
+        'https://mars-images.imgix.net'
+      ) +
     '?auto=compress&fit=max' +
     (options ? `&${options}` : '')
   );

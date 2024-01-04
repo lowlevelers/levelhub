@@ -6,11 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -p 3009",
-    "lint": "eslint .",
-    "format": "prettier --write .",
     "format:check": "prettier --check .",
     "format:better-supabase-types": "npx better-supabase-types -i ./utils/supabase/types.ts -f -s",
-    "fetch:types": "npx supabase gen types typescript --schema public --project-id=\"xpdhqqwgprlqmqaqmnyx\" > utils/supabase/types.ts && npm run format:better-supabase-types"
+    "fetch:types": "npx supabase gen types typescript --schema public --project-id=\"xpdhqqwgprlqmqaqmnyx\" > utils/supabase/types.ts && npm run format:better-supabase-types",
+    "lint": "npx eslint --debug '**/*.{js,jsx,ts,tsx}'",
+    "lint:fix": "npx eslint --fix '**/*.{js, jsx, ts, tsx}'",
+    "prettier:fix": "prettier --config .prettierrc.js '**/*.{js,jsx,ts,tsx}' --write",
+    "prettier:check": "prettier --config .prettierrc.js '**/*.{js,jsx,ts,tsx}' --check",
+    "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
@@ -55,6 +58,8 @@
     "encoding": "^0.1.13",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard-with-typescript": "^34.0.1",
     "eslint-plugin-import": "^2.27.5",

@@ -31,10 +31,9 @@ export const ImagesUploader = ({
           htmlFor="image-upload"
           className={`${
             isLoad ? ' pointer-events-none' : ''
-          } relative flex-none flex items-center justify-center w-full max-w-[13rem] h-36 rounded-md overflow-hidden border border-dashed border-slate-700 cursor-pointer`}
-        >
+          } relative flex-none flex items-center justify-center w-full max-w-[13rem] h-36 rounded-md overflow-hidden border border-dashed border-slate-700 cursor-pointer`}>
           {isLoad ? (
-            <IconLoading className="absolute inset-0 m-auto text-orange-500" />
+            <IconLoading className="absolute inset-0 m-auto text-pink-500" />
           ) : (
             <div className="text-sm text-slate-300 space-y-1">
               <IconPlus className="mx-auto w-6 h-6" />

@@ -31,14 +31,15 @@ export default ({ productId, owner }: { productId: number; owner: Profile }) => 
                 <Link href={`/@${item.username}`}>
                   <Avatar.Root key={idx}>
                     <Avatar.Image
-                      className={`w-full h-full object-cover rounded-xl ${idx == 0 ? 'border-2 border-orange-500' : ''}`}
+                      className={`w-full h-full object-cover rounded-xl ${
+                        idx == 0 ? 'border-2 border-pink-500' : ''
+                      }`}
                       src={item.avatar_url as string}
                       alt={item.full_name as string}
                     />
                     <Avatar.Fallback
                       className="flex items-center justify-center text-slate-300 h-full w-full bg-slate-800 text-[15px] font-medium rounded-xl"
-                      delayMs={600}
-                    >
+                      delayMs={600}>
                       {item.full_name?.slice(0, 2).toUpperCase()}
                     </Avatar.Fallback>
                   </Avatar.Root>
@@ -47,8 +48,7 @@ export default ({ productId, owner }: { productId: number; owner: Profile }) => 
               <Tooltip.Portal>
                 <Tooltip.Content
                   className="px-2 py-1 rounded-full text-slate-300 text-xs font-medium bg-slate-700 will-change-[transform,opacity]"
-                  sideOffset={5}
-                >
+                  sideOffset={5}>
                   {item.full_name || 'No name'} {idx == 0 ? ' (author) ' : ''}
                   <Tooltip.Arrow className="fill-slate-700" />
                 </Tooltip.Content>

@@ -1,6 +1,7 @@
 'use client';
 
 import moment from 'moment';
+import React from 'react';
 import { useEffect, useState } from 'react';
 
 function RenderDatePart({ number, letter }: { number: number; letter: string }) {
@@ -59,18 +60,22 @@ function RenderCountdown() {
     setLoading(false);
   }, []);
 
-  return isLoading ? (
-    <>
-      <DatePartSkeleton />
-      :
-      <DatePartSkeleton />
-      :
-      <DatePartSkeleton />
-      :
-      <DatePartSkeleton />
-    </>
-  ) : (
-    <>
+  if (isLoading) {
+    return (
+      <React.Fragment>
+        <DatePartSkeleton />
+        :
+        <DatePartSkeleton />
+        :
+        <DatePartSkeleton />
+        :
+        <DatePartSkeleton />
+      </React.Fragment>
+    );
+  }
+
+  return (
+    <React.Fragment>
       {days > 0 ? (
         <>
           <RenderDatePart number={days} letter="d" /> :{' '}
@@ -81,7 +86,7 @@ function RenderCountdown() {
       <RenderDatePart number={hours} letter="h" /> :
       <RenderDatePart number={minutes} letter="m" /> :
       <RenderDatePart number={seconds} letter="s" />
-    </>
+    </React.Fragment>
   );
 }
 
@@ -90,13 +95,14 @@ export default () => {
     <div className="flex border rounded-xl border-slate-800 bg-slate-800 p-5 flex-col gap-1 md:gap-2 items-center justify-end">
       <div className="px-2 flex flex-col items-center text-center gap-3">
         <p>
-          <span className="text-2xl font-bold mb-4 text-orange-500">Vote Closing In: </span>
+          <span className="text-2xl font-bold mb-4 text-pink-500">Vote Closing In: </span>
         </p>
         <div className="text-slate-100 flex gap-1 items-center">
           <RenderCountdown />
         </div>
         <div className="max-w-lg text-slate-400">
-          Winners get a free shout-out in our newsletter, social media mentions, a winner's badge and more perks.
+          Winners get a free shout-out in our newsletter, social media mentions, a winner's badge
+          and more perks.
           <div className="inline sm:block">
             {' '}
             See details{' '}

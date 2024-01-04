@@ -20,7 +20,14 @@ interface Props extends React.HTMLAttributes<HTMLButtonElement> {
   launchEnd: string | number;
 }
 
-export default ({ count, productId, className = '', launchDate = '', launchEnd = '', ...props }: Props) => {
+export default ({
+  count,
+  productId,
+  className = '',
+  launchDate = '',
+  launchEnd = '',
+  ...props
+}: Props) => {
   // call to trigger a vote
   // client only -- move to client component for Voting
   const { session } = useSupabase();
@@ -38,15 +45,29 @@ export default ({ count, productId, className = '', launchDate = '', launchEnd =
   const isLaunchStarted = new Date(launchDate).getTime() <= Date.now();
 
   const toggleVote = async () => {
-    const profile = session && session.user ? await profileService.getByIdWithNoCache(session.user?.id) : null;
+    const profile =
+      session && session.user ? await profileService.getByIdWithNoCache(session.user?.id) : null;
     if (session && session.user) {
       setMoadlInfo(
         new Date(launchEnd).getTime() >= Date.now()
-          ? { title: 'Not Launched Yet!', desc: `Oops, this tool hasn't launched yet! Check back on ${customDateFromNow(launchDate)}.` }
-          : { title: 'This tool week is ends', desc: `Oops, you missed this tool week, it was launched ${customDateFromNow(launchDate)}.` },
+          ? {
+              title: 'Not Launched Yet!',
+              desc: `Oops, this tool hasn't launched yet! Check back on ${customDateFromNow(
+                launchDate
+              )}.`,
+            }
+          : {
+              title: 'This tool week is ends',
+              desc: `Oops, you missed this tool week, it was launched ${customDateFromNow(
+                launchDate
+              )}.`,
+            }
       );
       if (isLaunchStarted && new Date(launchEnd).getTime() >= Date.now()) {
-        const newVotesCount = await productsService.toggleVote(productId as number, session.user.id);
+        const newVotesCount = await productsService.toggleVote(
+          productId as number,
+          session.user.id
+        );
         router.refresh();
         setUpvoted(!isUpvoted);
         voteCountEffect();
@@ -92,41 +113,37 @@ export default ({ count, productId, className = '', launchDate = '', launchEnd =
         onClick={toggleVote}
         {...props}
         onMouseMove={handleHoverEffect}
-        className={`flex items-center gap-x-3 hover:scale-[1.02] active:scale-100 ring-offset-1 ring-orange-500 focus:ring-2 bg-transparent overflow-hidden relative duration-200 group ${
+        className={`flex items-center gap-x-3 hover:scale-[1.02] active:scale-100 ring-offset-1 ring-pink-500 focus:ring-2 bg-transparent overflow-hidden relative duration-200 group ${
           isUpvoted
-            ? 'focus:ring-offset-0 focus:ring-0 border border-orange-500 text-orange-500'
-            : 'bg-orange-500 hover:bg-orange-600 active:bg-orange-600'
-        } ${className}`}
-      >
+            ? 'focus:ring-offset-0 focus:ring-0 border border-pink-500 text-pink-500'
+            : 'bg-pink-500 hover:bg-pink-600 active:bg-pink-600'
+        } ${className}`}>
         <div className="flex items-center gap-x-2">
           <IconVote className="w-4 h-4" />
           <span ref={voteCountRef} className="duration-150">
             {votesCount}
           </span>
         </div>
-        <span className={`w-px h-4 ${isUpvoted ? 'bg-orange-500' : 'bg-orange-300'}`}></span>
+        <span className={`w-px h-4 ${isUpvoted ? 'bg-pink-500' : 'bg-pink-300'}`}></span>
         {isUpvoted ? 'Upvoted' : 'Upvote'}
         <div
           ref={shadowElRef}
           className={`absolute top-0 left-0 w-9 h-9 bg-gradient-to-tr blur-[20px] opacity-0 group-hover:opacity-100 duration-150 ${
             isUpvoted ? 'from-slate-300 to-slate-500' : 'from-slate-50 to-slate-100'
-          }`}
-        ></div>
+          }`}></div>
       </Button>
       <Modal
         isActive={isModalActive}
         icon={<IconInformationCircle className="text-blue-500 w-6 h-6" />}
         title={modalInfo.title}
         description={modalInfo.desc}
-        onCancel={() => setModalActive(false)}
-      >
-        <LinkItem href="/" className="flex-1 block w-full text-sm bg-orange-500 hover:bg-orange-400">
+        onCancel={() => setModalActive(false)}>
+        <LinkItem href="/" className="flex-1 block w-full text-sm bg-pink-500 hover:bg-pink-400">
           Explore other tools
         </LinkItem>
         <Button
           onClick={() => setModalActive(false)}
-          className="flex-1 block w-full text-sm border border-slate-700 bg-transparent hover:bg-slate-900 mt-2 sm:mt-0"
-        >
+          className="flex-1 block w-full text-sm border border-slate-700 bg-transparent hover:bg-slate-900 mt-2 sm:mt-0">
           Continue
         </Button>
       </Modal>

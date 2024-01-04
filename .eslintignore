@@ -1,0 +1,11 @@
+**/dist
+**/build
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+**/widget
+**/build
+**/.next
+**/outA
+*/website

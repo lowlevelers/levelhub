@@ -22,7 +22,7 @@ export default (props: Props) => {
       },
       function (err) {
         console.error('Async: Could not copy text: ', err);
-      },
+      }
     );
   };
 
@@ -40,13 +40,12 @@ export default (props: Props) => {
     <div className="relative">
       <button
         className={`absolute top-4 right-4 text-gray-300 hover:text-gray-400 duration-150 bg-slate-600 rounded-lg p-1 ${
-          copyState ? 'text-orange-600 pointer-events-none' : ''
+          copyState ? 'text-pink-600 pointer-events-none' : ''
         }`}
-        onClick={handleCopy}
-      >
+        onClick={handleCopy}>
         <IconClipboard />
         {copyState ? (
-          <div className="absolute -top-12 -left-3 px-2 py-1.5 rounded-xl bg-orange-600 font-semibold text-white text-[10px] after:absolute after:inset-x-0 after:mx-auto after:top-[22px] after:w-2 after:h-2 after:bg-orange-600 after:rotate-45">
+          <div className="absolute -top-12 -left-3 px-2 py-1.5 rounded-xl bg-pink-600 font-semibold text-white text-[10px] after:absolute after:inset-x-0 after:mx-auto after:top-[22px] after:w-2 after:h-2 after:bg-pink-600 after:rotate-45">
             Copied
           </div>
         ) : (

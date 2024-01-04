@@ -50,7 +50,11 @@ export default ({
     let getToolFromLocalStorage = localStorage.getItem('last-tool');
 
     if (getToolFromLocalStorage) {
-      const parsedTool = JSON.parse(getToolFromLocalStorage) as { toolSlug: string; launchEnd: string; launchDate: string };
+      const parsedTool = JSON.parse(getToolFromLocalStorage) as {
+        toolSlug: string;
+        launchEnd: string;
+        launchDate: string;
+      };
       if (new Date(parsedTool.launchEnd).getTime() >= Date.now()) {
         setToolSlug(parsedTool.toolSlug);
         setModalOpen(true);
@@ -97,10 +101,15 @@ export default ({
     <Modal variant="custom" isActive={isModalOpen} className="max-w-4xl">
       <h3 className="text-slate-50 font-medium">Add banner</h3>
       <p className="text-slate-300 text-sm mt-2">
-        Add this code between <b>{'<head>'}</b> tags in your website to show a banner about your launch.
+        Add this code between <b>{'<head>'}</b> tags in your website to show a banner about your
+        launch.
       </p>
       <div className="mt-3">
-        <iframe ref={bannerIframeRef} srcDoc={srcDoc} className="w-full bg-transparent border-none rounded-xl" />
+        <iframe
+          ref={bannerIframeRef}
+          srcDoc={srcDoc}
+          className="w-full bg-transparent border-none rounded-xl"
+        />
       </div>
       <div className="mt-2">
         <CodeBlock onCopy={copyDone}>
@@ -108,7 +117,7 @@ export default ({
         </CodeBlock>
       </div>
       <div className="mt-3 flex gap-x-3">
-        <Button className="ring-offset-2 ring-orange-500 focus:ring-2" onClick={copyDone}>
+        <Button className="ring-offset-2 ring-pink-500 focus:ring-2" onClick={copyDone}>
           I've done this
         </Button>
         <Button className="bg-slate-700 hover:bg-slate-600" onClick={() => setModalOpen(false)}>
