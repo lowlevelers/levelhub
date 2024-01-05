@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 'use client';
 
 import React, { type FormEventHandler, useEffect, useState } from 'react';
@@ -50,7 +51,7 @@ function Profile() {
       setEmail(userSession?.user_metadata.email || '');
       setHeadLine(res?.headline || '');
     });
-  }, []);
+  }, [profile, userSession?.user_metadata, user.avatar_url]);
 
   const formValidator = () => {
     setFullNameError('');
@@ -68,9 +69,8 @@ function Profile() {
     if (formValidator()) {
       setLoad(true);
 
-      selectedImage
-        ? await profileService.updateAvatar(userSession?.id as string, selectedImage)
-        : null;
+      if (selectedImage)
+        await profileService.updateAvatar(userSession?.id as string, selectedImage);
       profileService
         .update(userSession?.id as string, {
           full_name: fullName,
@@ -82,7 +82,7 @@ function Profile() {
         })
         .then(() => {
           setLoad(false);
-          avatarPreview ? setAvatar(avatarPreview) : null;
+          if (avatarPreview) setAvatar(avatarPreview);
           setAvatarPreview('');
           setSelectedImage(null);
         });
@@ -210,7 +210,7 @@ function Profile() {
             <Button
               isLoad={isLoad}
               className="flex justify-center w-full ring-offset-2 ring-green-500 focus:ring-2 hover:bg-green-400">
-              {isLoad ? 'Updating' : 'save'}
+              {isLoad ? 'Updating' : 'Save changes'}
             </Button>
           </div>
         </form>
