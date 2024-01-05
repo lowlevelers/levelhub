@@ -13,6 +13,7 @@ import GithubAvatarList from '../GithubAvatarList';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import QuestCardLabels from '../QuestCard/QuestCardLabels';
 
 export default ({
   href,
@@ -107,9 +108,7 @@ export default ({
                   <div className="mt-6 flex flex-wrap gap-3 items-center">
                     <h3 className="text-sm text-gray-400 font-medium">Classified in</h3>
                     <TagsGroup>
-                      {repositoryIssue.labels.nodes.map(label => (
-                        <Tag>{label.name}</Tag>
-                      ))}
+                      <QuestCardLabels labels={repositoryIssue.labels.nodes} />
                     </TagsGroup>
                   </div>
                 ) : (

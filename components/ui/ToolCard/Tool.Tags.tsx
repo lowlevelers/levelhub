@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default ({ items }: { items: any[] }) => (
   <div className="flex items-center gap-x-3 mt-5 text-sm text-gray-400 overflow-hidden">
     {items.slice(0, 3).map((item, idx) => (
