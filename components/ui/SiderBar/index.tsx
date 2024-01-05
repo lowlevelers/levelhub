@@ -1,9 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import SiderBarLinkGroup from './SideBarLinkGroup';
-import Image from 'next/image';
-import Brand from '../Brand/Brand';
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -39,7 +36,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
 
-  let storedSidebarExpanded = 'true';
+  const storedSidebarExpanded = 'true';
   const [sidebarExpanded, setSidebarExpanded] = useState(
     storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true'
   );
@@ -81,12 +78,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       style={{ minWidth: 250 }}
       className={`absolute left-0 top-0 z-9999 flex h-screen w-102.5 flex-col overflow-y-hidden duration-300 ease-linear lg:static lg:translate-x-0 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } border-r border-gray-700 `}>
+      } border-r border-slate-800 `}>
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-        <Link href="/">
-          <Brand className="mx-auto mt-5" />
-        </Link>
         <button
           ref={trigger}
           onClick={() => setSidebarOpen(!sidebarOpen)}

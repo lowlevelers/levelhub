@@ -1,14 +1,11 @@
 export default ({ items }: { items: any[] }) => (
-  <div className="flex items-center gap-x-3 text-sm text-gray-400 overflow-hidden">
+  <div className="flex items-center gap-x-3 mt-5 text-sm text-gray-400 overflow-hidden">
     {items.slice(0, 3).map((item, idx) => (
-      <>
-        <span className="flex-none">{item}</span>
-        {idx !== items.length - 1 ? (
-          <span className="block flex-none w-1 h-1 bg-gray-500 rounded-full"></span>
-        ) : (
-          ''
-        )}
-      </>
+      <div className="bg-slate-800 px-3 rounded">
+        <span style={{ fontSize: 10 }} className="flex-none">
+          {item}
+        </span>
+      </div>
     ))}
   </div>
 );

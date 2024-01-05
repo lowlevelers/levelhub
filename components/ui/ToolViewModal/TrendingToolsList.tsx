@@ -1,9 +1,9 @@
+/* eslint-disable import/no-anonymous-default-export */
 'use client';
 
 import ToolName from '@/components/ui/ToolCard/Tool.Name';
 import Tags from '@/components/ui/ToolCard/Tool.Tags';
 import Title from '@/components/ui/ToolCard/Tool.Title';
-import ToolCard from '@/components/ui/ToolCard/ToolCard';
 import { createBrowserClient } from '@/utils/supabase/browser';
 import ToolVotes from '@/components/ui/ToolCard/Tool.Votes';
 import ToolFooter from '@/components/ui/ToolCard/Tool.Footer';
@@ -12,7 +12,6 @@ import { useEffect, useState } from 'react';
 import { ProductType } from '@/type';
 import ProductsService from '@/utils/supabase/services/products';
 import ToolLogo from '@/components/ui/ToolCard/Tool.Logo';
-import Link from 'next/link';
 import ToolCardLink from '../ToolCard/ToolCardLink';
 
 const getTrendingTools = async () => {
@@ -38,7 +37,7 @@ export default () => {
         <div>
           {(group as { products: ProductType[] }).products.map((tool: ProductType, idx: number) => (
             <li key={idx} className="py-3">
-              <ToolCardLink tool={tool} href={'/tool/' + tool.slug}>
+              <ToolCardLink tool={tool as any} href={'/tool/' + tool.slug}>
                 <div className="w-full flex items-center gap-x-4">
                   <ToolLogo src={tool.logo_url || ''} alt={tool.name} />
                   <div className="w-full space-y-1">
@@ -59,7 +58,7 @@ export default () => {
                   count={tool.votes_count}
                   productId={tool?.id}
                   launchDate={tool.launch_date}
-                  launchEnd={tool.launch_end}
+                  launchEnd={tool.launch_end as any}
                 />
               </ToolCardLink>
             </li>

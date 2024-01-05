@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable import/no-anonymous-default-export */
 'use client';
 
 import {
@@ -5,7 +7,6 @@ import {
   IconChartBar,
   IconArrowTopRight,
   IconFire,
-  IconLoading,
   IconArrowLongLeft,
 } from '@/components/Icons';
 import ButtonUpvote from '@/components/ui/ButtonUpvote';
@@ -17,12 +18,10 @@ import { Tabs } from '@/components/ui/TabsLink';
 import TabLink from '@/components/ui/TabsLink/TabLink';
 import { Tag, TagsGroup } from '@/components/ui/TagsGroup';
 import Title from '@/components/ui/ToolCard/Tool.Title';
-import CommentService, { ProductComment } from '@/utils/supabase/services/comments';
+import CommentService from '@/utils/supabase/services/comments';
 import CommentSection from '@/components/ui/Client/CommentSection';
 import { createBrowserClient } from '@/utils/supabase/browser';
 import AwardsService from '@/utils/supabase/services/awards';
-import createDOMPurify from 'dompurify';
-import { JSDOM } from 'jsdom';
 import Link from 'next/link';
 import ProfileService from '@/utils/supabase/services/profile';
 import customDateFromNow from '@/utils/customDateFromNow';

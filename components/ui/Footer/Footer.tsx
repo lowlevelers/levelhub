@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 'use client';
 
 import Brand from '../Brand/Brand';

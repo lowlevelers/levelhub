@@ -19,6 +19,7 @@ import NewsletterModal from '../NewsletterModal';
 import { BellAlertIcon, BellIcon } from '@heroicons/react/24/outline';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import { useSupabaseAuth } from '@/hooks/useSupabaseAuth';
+import Brand from '../Brand/Brand';
 
 export default () => {
   const [isActive, setActive] = useState(false);

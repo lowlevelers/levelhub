@@ -211,7 +211,7 @@ export default class ProductsService extends BaseDbService {
     pageNumber = 1,
     categoryId?: number,
     selectQuery = this.EXTENDED_PRODUCT_SELECT
-  ) {
+  ): Promise<{ data: ExtendedProduct[]; error: Error }> {
     const key = `products-${sortBy}-${ascending}-${categoryId}-${pageNumber}-${pageSize}-${selectQuery}`;
 
     return cache.get(key, async () => {

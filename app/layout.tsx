@@ -29,7 +29,7 @@ declare global {
 }
 
 const { title, description, ogImage } = {
-  title: 'PanBox - Build your own feature-rich community',
+  title: 'LevelUp! - Community platforms of TheLowLevelers',
   description: 'Level up your Polkadot career!',
   ogImage: 'https://devhunt.org/devhuntog.png?v=2',
 };

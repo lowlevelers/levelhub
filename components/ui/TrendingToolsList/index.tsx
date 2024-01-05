@@ -61,7 +61,7 @@ export default () => {
                   count={tool.votes_count}
                   productId={tool?.id}
                   launchDate={tool.launch_date}
-                  launchEnd={tool.launch_end}
+                  launchEnd={tool.launch_end as any}
                 />
               </ToolCard>
             </li>

@@ -49,24 +49,38 @@ export default class ProfileService extends BaseDbService {
   }
 
   async getByUsername(username: string): Promise<Profile | null> {
-    const key = `users-username-${username}`;
-
-    return cache.get(
-      key,
-      async () => {
-        const { data, error } = await this.supabase
-          .from('profiles')
-          .select()
-          .eq('username', username)
-          .single();
-        return data;
-      },
-      180
-    );
+    try {
+      const key = `users-username-${username}`;
+      return cache.get(
+        key,
+        async () => {
+          const { data, error } = await this.supabase
+            .from('profiles')
+            .select()
+            .eq('username', username)
+            .single();
+          return data;
+        },
+        180
+      );
+    } catch (error) {
+      return null;
+    }
   }
 
   async getProfiles(): Promise<Profile[] | null> {
     const { data, error } = await this.supabase.from('profiles').select();
+    return data;
+  }
+
+  async getAllUserActivities(): Promise<ProductComment[]> {
+    const { data, error } = await this.supabase
+      .from('comment')
+      .select(
+        '*, profiles(full_name, avatar_url), products(name, slug, slogan, logo_url, votes_count, deleted, demo_url)'
+      );
+
+    if (error !== null) throw new Error(error.message);
     return data;
   }
 
