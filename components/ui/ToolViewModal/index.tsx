@@ -63,7 +63,7 @@ export default ({ href, tool, close }: { href: string; tool: ProductType; close:
     new AwardsService(supabaseBrowserClient)
       .getWeeklyRank(tool.id)
       .then((toolAward: ProductAward[]) => {
-        setWeekRank(toolAward.rank + '');
+        setWeekRank(toolAward?.at(0)?.rank + '');
       });
   }, [href]);
 
