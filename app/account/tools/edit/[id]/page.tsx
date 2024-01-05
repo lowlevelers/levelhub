@@ -171,7 +171,7 @@ export default () => {
 
   return (
     <section className="container-custom-screen">
-      <h1 className="text-xl text-slate-50 font-semibold">Edit Launch</h1>
+      <h1 className="text-xl text-gray-50 font-semibold">Edit Launch</h1>
       <div className="mt-14">
         <FormLaunchWrapper onSubmit={handleSubmit(onSubmit as () => void)}>
           <FormLaunchSection
@@ -311,7 +311,7 @@ export default () => {
             </div>
             <div>
               <Label>Tool screenshots</Label>
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-gray-400">
                 Upload at least three screenshots showcasing different aspects of functionality.
                 Note that the first image will be used as social preview, so choose wisely!
               </p>
@@ -339,13 +339,13 @@ export default () => {
             title="Launch Week for Your Dev Tool"
             description="Setting the perfect launch week is essential to make a splash in the dev world.">
             <div>
-              <ul className="text-sm text-slate-300">
-                <li className="p-2 rounded-lg border border-slate-800 bg-slate-800/50">
+              <ul className="text-sm text-gray-300">
+                <li className="p-2 rounded-lg border border-gray-800 bg-graydark/50">
                   The launch date is <b>{moment(getValues('launch_date')).format('LL')}</b> Please{' '}
                   <a
                     href="https://twitter.com/johnrushx"
                     target="_blank"
-                    className="text-pink-500 hover:text-pink-400">
+                    className="text-green-500 hover:text-green-400">
                     contact us
                   </a>{' '}
                   if you want to update or cancel the launch.
@@ -368,7 +368,7 @@ export default () => {
               <Button
                 isLoad={isUpdate}
                 type="submit"
-                className="w-full hover:bg-pink-400 ring-offset-2 ring-pink-500 focus:ring">
+                className="w-full hover:bg-green-400 ring-offset-2 ring-green-500 focus:ring">
                 Update
               </Button>
             </div>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 
 const customStyle =
-  'flex-none text-sm text-slate-400 font-medium border border-slate-700 bg-slate-800/50 rounded-full px-3 py-1';
+  'flex-none text-sm text-gray-400 font-medium border border-gray-700 bg-graydark/50 rounded-full px-3 py-1';
 export const Tag = ({
   children,
   href,

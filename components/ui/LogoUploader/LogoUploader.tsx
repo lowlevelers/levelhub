@@ -20,18 +20,18 @@ export default ({
       <div className="flex gap-3 items-center flex-wrap sm:gap-6">
         <label
           htmlFor="logo-upload"
-          className="relative flex-none cursor-pointer w-24 h-24 rounded-full border border-slate-700 border-dashed">
+          className="relative flex-none cursor-pointer w-24 h-24 rounded-full border border-gray-700 border-dashed">
           {src ? <img src={src} className="w-full h-full rounded-full" /> : ''}
-          {isLoad ? <IconLoading className="absolute inset-0 m-auto text-pink-500" /> : ''}
+          {isLoad ? <IconLoading className="absolute inset-0 m-auto text-green-500" /> : ''}
         </label>
         <div>
-          <p className="text-slate-300">Tool logo</p>
-          <p className="text-sm text-slate-400">Recommended size: 220x220 or 210x210 pixels</p>
+          <p className="text-gray-300">Tool logo</p>
+          <p className="text-sm text-gray-400">Recommended size: 220x220 or 210x210 pixels</p>
         </div>
         <div className="flex items-center gap-x-2">
           <Button
             type="button"
-            className=" bg-slate-800 hover:bg-slate-800/50 text-xs"
+            className=" bg-graydark hover:bg-graydark/50 text-xs"
             onClick={() => (inputRef.current as HTMLElement).click()}>
             Select an image
           </Button>

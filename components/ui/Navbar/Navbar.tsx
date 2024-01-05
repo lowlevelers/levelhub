@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Brand from '../Brand';
 import Link from 'next/link';
 import ButtonMenu from './ButtonMenu';
 import Auth from '../Auth';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import CommandPalette from '../CommandPalette/CommandPalette';
 import BlurBackground from '../BlurBackground/BlurBackground';
 import AvatarMenu from '../AvatarMenu';
@@ -19,6 +18,7 @@ import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import NewsletterModal from '../NewsletterModal';
 import { BellAlertIcon, BellIcon } from '@heroicons/react/24/outline';
 import useOnclickOutside from 'react-cool-onclickoutside';
+import { useSupabaseAuth } from '@/hooks/useSupabaseAuth';
 
 export default () => {
   const [isActive, setActive] = useState(false);
@@ -36,27 +36,15 @@ export default () => {
     setNavMenuActive(false);
   });
 
-  const router = useRouter();
   const pathname = usePathname();
-
-  const { supabase, session } = useSupabase();
-
-  const isLoggedin = session?.user;
-
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut();
-    router.push('/');
-    if (error != null) {
-      console.log({ error });
-    }
-  };
+  const { isLoggedin, session, supabase, handleLogout } = useSupabaseAuth();
 
   const navigation = [
     {
       title: 'Submit your Project / Idea',
       path: isLoggedin ? '/account/tools' : '/login',
       className:
-        'bg-pink-500 hover:bg-pink-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
+        'bg-green-500 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
     },
   ];
 
@@ -81,17 +69,14 @@ export default () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-30 bg-slate-900 border-b border-slate-800 w-full">
+      <nav className="sticky top-0 z-30 bg-gray-900 border-b border-gray-800 w-full">
         <div className="custom-screen items-center py-3 lg:flex">
           <div className="flex items-center justify-between lg:block">
-            <Link href="/">
-              <Brand />
-            </Link>
             <div className="flex gap-x-4 items-center lg:hidden">
               <button
                 aria-label="Search button"
                 onClick={() => setCommandActive(true)}
-                className="text-slate-400 hover:text-slate-200">
+                className="text-gray-400 hover:text-gray-200">
                 <IconSearch />
               </button>
               <ButtonMenu isActive={isActive} setActive={() => setActive(!isActive)} />
@@ -104,13 +89,13 @@ export default () => {
             className={`flex-1 lg:static  ${
               isActive ? 'w-full fixed top-20 inset-x-0 px-4 lg:px-0' : 'hidden lg:block'
             }`}>
-            <div className="p-4 px-4 mt-8 text-sm bg-slate-900 rounded-lg lg:block lg:mt-0 lg:p-0 lg:bg-transparent">
-              <ul className="justify-end items-center space-y-6 text-slate-400 lg:flex lg:space-x-6 lg:space-y-0">
+            <div className="p-4 px-4 mt-8 text-sm bg-gray-900 rounded-lg lg:block lg:mt-0 lg:p-0 lg:bg-transparent">
+              <ul className="justify-end items-center space-y-6 text-gray-400 lg:flex lg:space-x-6 lg:space-y-0">
                 {!isLoggedin ? (
                   <li>
                     <button
                       onClick={() => setNewsletterModalActive(true)}
-                      className="flex items-center gap-x-2 hover:text-slate-200">
+                      className="flex items-center gap-x-2 hover:text-gray-200">
                       <BellIcon className="w-5 h-5" />
                       Subscribe
                     </button>
@@ -122,19 +107,19 @@ export default () => {
                   <div ref={NavMenuRef} className="relative">
                     <button
                       onClick={() => setNavMenuActive(!isNavMenuActive)}
-                      className="flex items-center gap-x-2 hover:text-slate-200 group">
+                      className="flex items-center gap-x-2 hover:text-gray-200 group">
                       Browse tools
                       <ChevronDownIcon className="w-4 h-4 transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180" />
                     </button>
                     <div
-                      className={`top-8 left-0 text-sm py-4 rounded-lg w-80 lg:px-4 lg:bg-slate-800 lg:absolute ${
+                      className={`top-8 left-0 text-sm py-4 rounded-lg w-80 lg:px-4 lg:bg-gray-800 lg:absolute ${
                         isNavMenuActive ? '' : 'hidden'
                       }`}>
                       <div className="space-y-4">
                         <ul className="mt-2 space-y-3">
                           {submenu.map((item, idx) => {
                             return (
-                              <li key={idx} className="hover:text-slate-200 duration-150">
+                              <li key={idx} className="hover:text-gray-200 duration-150">
                                 <Link href={`${item.path}`} className="block">
                                   {item.title}
                                 </Link>
@@ -142,11 +127,11 @@ export default () => {
                             );
                           })}
                         </ul>
-                        <h3 className="text-[0.855rem] font-medium text-slate-300">Categories</h3>
+                        <h3 className="text-[0.855rem] font-medium text-gray-300">Categories</h3>
                         <ul className="mt-2 gap-y-3 grid grid-cols-2">
                           {categories.map((item, idx) => {
                             return (
-                              <li key={idx} className="hover:text-slate-200 duration-150">
+                              <li key={idx} className="hover:text-gray-200 duration-150">
                                 <Link
                                   href={`/tools/${item.name.toLowerCase().replaceAll(' ', '-')}`}
                                   className="block">
@@ -162,7 +147,7 @@ export default () => {
                 </li>
                 {navigation.map((item, idx) => {
                   return (
-                    <li key={idx} className="hover:text-slate-200">
+                    <li key={idx} className="hover:text-gray-200">
                       <Link href={item.path} className={`block ${item?.className || ''}`}>
                         {item.title}
                       </Link>
@@ -173,11 +158,11 @@ export default () => {
                   <button
                     aria-label="Search button"
                     onClick={() => setCommandActive(true)}
-                    className="hover:text-slate-200">
+                    className="hover:text-gray-200">
                     <IconSearch />
                   </button>
                 </li>
-                <li className="hidden w-px h-6 bg-slate-700 lg:block"></li>
+                <li className="hidden w-px h-6 bg-gray-700 lg:block"></li>
                 <li
                   className={`space-y-3 items-center gap-x-6 lg:flex lg:space-y-0 ${
                     isLoggedin ? 'hidden lg:flex' : ''
@@ -191,14 +176,14 @@ export default () => {
       </nav>
       {isBannerActive && !isLoggedin ? (
         <div className="animate-bottom-bannner fixed bottom-10 inset-x-0 z-30 max-w-xl mx-auto px-4">
-          <div className=" flex items-center gap-x-3 bg-slate-800 p-3 rounded-lg">
-            <div className="flex items-center justify-center rounded-full w-12 h-12 border-slate-700 bg-slate-900/70 text-slate-300">
+          <div className=" flex items-center gap-x-3 bg-graydark p-3 rounded-lg">
+            <div className="flex items-center justify-center rounded-full w-12 h-12 border-gray-700 bg-gray-900/70 text-gray-300">
               <BellAlertIcon className="w-6 h-6" />
             </div>
-            <p className="flex-1 text-sm text-slate-300">
+            <p className="flex-1 text-sm text-gray-300">
               <button
                 onClick={() => setNewsletterModalActive(true)}
-                className="text-slate-100 hover:text-pink-500 duration-150 underline">
+                className="text-gray-100 hover:text-green-500 duration-150 underline">
                 Subscribe
               </button>{' '}
               to get weekly email with best new dev tools.
@@ -208,7 +193,7 @@ export default () => {
                 setBannerActive(false);
                 localStorage.setItem('isNewsletterActive', 'true');
               }}
-              className="p-1 rounded-md text-slate-400 hover:bg-slate-700 duration-150">
+              className="p-1 rounded-md text-gray-400 hover:bg-gray-700 duration-150">
               <XMarkIcon className="w-5 h-5" />
             </button>
           </div>

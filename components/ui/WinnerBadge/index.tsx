@@ -44,9 +44,9 @@ export default ({ weekRank, isLaunchEnd }: { weekRank: number | string; isLaunch
   }, [confettiTimes]);
 
   return isLaunchEnd && (badges as any)[`winner${weekRank}`] ? (
-    <div className="text-center text-slate-300 text-sm">
+    <div className="text-center text-gray-300 text-sm">
       {(badges as any)[`winner${weekRank}`].badge}
-      <span className="block text-xl text-slate-50 font-semibold mt-2">
+      <span className="block text-xl text-gray-50 font-semibold mt-2">
         {(badges as any)[`winner${weekRank}`].rank}
       </span>
       Product of the week

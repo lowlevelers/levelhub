@@ -8,5 +8,5 @@ export const CommentContext = ({
   className?: string;
   children?: ReactNode;
 }) => (
-  <p className={mergeTW(`whitespace-pre-wrap text-slate-300 text-sm ${className}`)}>{children}</p>
+  <p className={mergeTW(`whitespace-pre-wrap text-gray-300 text-sm ${className}`)}>{children}</p>
 );

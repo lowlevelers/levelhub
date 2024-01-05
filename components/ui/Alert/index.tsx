@@ -42,7 +42,7 @@ export default ({
   return (
     <div
       className={mergeTW(
-        `flex justify-between p-4 rounded-md bg-slate-800 border border-slate-700 border-l-4 ${parentVariant[variant]} ${className}`
+        `flex justify-between p-4 rounded-md bg-graydark border border-gray-700 border-l-4 ${parentVariant[variant]} ${className}`
       )}>
       <div className="flex gap-3">
         <div>{icon || iconVariant[variant]}</div>

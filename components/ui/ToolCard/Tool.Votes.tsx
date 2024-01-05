@@ -85,8 +85,8 @@ export default ({
         onClick={toggleVote}
         id="vote-item"
         className={mergeTW(
-          `px-4 py-1 text-center text-slate-400 active:scale-[1.5] duration-200 rounded-md border bg-[linear-gradient(180deg,_#1E293B_0%,_rgba(30,_41,_59,_0.00)_100%)] ${
-            isUpvoted ? 'text-pink-600 border-pink-600' : 'border-slate-700 hover:text-pink-300'
+          `px-4 py-1 text-center text-gray-400 active:scale-[1.5] duration-200 rounded-md border bg-[linear-gradient(180deg,_#1E293B_0%,_rgba(30,_41,_59,_0.00)_100%)] ${
+            isUpvoted ? 'text-green-600 border-green-600' : 'border-gray-700 hover:text-green-300'
           } ${className} ${isLaunchEnd ? ' opacity-60' : ''}`
         )}>
         <IconVote className="mt-1 w-4 h-4 mx-auto pointer-events-none" />
@@ -98,12 +98,12 @@ export default ({
         title={modalInfo.title}
         description={modalInfo.desc}
         onCancel={() => setModalActive(false)}>
-        <LinkItem href="/" className="flex-1 block w-full text-sm bg-pink-500 hover:bg-pink-400">
+        <LinkItem href="/" className="flex-1 block w-full text-sm bg-green-500 hover:bg-green-400">
           Explore other tools
         </LinkItem>
         <Button
           onClick={() => setModalActive(false)}
-          className="flex-1 block w-full text-sm border border-slate-700 bg-transparent hover:bg-slate-900 mt-2 sm:mt-0">
+          className="flex-1 block w-full text-sm border border-gray-700 bg-transparent hover:bg-gray-900 mt-2 sm:mt-0">
           Continue
         </Button>
       </Modal>

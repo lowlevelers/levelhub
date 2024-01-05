@@ -24,13 +24,13 @@ export default () => {
         <Popover.Trigger asChild>
           <button
             aria-label="Chat button"
-            className="w-10 h-10 rounded-full text-white bg-pink-500 flex items-center justify-center group">
+            className="w-10 h-10 rounded-full text-white bg-green-500 flex items-center justify-center group">
             {isPopupActive ? <XMarkIcon className="w-6 h-6" /> : <IconChatBubbleLeft />}
           </button>
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content className="mr-4 mb-4 relative z-20">
-            <div className="p-4 flex flex-wrap items-start gap-3 shadow-md rounded-lg bg-slate-800 border-slate-800">
+            <div className="p-4 flex flex-wrap items-start gap-3 shadow-md rounded-lg bg-graydark border-gray-800">
               <Image
                 src={johnPicture}
                 width={32}
@@ -39,15 +39,15 @@ export default () => {
                 alt="John rush"
               />
               <div className="w-full text-sm text-left sm:w-auto">
-                <p className="text-slate-100">You got a question? You can DM me!</p>
+                <p className="text-gray-100">You got a question? You can DM me!</p>
                 <div className="flex items-center gap-x-2 mt-1">
                   <span className="flex-none block w-2 h-2 rounded-full bg-green-500"></span>
-                  <p className="text-xs text-slate-300">Online, replies near instant</p>
+                  <p className="text-xs text-gray-300">Online, replies near instant</p>
                 </div>
                 <LinkItem
                   href="https://twitter.com/messages/compose?recipient_id=1456321269029380097"
                   target="_blank"
-                  className="mt-2 w-full flex items-center justify-center gap-x-2 bg-pink-500 hover:bg-pink-600 text-xs py-2">
+                  className="mt-2 w-full flex items-center justify-center gap-x-2 bg-green-500 hover:bg-green-600 text-xs py-2">
                   <IconChatBubbleOvalLeftEllipsis className="w-4 h-4" />
                   Contact @chungquantin
                 </LinkItem>

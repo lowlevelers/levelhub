@@ -98,8 +98,8 @@ function Profile() {
   return (
     <div className="container-custom-screen h-screen mt-20">
       <div>
-        <h1 className="text-xl text-slate-50 font-semibold">Profile</h1>
-        <p className="mt-1 text-sm text-slate-400">
+        <h1 className="text-xl text-gray-50 font-semibold">Profile</h1>
+        <p className="mt-1 text-sm text-gray-400">
           This information will be displayed publicly so be careful what you share.
         </p>
       </div>
@@ -209,7 +209,7 @@ function Profile() {
             </div>
             <Button
               isLoad={isLoad}
-              className="flex justify-center w-full ring-offset-2 ring-pink-500 focus:ring-2 hover:bg-pink-400">
+              className="flex justify-center w-full ring-offset-2 ring-green-500 focus:ring-2 hover:bg-green-400">
               {isLoad ? 'Updating' : 'save'}
             </Button>
           </div>

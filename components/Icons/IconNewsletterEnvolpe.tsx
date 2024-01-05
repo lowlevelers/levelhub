@@ -2,7 +2,7 @@ import mergeTW from '@/utils/mergeTW';
 
 export const IconNewsletterEnvolpe = ({ className = '' }: { className?: string }) => (
   <svg
-    className={mergeTW('mx-auto border border-slate-700 rounded-full', className)}
+    className={mergeTW('mx-auto border border-gray-700 rounded-full', className)}
     width="60"
     height="60"
     viewBox="0 0 60 60"

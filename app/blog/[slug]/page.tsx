@@ -56,22 +56,22 @@ export default async function Article({ params: { slug } }: { params: { slug: st
     <section className="max-w-3xl mt-20 mx-auto px-4 md:px-8">
       {post.category ? (
         <div className="flex flex-wrap items-center gap-2 mb-1 w-full text-sm">
-          <a className="text-pink-500 hover:text-pink-400 duration-200" href="/">
+          <a className="text-green-500 hover:text-green-400 duration-200" href="/">
             Home
           </a>
-          <ChevronRightIcon className="w-4 h-4 text-slate-500" />
-          <Link className="text-pink-500 hover:text-pink-400 duration-200" href="/blog/">
+          <ChevronRightIcon className="w-4 h-4 text-gray-500" />
+          <Link className="text-green-500 hover:text-green-400 duration-200" href="/blog/">
             Blog
           </Link>
-          <ChevronRightIcon className="w-4 h-4 text-slate-500" />
+          <ChevronRightIcon className="w-4 h-4 text-gray-500" />
           <Link
-            className="text-pink-500 hover:text-pink-400 duration-200"
+            className="text-green-500 hover:text-green-400 duration-200"
             href={`/blog/category/${post.category.slug}`}>
             {post.category.title}
           </Link>
         </div>
       ) : null}
-      <div className="mt-2 flex flex-wrap gap-2 items-center w-full text-sm text-slate-400">
+      <div className="mt-2 flex flex-wrap gap-2 items-center w-full text-sm text-gray-400">
         <span>
           Published{' '}
           {new Date(post.publishedAt || post.createdAt).toLocaleDateString('en-US', {
@@ -88,20 +88,20 @@ export default async function Article({ params: { slug } }: { params: { slug: st
         </div>
       ) : null}
       <div
-        className="prose prose-a:text-pink-500 hover:prose-a:text-pink-400 prose-invert mt-8"
+        className="prose prose-a:text-green-500 hover:prose-a:text-green-400 prose-invert mt-8"
         dangerouslySetInnerHTML={{ __html: post.html }}></div>
       <div className="flex flex-wrap gap-2 justify-start w-full">
         {(post.tags || []).map((t: any, ix: number) => (
           <a
             key={ix}
             href={`/blog/tag/${t.slug}`}
-            className="bg-slate-800 hover:bg-slate-700 px-2 py-1 rounded text-xs text-slate-400 font-semibold">
+            className="bg-graydark hover:bg-gray-700 px-2 py-1 rounded text-xs text-gray-400 font-semibold">
             {t.title}
           </a>
         ))}
       </div>
       {post.relatedPosts?.length ? (
-        <div className="mt-8 prose prose-a:no-underline hover:prose-a:underline hover:prose-a:text-pink-500 prose-invert">
+        <div className="mt-8 prose prose-a:no-underline hover:prose-a:underline hover:prose-a:text-green-500 prose-invert">
           <h2>Related posts</h2>
           <ul className="text-base">
             {post.relatedPosts.map((p: any, ix: number) => (

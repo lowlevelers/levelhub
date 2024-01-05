@@ -46,11 +46,11 @@ export default ({
       <div className="flex items-center gap-x-2">
         <Button
           onClick={() => handleAvatarUpload()}
-          className=" bg-slate-800 hover:bg-slate-800/50 text-xs">
+          className=" bg-graydark hover:bg-graydark/50 text-xs">
           Upload new Avatar
         </Button>
         {avatarPreview ? (
-          <Button onClick={handleCancel} className="text-xs bg-transparent border border-slate-800">
+          <Button onClick={handleCancel} className="text-xs bg-transparent border border-gray-800">
             cancel
           </Button>
         ) : (

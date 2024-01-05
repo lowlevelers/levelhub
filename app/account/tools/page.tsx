@@ -52,19 +52,19 @@ export default () => {
     <section className="container-custom-screen min-h-screen mt-14">
       <div className="items-start justify-between py-4 md:flex">
         <div className="max-w-lg">
-          <h1 className="text-slate-50 text-2xl font-bold">Tools</h1>
-          <p className="text-slate-300 mt-1">You can launch a new tool, or edit and delete.</p>
+          <h1 className="text-gray-50 text-2xl font-bold">Tools</h1>
+          <p className="text-gray-300 mt-1">You can launch a new tool, or edit and delete.</p>
         </div>
         <div className="mt-4 md:mt-0">
-          <LinkItem href="/account/tools/new" className="text-sm shadow hover:bg-slate-700">
+          <LinkItem href="/account/tools/new" className="text-sm shadow hover:bg-gray-700">
             New tool
           </LinkItem>
         </div>
       </div>
-      <ul className="mt-6 divide-y divide-slate-800/60">
+      <ul className="mt-6 divide-y divide-gray-800/60">
         {isLoad ? (
           <div>
-            <IconLoading className="w-6 h-6 mx-auto text-pink-500" />
+            <IconLoading className="w-6 h-6 mx-auto text-green-500" />
           </div>
         ) : tools.length > 0 ? (
           tools.map((tool: ProductType, idx: number) => (
@@ -92,14 +92,14 @@ export default () => {
                     <div className="mt-2.5 flex items-center gap-x-4">
                       <Link
                         href={`/account/tools/edit/${tool.id}`}
-                        className="inline-block text-slate-400 hover:text-slate-500 duration-150">
+                        className="inline-block text-gray-400 hover:text-gray-500 duration-150">
                         <IconPencilSquare />
                       </Link>
                       <button
                         onClick={() => {
                           handleDeleteConfirm(tool.id, idx);
                         }}
-                        className="inline-block text-slate-400 hover:text-slate-500 duration-150">
+                        className="inline-block text-gray-400 hover:text-gray-500 duration-150">
                         <IconTrash />
                       </button>
                       <button
@@ -107,7 +107,7 @@ export default () => {
                           setToolSlug(tool.slug);
                           setModalOpen(true);
                         }}
-                        className="inline-block text-slate-400 hover:text-slate-500 duration-150">
+                        className="inline-block text-gray-400 hover:text-gray-500 duration-150">
                         <IconCodeBracket />
                       </button>
                     </div>
@@ -125,7 +125,7 @@ export default () => {
             </>
           ))
         ) : (
-          <div className="font-medium text-slate-400">No launches found.</div>
+          <div className="font-medium text-gray-400">No launches found.</div>
         )}
       </ul>
       <ModalBannerCode

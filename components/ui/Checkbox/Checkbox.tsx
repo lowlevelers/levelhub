@@ -11,6 +11,6 @@ export default ({ className, ...props }: Props) => (
     {...props}
     type="checkbox"
     className={mergeTW(
-      `class="text-blue-600 focus:ring-blue-600 form-checkbox border-slate-700 ring-offset-slate-400 ring-slate-800 bg-slate-700 checked:bg-slate-700 rounded-md duration-150 text-blue-600 focus:ring-blue-600" ${className}`
+      `class="text-blue-600 focus:ring-blue-600 form-checkbox border-gray-700 ring-offset-gray-400 ring-gray-800 bg-gray-700 checked:bg-gray-700 rounded-md duration-150 text-blue-600 focus:ring-blue-600" ${className}`
     )}></input>
 );

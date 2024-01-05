@@ -71,10 +71,10 @@ export default async ({ params: { slug } }: { params: { slug: string } }) => {
     <section className="max-w-4xl mt-5 lg:mt-10 mx-auto px-4 md:px-8">
       <>
         <>
-          <h1 className="text-xl text-slate-50 font-extrabold">
+          <h1 className="text-xl text-gray-50 font-extrabold">
             Best {getOriginalSlug(slug)} tools
           </h1>
-          <ul className="mt-10 mb-12 divide-y divide-slate-800/60">
+          <ul className="mt-10 mb-12 divide-y divide-gray-800/60">
             {products.map((product: Product, idx: number) => (
               <ToolCardEffect key={idx} tool={product as any} />
             ))}

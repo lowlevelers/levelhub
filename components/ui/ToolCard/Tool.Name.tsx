@@ -16,7 +16,7 @@ export default ({
   toolHref?: string;
   children?: ReactNode;
 }) => (
-  <h3 className={mergeTW(`text-slate-100 font-medium flex gap-x-3 items-center ${className}`)}>
+  <h3 className={mergeTW(`text-gray-100 font-medium flex gap-x-3 items-center ${className}`)}>
     {toolHref ? <Link href={toolHref}>{children}</Link> : children}
     <a
       id="tool-title"

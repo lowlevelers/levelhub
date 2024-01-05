@@ -99,8 +99,8 @@ export default ({
 
   return (
     <Modal variant="custom" isActive={isModalOpen} className="max-w-4xl">
-      <h3 className="text-slate-50 font-medium">Add banner</h3>
-      <p className="text-slate-300 text-sm mt-2">
+      <h3 className="text-gray-50 font-medium">Add banner</h3>
+      <p className="text-gray-300 text-sm mt-2">
         Add this code between <b>{'<head>'}</b> tags in your website to show a banner about your
         launch.
       </p>
@@ -117,10 +117,10 @@ export default ({
         </CodeBlock>
       </div>
       <div className="mt-3 flex gap-x-3">
-        <Button className="ring-offset-2 ring-pink-500 focus:ring-2" onClick={copyDone}>
+        <Button className="ring-offset-2 ring-green-500 focus:ring-2" onClick={copyDone}>
           I've done this
         </Button>
-        <Button className="bg-slate-700 hover:bg-slate-600" onClick={() => setModalOpen(false)}>
+        <Button className="bg-gray-700 hover:bg-gray-600" onClick={() => setModalOpen(false)}>
           Close
         </Button>
       </div>

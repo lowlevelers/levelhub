@@ -15,7 +15,7 @@ export const Tabs = ({
   return (
     <div
       className={mergeTW(
-        `border-b border-slate-800 text-sm text-slate-400 font-medium ${className}`
+        `border-b border-gray-800 text-sm text-gray-400 font-medium ${className}`
       )}>
       <ul className={mergeTW(`flex items-center gap-x-4 overflow-auto w-full ${ulClassName}`)}>
         {children}

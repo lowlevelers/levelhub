@@ -17,14 +17,14 @@ export default ({ profile }: { profile: Profile }) => (
         alt={profile?.full_name as string}
       />
       <div className="mt-4 sm:mt-0">
-        <h1 className="text-2xl text-slate-50 font-medium">
+        <h1 className="text-2xl text-gray-50 font-medium">
           {profile?.full_name || 'DevHunt user'}
         </h1>
-        <p className="mt-1 text-sm text-slate-400">{profile?.headline}</p>
+        <p className="mt-1 text-sm text-gray-400">{profile?.headline}</p>
       </div>
     </div>
     <div>
-      <p className="text-slate-400">{profile?.about}</p>
+      <p className="text-gray-400">{profile?.about}</p>
       <div className="mt-3 flex gap-3">
         <ShowElement val={profile?.website_url}>
           <a
@@ -34,7 +34,7 @@ export default ({ profile }: { profile: Profile }) => (
                 : `https://${profile.website_url}`
             }
             target="_blank"
-            className="inline-flex items-center gap-x-2 text-slate-500 hover:text-slate-400 text-sm duration-150">
+            className="inline-flex items-center gap-x-2 text-gray-500 hover:text-gray-400 text-sm duration-150">
             <IconGlobeAlt />
             Website
           </a>
@@ -43,7 +43,7 @@ export default ({ profile }: { profile: Profile }) => (
           <a
             href={profile.social_url || ''}
             target="_blank"
-            className="inline-flex items-center gap-x-2 text-slate-500 hover:text-slate-400 text-sm duration-150">
+            className="inline-flex items-center gap-x-2 text-gray-500 hover:text-gray-400 text-sm duration-150">
             <AtSymbolIcon className="w-5 h-5" />
             Social Media
           </a>

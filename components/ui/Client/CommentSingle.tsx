@@ -129,13 +129,13 @@ export default ({ comment, productId }: Props) => {
               <Button
                 type="button"
                 onClick={handleCancel}
-                className="text-xs bg-slate-800 hover:bg-slate-700">
+                className="text-xs bg-graydark hover:bg-gray-700">
                 Cancel
               </Button>
               <Button
                 type="submit"
                 isLoad={isLoad}
-                className={`text-xs hover:bg-pink-400 ${
+                className={`text-xs hover:bg-green-400 ${
                   isLoad ? 'pointer-events-none opacity-60' : ''
                 }`}>
                 Edit comment
@@ -160,14 +160,14 @@ export default ({ comment, productId }: Props) => {
           <li>
             <Button
               onClick={() => setEditorActive(true)}
-              className="block w-full py-1 px-3 font-normal text-xs text-slate-300 text-left rounded-none border-t border-slate-700 bg-transparent hover:bg-slate-700">
+              className="block w-full py-1 px-3 font-normal text-xs text-gray-300 text-left rounded-none border-t border-gray-700 bg-transparent hover:bg-gray-700">
               Edit
             </Button>
           </li>
           <li>
             <Button
               onClick={handleDelete}
-              className="block w-full py-1 px-3 font-normal text-xs text-red-500 text-left rounded-none border-t border-slate-700 bg-transparent hover:text-red-50 hover:bg-red-500">
+              className="block w-full py-1 px-3 font-normal text-xs text-red-500 text-left rounded-none border-t border-gray-700 bg-transparent hover:text-red-50 hover:bg-red-500">
               Delete
             </Button>
           </li>

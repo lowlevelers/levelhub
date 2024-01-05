@@ -51,7 +51,7 @@ export default ({ tool }: { tool: ProductType }) => {
         </div>
         <div
           className={`flex-1 self-center flex justify-end duration-1000 delay-150 ${
-            isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            isInView ? 'opacity-100 transtone-y-0' : 'opacity-0 transtone-y-8'
           }`}>
           <Votes
             count={tool.votes_count}

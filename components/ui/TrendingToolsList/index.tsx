@@ -32,7 +32,7 @@ export default () => {
   }, []);
 
   return (
-    <ul className="mt-3 divide-y divide-slate-800/60">
+    <ul className="mt-3 divide-y divide-gray-800/60">
       {trendingTools?.map(group => (
         <div>
           {(group as { products: ProductType[] }).products.map((tool: ProductType, idx: number) => (

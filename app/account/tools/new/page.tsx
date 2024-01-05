@@ -209,7 +209,7 @@ export default () => {
   return (
     <section className="container-custom-screen">
       <Alert context="Any non-dev tools will be subject to removal. Please ensure that your submission is relevant to the developer community." />
-      <h1 className="text-xl text-slate-50 font-semibold mt-6">Launch a tool</h1>
+      <h1 className="text-xl text-gray-50 font-semibold mt-6">Launch a tool</h1>
       <div className="mt-12">
         <FormLaunchWrapper onSubmit={handleSubmit(onSubmit as () => void)}>
           <FormLaunchSection
@@ -351,7 +351,7 @@ export default () => {
             </div>
             <div>
               <Label>Tool screenshots</Label>
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-gray-400">
                 Upload at least three screenshots showcasing different aspects of functionality.
                 Note that the first image will be used as social preview, so choose wisely!
               </p>
@@ -380,8 +380,8 @@ export default () => {
             title="Launch Week for Your Dev Tool"
             description="Setting the perfect launch week is essential to make a splash in the dev world.">
             <div>
-              <ul className="text-sm text-slate-400">
-                <li className="text-slate-300 mb-1">
+              <ul className="text-sm text-gray-400">
+                <li className="text-gray-300 mb-1">
                   By choosing your tool's big day, you're guaranteeing:
                 </li>
                 <li>
@@ -414,10 +414,10 @@ export default () => {
               <Button
                 type="submit"
                 isLoad={isLaunching}
-                className="w-full hover:bg-pink-400 ring-offset-2 ring-pink-500 focus:ring">
+                className="w-full hover:bg-green-400 ring-offset-2 ring-green-500 focus:ring">
                 Schedule my Dev Tool for Launch
               </Button>
-              <p className="text-sm text-slate-500 mt-2">* no worries, you can change it later</p>
+              <p className="text-sm text-gray-500 mt-2">* no worries, you can change it later</p>
             </div>
           </FormLaunchSection>
         </FormLaunchWrapper>

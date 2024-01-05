@@ -31,7 +31,7 @@ export default ({
   const [selectedSection, setSelectedSection] = useState('');
   const pathname = usePathname();
 
-  const customClassName = `inline-block rounded-full py-2 px-3 target:bg-slate-800 hover:bg-slate-800 duration-150 ${linkClassName}`;
+  const customClassName = `inline-block rounded-full py-2 px-3 target:bg-graydark hover:bg-graydark duration-150 ${linkClassName}`;
 
   const handlehashUpdate = () => {
     const currentHash = window.location.hash;
@@ -92,7 +92,7 @@ export default ({
   return (
     <li
       className={`flex-none inline-block py-2 border-b ${
-        isLinkActive ? 'border-slate-600 text-slate-200' : ' border-transparent'
+        isLinkActive ? 'border-gray-600 text-gray-200' : ' border-transparent'
       } ${className}`}>
       {variant == 'link' ? (
         href ? (

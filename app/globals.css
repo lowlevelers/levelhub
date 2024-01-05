@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,17 +8,23 @@
   scroll-behavior: smooth;
 }
 
+@layer base {
+  body {
+    @apply font-satoshi font-normal text-base text-gray-900 relative;
+  }
+}
+
 /* Customize scrollbar */
 *::-webkit-scrollbar {
-  @apply w-2.5 h-2.5 bg-slate-900 duration-150;
+  @apply w-2.5 h-2.5 bg-gray-900 duration-150;
 }
 
 *::-webkit-scrollbar:hover {
-  @apply bg-slate-800;
+  @apply bg-gray-800;
 }
 
 *::-webkit-scrollbar-thumb {
-  @apply bg-slate-700 rounded-full;
+  @apply bg-gray-700 rounded-full;
 }
 
 .custom-screen {

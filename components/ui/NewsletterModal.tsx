@@ -50,7 +50,7 @@ export default ({
       <div className="flex justify-end">
         <button
           onClick={() => closeModal(false)}
-          className="relative z-10 p-1 rounded-md text-gray-400 hover:bg-slate-700 duration-150">
+          className="relative z-10 p-1 rounded-md text-gray-400 hover:bg-gray-700 duration-150">
           <XMarkIcon className="w-5 h-5" />
         </button>
       </div>
@@ -58,21 +58,21 @@ export default ({
         <div className="absolute w-full -top-16"></div>
         <form onSubmit={handleSubmit} className="relative">
           <IconNewsletterEnvolpe />
-          <h3 className="text-slate-50 font-semibold mt-6">Subscribe to DevHunt</h3>
-          <p className="text-slate-300 mt-2">Get weekly email with best new dev tools</p>
+          <h3 className="text-gray-50 font-semibold mt-6">Subscribe to DevHunt</h3>
+          <p className="text-gray-300 mt-2">Get weekly email with best new dev tools</p>
           {!isSubscribingDone ? (
             <Input
               required
               autoFocus
               placeholder="Enter your email"
               onChange={e => setPersonalEMail((e.target as HTMLInputElement).value)}
-              className="w-full mt-6 border-slate-700 bg-slate-900/70 hover:bg-slate-900/40 focus:bg-slate-900/40"
+              className="w-full mt-6 border-gray-700 bg-gray-900/70 hover:bg-gray-900/40 focus:bg-gray-900/40"
             />
           ) : (
             ''
           )}
           <span className="block mt-3 text-red-500 text-sm text-left">{personalEMailError}</span>
-          <Button isLoad={isLoad} className="w-full mt-3 hover:bg-pink-400 active:scale-[0.99]">
+          <Button isLoad={isLoad} className="w-full mt-3 hover:bg-green-400 active:scale-[0.99]">
             {isSubscribingDone ? <CheckIcon className="w-6 h-6 mx-auto" /> : 'Subscribe'}
           </Button>
         </form>

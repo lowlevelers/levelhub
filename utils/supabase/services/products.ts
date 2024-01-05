@@ -10,6 +10,13 @@ import { groupByWithRef, omit } from '@/utils/helpers';
 import { cache } from '@/utils/supabase/services/CacheService';
 import UsersService from './users';
 
+export type ProductLaunchGroup = {
+  week: number;
+  startDate: Date;
+  endDate: Date;
+  products: ExtendedProduct[];
+};
+
 export default class ProductsService extends BaseDbService {
   private readonly DEFULT_PRODUCT_SELECT =
     '*, product_pricing_types(*), product_categories(name, id)';
@@ -23,7 +30,7 @@ export default class ProductsService extends BaseDbService {
 
     return cache.get(key, async () => {
       const { data, error } = await this.supabase.rpc('get_week_number', {
-        date_in: dateIn,
+        date_in: dateIn as any,
         start_day: startDay,
       });
       if (error !== null) throw new Error(error.message);
@@ -87,11 +94,14 @@ export default class ProductsService extends BaseDbService {
     if (error !== null) throw new Error(error.message);
     return data
       .filter(i => i.week !== excludeWeek)
-      .map(i => ({
-        ...i.product_data.product,
-        product_pricing_types: i.product_data.product_pricing_types,
-        product_categories: i.product_data.product_categories,
-      })) as ExtendedProduct[];
+      .map(i => {
+        const productData = i.product_data as any;
+        return {
+          ...productData.product,
+          product_pricing_types: productData.product_pricing_types,
+          product_categories: productData.product_categories,
+        };
+      }) as ExtendedProduct[];
   }
 
   async getPrevLaunchWeeks(
@@ -205,7 +215,6 @@ export default class ProductsService extends BaseDbService {
     const key = `products-${sortBy}-${ascending}-${categoryId}-${pageNumber}-${pageSize}-${selectQuery}`;
 
     return cache.get(key, async () => {
-      // @ts-expect-error there is error in types? foreignTable is required for order options, while it's not
       let products = this.supabase.from('products').select(selectQuery).eq('deleted', false);
 
       if (categoryId) {
@@ -250,10 +259,10 @@ export default class ProductsService extends BaseDbService {
     sortBy: string,
     ascending: boolean
   ): Promise<ExtendedProduct[]> {
-    const { data: products, error } = await this.getProducts(sortBy, ascending).neq(
+    const { data: products, error } = (await this.getProducts(sortBy, ascending)).neq(
       'id',
       productId
-    );
+    ) as { data: ExtendedProduct[]; error: string };
 
     if (error) {
       console.error(error);
@@ -262,7 +271,9 @@ export default class ProductsService extends BaseDbService {
 
     const filteredProducts = products
       .filter(item =>
-        item.product_categories?.some(category => categoryNames.includes(category.name))
+        item.product_categories?.some(category =>
+          categoryNames.includes({ name: category.name || '' })
+        )
       )
       .slice(0, 8);
 
@@ -296,7 +307,7 @@ export default class ProductsService extends BaseDbService {
       .select(this.EXTENDED_PRODUCT_SELECT)
       .eq('deleted', false)
       .limit(limit);
-    return data;
+    return data as any;
   }
 
   async getToolsByNameOrDescription(

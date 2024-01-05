@@ -5,14 +5,14 @@ export default () => {
     <main>
       <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-start h-screen md:px-8">
         <div className="max-w-lg mx-auto space-y-3 text-center">
-          <h3 className="text-pink-500 font-semibold">404 Error</h3>
-          <p className="text-slate-50 text-4xl font-semibold sm:text-5xl">Page not found</p>
-          <p className="text-slate-300">
+          <h3 className="text-green-500 font-semibold">404 Error</h3>
+          <p className="text-gray-50 text-4xl font-semibold sm:text-5xl">Page not found</p>
+          <p className="text-gray-300">
             Sorry, the page you are looking for could not be found or has been removed.
           </p>
           <Link
             href="/"
-            className="text-pink-500 duration-150 hover:text-pink-400 font-medium inline-flex items-center gap-x-1">
+            className="text-green-500 duration-150 hover:text-green-400 font-medium inline-flex items-center gap-x-1">
             Go back
             <svg
               xmlns="http://www.w3.org/2000/svg"

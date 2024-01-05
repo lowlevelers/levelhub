@@ -3,7 +3,7 @@ import LinkItem from '../Link/LinkItem';
 
 export default () => {
   return (
-    <div className="bg-pink-600">
+    <div className="bg-green-600">
       <div className="custom-screen py-3 items-center gap-x-4 justify-between text-white font-medium sm:flex md:px-8">
         <div className="flex items-center">
           <img
@@ -16,7 +16,7 @@ export default () => {
         <LinkItem
           href="https://www.producthunt.com/posts/float-ui-v2"
           target="_blank"
-          className="flex-none inline-block w-full mt-3 py-2 text-center text-pink-600 font-medium bg-white duration-150 hover:bg-gray-100 active:bg-gray-200 sm:w-auto sm:mt-0 btnshake">
+          className="flex-none inline-block w-full mt-3 py-2 text-center text-green-600 font-medium bg-white duration-150 hover:bg-gray-80000 active:bg-gray-200 sm:w-auto sm:mt-0 btnshake">
           <div className="flex items-center justify-center gap-x-1 text-sm font-semibold">
             Check it out
             <IconArrowLongRight className="w-4 h-4" />

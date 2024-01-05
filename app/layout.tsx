@@ -1,6 +1,7 @@
 import Navbar from '@/components/ui/Navbar';
 import './globals.css';
 import './prismjs-theme.css';
+import './satoshi.css';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 
@@ -9,13 +10,13 @@ import SupabaseProvider from '@/components/supabase/provider';
 import { createServerClient } from '@/utils/supabase/server';
 import type { Database, Profile } from '@/utils/supabase/types';
 import type { SupabaseClient } from '@supabase/auth-helpers-nextjs';
-import Footer from '@/components/ui/Footer/Footer';
 import ProfileService from '@/utils/supabase/services/profile';
 import Banner from '@/components/ui/Banner';
 import ModalBannerCodeClient from '@/components/ui/ModalBannerCode/ModalBannerCodeClient';
 
 import dynamic from 'next/dynamic';
 import ProfileFormModal from '@/components/ui/ProfileFormModal';
+import DashboardLayout from '@/components/DashboardLayout';
 
 const ChatWindow = dynamic(() => import('@/components/ui/ChatWindow'), { ssr: false });
 
@@ -28,9 +29,8 @@ declare global {
 }
 
 const { title, description, ogImage } = {
-  title: 'Panomos - Build your own feature-rich community',
-  description:
-    'A launchpad for dev tools, built by developers for developers, open source, and fair.',
+  title: 'PanBox - Build your own feature-rich community',
+  description: 'Level up your Polkadot career!',
   ogImage: 'https://devhunt.org/devhuntog.png?v=2',
 };
 
@@ -68,7 +68,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const profileNoCache = user ? await profileService.getByIdWithNoCache(user?.id) : null;
 
   return (
-    <html lang="en" className="bg-slate-900">
+    <html lang="en" className="bg-gray-900">
       <head>
         <meta httpEquiv="Content-Language" content="en" />
         <meta property="og:locale" content="en_US" />
@@ -81,17 +81,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body className={inter.className}>
         <main>
-          <ChatWindow />
           <SupabaseProvider user={profile as Profile} session={session}>
             <SupabaseListener serverAccessToken={session?.access_token} />
             <ProfileFormModal
               isModalOpen={user ? (profileNoCache?.social_url == null ? true : false) : false}
             />
             {/* <Banner /> */}
-            <Navbar />
             <ModalBannerCodeClient />
-            {children}
-            <Footer />
+            <DashboardLayout>{children}</DashboardLayout>
           </SupabaseProvider>
         </main>
       </body>

@@ -60,11 +60,11 @@ export default async function Category({
   return (
     <section className="max-w-3xl mt-20 mx-auto px-4 md:px-8">
       <div className="flex flex-wrap items-center gap-2 w-full text-sm mb-4">
-        <a className="text-pink-500 hover:text-pink-400 duration-200" href="/">
+        <a className="text-green-500 hover:text-green-400 duration-200" href="/">
           Home
         </a>
-        <ChevronRightIcon className="w-4 h-4 text-slate-500" />
-        <Link className="text-pink-500 hover:text-pink-400 duration-200" href="/blog/">
+        <ChevronRightIcon className="w-4 h-4 text-gray-500" />
+        <Link className="text-green-500 hover:text-green-400 duration-200" href="/blog/">
           Blog
         </Link>
       </div>

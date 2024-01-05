@@ -32,7 +32,7 @@ export default ({
         {...props}
         {...validate}
         value={value}
-        className={`pr-3 pl-12 py-2 appearance-none rounded-lg text-sm bg-slate-800 text-slate-300 outline-none ${mergeTW(
+        className={`pr-3 pl-12 py-2 appearance-none rounded-lg text-sm bg-graydark text-gray-300 outline-none ${mergeTW(
           className
         )}`}>
         <option value="" disabled selected>

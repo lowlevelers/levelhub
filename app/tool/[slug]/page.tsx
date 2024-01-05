@@ -142,7 +142,7 @@ export default async function Page({
           <ProductLogo src={product?.logo_url} alt={product?.slogan as string} />
           <WinnerBadge weekRank={(weekAward as any)?.rank} isLaunchEnd={isLaunchEnd} />
         </div>
-        <h1 className="mt-3 text-slate-100 font-medium">{product?.name}</h1>
+        <h1 className="mt-3 text-gray-100 font-medium">{product?.name}</h1>
         <Title className="mt-1">{product?.slogan}</Title>
         <div className="text-sm mt-3 flex items-center gap-x-3">
           <LinkShiny
@@ -165,7 +165,7 @@ export default async function Page({
       </div>
       <Tabs
         ulClassName="container-custom-screen"
-        className="mt-20 sticky pt-2 top-[3.75rem] z-10 bg-slate-900">
+        className="mt-20 sticky pt-2 top-[3.75rem] z-10 bg-gray-900">
         {tabs.map((item, idx) => (
           <TabLink hash={item.hash} key={idx}>
             {item.name}
@@ -178,14 +178,14 @@ export default async function Page({
             <div className="absolute top-0 w-full h-[100px] opacity-40 bg-[linear-gradient(180deg,_rgba(124,_58,_237,_0.06)_0%,_rgba(72,_58,_237,_0)_100%)]"></div>
             <div className="relative container-custom-screen mt-12">
               <div
-                className="prose text-slate-100 whitespace-pre-wrap"
+                className="prose text-gray-100 whitespace-pre-wrap"
                 // Use DOMPurify method for XSS sanitizeration
                 dangerouslySetInnerHTML={{
                   __html: DOMPurify.sanitize(product?.description as string),
                 }}></div>
               {product?.product_categories.length ? (
                 <div className="mt-6 flex flex-wrap gap-3 items-center">
-                  <h3 className="text-sm text-slate-400 font-medium">Classified in</h3>
+                  <h3 className="text-sm text-gray-400 font-medium">Classified in</h3>
                   <TagsGroup>
                     {product?.product_categories.map((pc: any, idx) => (
                       <Tag href={`/tools/${pc.name.toLowerCase().replaceAll(' ', '-')}`}>
@@ -227,12 +227,12 @@ export default async function Page({
         />
         {/* Keep doing based on Product interface */}
         <div className="container-custom-screen" id="details">
-          <h3 className="text-slate-50 font-medium">About this launch</h3>
-          <p className="text-slate-300 mt-6">
+          <h3 className="text-gray-50 font-medium">About this launch</h3>
+          <p className="text-gray-300 mt-6">
             {product.name} {isLaunchStarted ? 'was launched by' : 'by'}{' '}
             <Link
               href={`/@${owned?.username}`}
-              className="text-pink-500 hover:text-pink-400 duration-150">
+              className="text-green-500 hover:text-green-400 duration-150">
               {owned?.full_name}
             </Link>{' '}
             {isLaunchStarted ? ' ' : 'Will be launched in '}
@@ -255,7 +255,7 @@ export default async function Page({
           ) : null}
         </div>
         <div className="container-custom-screen" id="launches">
-          <h3 className="text-slate-50 font-medium">Trending launches</h3>
+          <h3 className="text-gray-50 font-medium">Trending launches</h3>
           <TrendingToolsList />
         </div>
       </div>

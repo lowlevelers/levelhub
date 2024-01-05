@@ -102,8 +102,8 @@ export default function Auth({ onLogout }: { onLogout?: () => void }) {
         <div className="text-center p-2">
           <div className="">
             <Brand w="130" h="40" className="mx-auto" />
-            <h1 className="text-slate-50 text-lg font-semibold">Log in to your account</h1>
-            <p className="text-slate-300">Let's explore together, the legit way!</p>
+            <h1 className="text-gray-50 text-lg font-semibold">Log in to your account</h1>
+            <p className="text-gray-300">Let's explore together, the legit way!</p>
           </div>
           <GithubProvider
             isLoad={isGithubAuthLoad}

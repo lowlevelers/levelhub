@@ -17,7 +17,7 @@ function RenderDatePart({ number, letter }: { number: number; letter: string }) 
 
 function DatePartSkeleton() {
   return (
-    <div className="rounded-md p-[1px] bg-slate-700 animate-pulse">
+    <div className="rounded-md p-[1px] bg-gray-700 animate-pulse">
       <div className="w-9 h-7"></div>
     </div>
   );
@@ -92,25 +92,25 @@ function RenderCountdown() {
 
 export default () => {
   return (
-    <div className="flex border rounded-xl border-slate-800 bg-slate-800 p-5 flex-col gap-1 md:gap-2 items-center justify-end">
-      <div className="px-2 flex flex-col items-center text-center gap-3">
+    <div className="flex border rounded-xl border-gray-800 bg-graydark p-5 flex-col gap-1 md:gap-2 items-center justify-end">
+      <div className="px-2 flex items-center text-center gap-3">
         <p>
-          <span className="text-2xl font-bold mb-4 text-pink-500">Vote Closing In: </span>
+          <span className="text-2xl font-bold mb-4 text-green-500">Vote ends in: </span>
         </p>
-        <div className="text-slate-100 flex gap-1 items-center">
+        <div className="text-gray-100 flex gap-1 items-center">
           <RenderCountdown />
         </div>
-        <div className="max-w-lg text-slate-400">
-          Winners get a free shout-out in our newsletter, social media mentions, a winner's badge
-          and more perks.
-          <div className="inline sm:block">
-            {' '}
-            See details{' '}
-            <a className="underline transition-opacity hover:text-scale-1200" href="/the-story">
-              here
-            </a>
-            .
-          </div>
+      </div>
+      <div className="max-w-lg text-gray-400">
+        Winners get a free shout-out in our newsletter, social media mentions, a winner's badge and
+        more perks.
+        <div className="inline sm:block">
+          {' '}
+          See details{' '}
+          <a className="underline transition-opacity hover:text-scale-1200" href="/the-story">
+            here
+          </a>
+          .
         </div>
       </div>
     </div>

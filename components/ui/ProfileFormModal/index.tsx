@@ -9,7 +9,7 @@ export default ({ isModalOpen }: { isModalOpen: boolean }) => {
       variant="custom"
       isActive={isModalOpen}
       onCancel={() => {}}
-      className="max-w-2xl bg-slate-900">
+      className="max-w-2xl bg-gray-900">
       <ProfileFormModal />
     </Modal>
   );

@@ -87,8 +87,8 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
         <UserProfileInfo profile={profile} />
         {tools && tools?.length > 0 ? (
           <div>
-            <h3 className="font-medium text-slate-50">Launches</h3>
-            <ul className="mt-3 divide-y divide-slate-800/60">
+            <h3 className="font-medium text-gray-50">Launches</h3>
+            <ul className="mt-3 divide-y divide-gray-800/60">
               {tools.map((tool, idx) => (
                 <ToolCardList key={idx} tool={tool as ITool} />
               ))}
@@ -99,8 +99,8 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
         )}
         {votedTools && votedTools?.length > 0 ? (
           <div>
-            <h3 className="font-medium text-slate-50">{votedTools?.length} Upvotes</h3>
-            <ul className="mt-3 divide-y divide-slate-800/60">
+            <h3 className="font-medium text-gray-50">{votedTools?.length} Upvotes</h3>
+            <ul className="mt-3 divide-y divide-gray-800/60">
               {votedTools.map((tool: any, idx: number) => (
                 <li key={idx} className="py-3">
                   <ToolCard tool={tool} href={`/tool/${tool.slug}`}>
@@ -119,7 +119,7 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
                     </div>
                     <div className="flex-1 self-center flex justify-end">
                       <Votes
-                        className="text-pink-500"
+                        className="text-green-500"
                         count={tool.votes_count}
                         productId={tool?.id}
                         launchDate={tool.launch_date}
@@ -136,7 +136,7 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
         )}
         {activity && activity?.length > 0 ? (
           <div>
-            <h3 className="font-medium text-slate-50">Activity</h3>
+            <h3 className="font-medium text-gray-50">Activity</h3>
             <Comments className="mt-8">
               {(activity as IComment[]).map((item: IComment, idx) => (
                 <Comment key={idx} className="gap-4 sm:gap-6">
@@ -147,12 +147,12 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
                       <CommentDate className="mt-1">
                         Commented {moment(item.created_at).format('LL')}
                       </CommentDate>
-                      <CommentContext className="mt-3 text-slate-400 line-clamp-2">
+                      <CommentContext className="mt-3 text-gray-400 line-clamp-2">
                         {item.content}
                       </CommentContext>
                     </Link>
                     <ToolCardLink
-                      className="mt-3 border border-slate-800 px-2 sm:px-4"
+                      className="mt-3 border border-gray-800 px-2 sm:px-4"
                       href={'/tool/' + item.products.slug}>
                       <Link href={'/tool/' + item.products.slug}>
                         <Logo
@@ -190,7 +190,7 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
         )}
 
         <div>
-          <h3 className="font-medium text-slate-50">Trending tools</h3>
+          <h3 className="font-medium text-gray-50">Trending tools</h3>
           <TrendingToolsList />
         </div>
       </div>

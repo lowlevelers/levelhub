@@ -8,7 +8,7 @@ export const CommentUserName = ({
   className?: string;
   children?: ReactNode;
 }) => (
-  <span className={mergeTW(`block text-sm text-slate-200 font-medium ${className}`)}>
+  <span className={mergeTW(`block text-sm text-gray-200 font-medium ${className}`)}>
     {children}
   </span>
 );

@@ -7,6 +7,4 @@ export const StatCountItem = ({
 }: {
   children: ReactNode;
   className?: string;
-}) => (
-  <span className={mergeTW(`text-lg text-slate-100 font-medium ${className}`)}>{children}</span>
-);
+}) => <span className={mergeTW(`text-lg text-gray-100 font-medium ${className}`)}>{children}</span>;
