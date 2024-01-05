@@ -125,7 +125,7 @@ export default ({ href, tool, close }: { href: string; tool: ProductType; close:
           <div className="container-custom-screen pt-4 pb-10">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-x-2 py-2 px-4 text-gray-50 border border-gray-700 rounded-lg hover:bg-graydark duration-150">
+              className="flex items-center gap-x-2 py-2 px-4 text-gray-50 border border-gray-700 rounded-lg hover:bg-slate-500 duration-150">
               <IconArrowLongLeft />
               Go back
             </button>

@@ -38,7 +38,7 @@ export default ({ productId, owner }: { productId: number; owner: Profile }) => 
                       alt={item.full_name as string}
                     />
                     <Avatar.Fallback
-                      className="flex items-center justify-center text-gray-300 h-full w-full bg-graydark text-[15px] font-medium rounded-xl"
+                      className="flex items-center justify-center text-gray-300 h-full w-full bg-slate-500 text-[15px] font-medium rounded-xl"
                       delayMs={600}>
                       {item.full_name?.slice(0, 2).toUpperCase()}
                     </Avatar.Fallback>

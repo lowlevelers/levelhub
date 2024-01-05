@@ -45,7 +45,7 @@ export default ({ onLogout, session }: Props) => {
         )}
       </button>
       <ul
-        className={`bg-graydark top-14 right-0 absolute rounded-lg w-52 shadow-md space-y-0 overflow-hidden ${
+        className={`bg-slate-500 top-14 right-0 absolute rounded-lg w-52 shadow-md space-y-0 overflow-hidden ${
           state ? '' : 'hidden'
         }`}>
         {navigation.map((item, idx) => (

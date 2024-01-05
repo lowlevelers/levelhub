@@ -53,7 +53,7 @@ export default ({ className, categories = [], setCategory = () => [] }: Props) =
         {categories.map((item, idx) => (
           <li
             key={idx}
-            className="flex-none inline-flex items-center px-3 py-2 bg-graydark rounded-lg font-medium text-xs text-gray-300">
+            className="flex-none inline-flex items-center px-3 py-2 bg-slate-500 rounded-lg font-medium text-xs text-gray-300">
             {item.name}
             <button onClick={() => setCategory(categories.filter((_, i) => i !== idx))}>
               <IconXmark className="w-3 h-3 ml-2" />
@@ -74,7 +74,7 @@ export default ({ className, categories = [], setCategory = () => [] }: Props) =
         </li>
       </ul>
       {isActive && (
-        <div className="absolute z-10 top-14 w-full rounded-lg bg-graydark shadow-md border border-gray-800 text-sm text-gray-400">
+        <div className="absolute z-10 top-14 w-full rounded-lg bg-slate-500 shadow-md border border-gray-800 text-sm text-gray-400">
           <div className="p-2">
             {value ? (
               newItems.length > 0 ? (

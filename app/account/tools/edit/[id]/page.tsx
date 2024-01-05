@@ -340,7 +340,7 @@ export default () => {
             description="Setting the perfect launch week is essential to make a splash in the dev world.">
             <div>
               <ul className="text-sm text-gray-300">
-                <li className="p-2 rounded-lg border border-gray-800 bg-graydark/50">
+                <li className="p-2 rounded-lg border border-gray-800 bg-slate-500/50">
                   The launch date is <b>{moment(getValues('launch_date')).format('LL')}</b> Please{' '}
                   <a
                     href="https://twitter.com/johnrushx"

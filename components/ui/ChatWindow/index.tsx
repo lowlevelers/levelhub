@@ -30,7 +30,7 @@ export default () => {
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content className="mr-4 mb-4 relative z-20">
-            <div className="p-4 flex flex-wrap items-start gap-3 shadow-md rounded-lg bg-graydark border-gray-800">
+            <div className="p-4 flex flex-wrap items-start gap-3 shadow-md rounded-lg bg-slate-500 border-gray-800">
               <Image
                 src={johnPicture}
                 width={32}

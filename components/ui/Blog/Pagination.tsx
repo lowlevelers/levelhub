@@ -8,7 +8,7 @@ const Pagination: React.FC<PaginationProps> = ({ slug, pageNumber, lastPage }) =
   return (
     <div className="flex mt-12 items-center justify-center text-sm text-gray-300">
       <a
-        className={`bg-graydark hover:bg-gray-700 duration-200 rounded-md px-2 py-1 w-[90px] text-center ${
+        className={`bg-slate-500 hover:bg-gray-700 duration-200 rounded-md px-2 py-1 w-[90px] text-center ${
           pageNumber ? '' : 'pointer-events-none opacity-50'
         }`}
         href={pageNumber ? `${slug}?page=${pageNumber}` : '#'}>
@@ -18,7 +18,7 @@ const Pagination: React.FC<PaginationProps> = ({ slug, pageNumber, lastPage }) =
         {pageNumber + 1} / {lastPage}
       </div>
       <a
-        className={`bg-graydark hover:bg-gray-700 duration-200 rounded-md px-2 py-1 w-[90px] text-center ${
+        className={`bg-slate-500 hover:bg-gray-700 duration-200 rounded-md px-2 py-1 w-[90px] text-center ${
           pageNumber >= lastPage - 1 ? 'pointer-events-none opacity-30' : ''
         }`}
         href={pageNumber >= lastPage - 1 ? '#' : `${slug}?page=${pageNumber + 2}`}>

@@ -110,11 +110,11 @@ export default function Auth({ onLogout }: { onLogout?: () => void }) {
             onClick={handleGitHubLogin}
             className="w-full justify-center mt-4"
           />
-          <GoogleProvider
+          {/* <GoogleProvider
             isLoad={isGoogleAuthLoad}
             onClick={handleGoogleLogin}
             className="w-full justify-center mt-2"
-          />
+          /> */}
         </div>
       </Modal>
     </div>

@@ -33,7 +33,7 @@ const ArticleCard: React.FC<ArticleProps> = ({ article }) => {
             <a
               key={ix}
               href={`/blog/tag/${t.slug}`}
-              className="bg-graydark hover:bg-gray-700 px-2 py-1 rounded text-xs text-gray-400 font-semibold">
+              className="bg-slate-500 hover:bg-gray-700 px-2 py-1 rounded text-xs text-gray-400 font-semibold">
               {t.title}
             </a>
           ))}

@@ -95,7 +95,7 @@ export default async function Article({ params: { slug } }: { params: { slug: st
           <a
             key={ix}
             href={`/blog/tag/${t.slug}`}
-            className="bg-graydark hover:bg-gray-700 px-2 py-1 rounded text-xs text-gray-400 font-semibold">
+            className="bg-slate-500 hover:bg-gray-700 px-2 py-1 rounded text-xs text-gray-400 font-semibold">
             {t.title}
           </a>
         ))}

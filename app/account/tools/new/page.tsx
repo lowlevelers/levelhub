@@ -138,6 +138,7 @@ export default () => {
   };
 
   const onSubmit: SubmitHandler<Inputs> = async data => {
+    console.log(data);
     if (validateImages() && (await validateToolName())) {
       const {
         tool_name,
@@ -152,7 +153,7 @@ export default () => {
       const categoryIds = categories.map(item => item.id);
       setLaunching(true);
 
-      const launchWeek = parseInt(week);
+      const launchWeek = parseInt(week as any);
 
       const currentWeek = await productService.getWeekNumber(new Date(), 2);
       const currentYear = new Date().getFullYear();
@@ -415,7 +416,7 @@ export default () => {
                 type="submit"
                 isLoad={isLaunching}
                 className="w-full hover:bg-green-400 ring-offset-2 ring-green-500 focus:ring">
-                Schedule my Dev Tool for Launch
+                Schedule my BUILD for Launch
               </Button>
               <p className="text-sm text-gray-500 mt-2">* no worries, you can change it later</p>
             </div>

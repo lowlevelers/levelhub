@@ -76,13 +76,13 @@ export default ({
         {user ? (
           <Button
             isLoad={isLoad}
-            className={`text-sm bg-graydark hover:bg-gray-700 ${
+            className={`text-sm bg-slate-500 hover:bg-gray-700 ${
               isLoad ? 'pointer-events-none opacity-60' : ''
             }`}>
             Comment
           </Button>
         ) : (
-          <LinkShiny href="/login" className="text-sm bg-graydark hover:bg-gray-700">
+          <LinkShiny href="/login" className="text-sm bg-slate-500 hover:bg-gray-700">
             Login to comment
           </LinkShiny>
         )}

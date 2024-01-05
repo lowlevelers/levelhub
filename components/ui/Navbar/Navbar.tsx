@@ -176,7 +176,7 @@ export default () => {
       </nav>
       {isBannerActive && !isLoggedin ? (
         <div className="animate-bottom-bannner fixed bottom-10 inset-x-0 z-30 max-w-xl mx-auto px-4">
-          <div className=" flex items-center gap-x-3 bg-graydark p-3 rounded-lg">
+          <div className=" flex items-center gap-x-3 bg-slate-500 p-3 rounded-lg">
             <div className="flex items-center justify-center rounded-full w-12 h-12 border-gray-700 bg-gray-900/70 text-gray-300">
               <BellAlertIcon className="w-6 h-6" />
             </div>

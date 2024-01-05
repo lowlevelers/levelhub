@@ -78,7 +78,7 @@ export default function LaunchPadScreen() {
           {products.map((product, idx) => (
             <ToolCardEffect key={idx} tool={product as ProductType} />
           ))}
-          <div className="absolute -inset-x-2 -inset-y-0 -z-20 bg-graydark/40 rounded-xl sm:-inset-x-3"></div>
+          <div className="absolute -inset-x-2 -inset-y-0 -z-20 bg-slate-500/40 rounded-xl sm:-inset-x-3"></div>
         </ul>
       </LoadableContainer>
     );
@@ -104,7 +104,7 @@ export default function LaunchPadScreen() {
 
   const NoProductsLaunchedPlaceholder = () => {
     return (
-      <div className="flex mt-5 border rounded-xl border-gray-800 bg-graydark p-5 flex-col gap-1 md:gap-2 items-center justify-end">
+      <div className="flex mt-5 border rounded-xl border-gray-800 bg-slate-500 p-5 flex-col gap-1 md:gap-2 items-center justify-end">
         <div className="max-w-lg text-gray-400">
           <div>😢 There is no products / ideas submitted</div>
           <Link

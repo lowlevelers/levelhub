@@ -17,7 +17,7 @@ export default () => (
     <p className="text-gray-400">No products found for this search term.</p>
     <a
       href="/"
-      className="inline-block bg-graydark/70 hover:bg-graydark rounded-md px-4 py-2 duration-150">
+      className="inline-block bg-slate-500/70 hover:bg-slate-500 rounded-md px-4 py-2 duration-150">
       Find more tools
     </a>
   </div>

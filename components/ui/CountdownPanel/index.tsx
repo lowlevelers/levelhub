@@ -92,7 +92,7 @@ function RenderCountdown() {
 
 export default () => {
   return (
-    <div className="flex border rounded-xl border-gray-800 bg-graydark p-5 flex-col gap-1 md:gap-2 items-center justify-end">
+    <div className="flex border rounded-xl border-gray-800 bg-slate-500 p-5 flex-col gap-1 md:gap-2 items-center justify-end">
       <div className="px-2 flex items-center text-center gap-3">
         <p>
           <span className="text-2xl font-bold mb-4 text-green-500">Vote ends in: </span>

@@ -129,7 +129,7 @@ export default ({ comment, productId }: Props) => {
               <Button
                 type="button"
                 onClick={handleCancel}
-                className="text-xs bg-graydark hover:bg-gray-700">
+                className="text-xs bg-slate-500 hover:bg-gray-700">
                 Cancel
               </Button>
               <Button

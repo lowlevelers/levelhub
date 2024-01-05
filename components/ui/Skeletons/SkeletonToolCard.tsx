@@ -10,7 +10,7 @@ import ToolViews from '@/components/ui/ToolCard/Tool.views';
 
 export default () => {
   return (
-    <li className="py-3 animate-pulse bg-graydark rounded-xl p-4">
+    <li className="py-3 animate-pulse bg-slate-500 rounded-xl p-4">
       <div className="py-4 rounded-2xl flex items-start">
         <div className="w-full flex items-center gap-x-4">
           <div className="flex-none rounded-full w-16 h-16 bg-gray-700"></div>

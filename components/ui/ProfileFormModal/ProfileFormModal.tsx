@@ -168,7 +168,7 @@ function ProfileFormModal() {
             <Button
               isLoad={isLoad}
               className="flex justify-center w-full ring-offset-2 ring-green-500 focus:ring-2 hover:bg-green-400">
-              {isLoad ? 'Updating' : 'save'}
+              {isLoad ? 'Updating' : 'Save your profile'}
             </Button>
           </div>
         </form>

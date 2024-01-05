@@ -5,6 +5,7 @@ import { IconNewsletterEnvolpe } from '@/components/Icons';
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { FormEventHandler, useState } from 'react';
 import axios from 'axios';
+import Brand from './Brand/Brand';
 
 function isValidEmail(email: string) {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -57,10 +58,12 @@ export default ({
       <div className="text-center">
         <div className="absolute w-full -top-16"></div>
         <form onSubmit={handleSubmit} className="relative">
-          <IconNewsletterEnvolpe />
-          <h3 className="text-gray-50 font-semibold mt-6">Subscribe to DevHunt</h3>
-          <p className="text-gray-300 mt-2">Get weekly email with best new dev tools</p>
-          {!isSubscribingDone ? (
+          <Brand w="180" h="50" className="mx-auto" />
+          <h3 className="text-gray-50 font-semibold mt-6">Subscribe to LevelUp!</h3>
+          <p className="text-gray-300 mt-2">
+            Learn about latest announcement & quests of the community
+          </p>
+          {/* {!isSubscribingDone ? (
             <Input
               required
               autoFocus
@@ -74,6 +77,9 @@ export default ({
           <span className="block mt-3 text-red-500 text-sm text-left">{personalEMailError}</span>
           <Button isLoad={isLoad} className="w-full mt-3 hover:bg-green-400 active:scale-[0.99]">
             {isSubscribingDone ? <CheckIcon className="w-6 h-6 mx-auto" /> : 'Subscribe'}
+          </Button> */}
+          <Button isLoad={isLoad} className="w-full mt-3 hover:bg-green-400 active:scale-[0.99]">
+            Coming Soon.
           </Button>
         </form>
       </div>

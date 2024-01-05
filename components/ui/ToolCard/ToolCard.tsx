@@ -64,7 +64,7 @@ export default ({
           )}>
           {children}
         </div>
-        <div className="absolute -z-10 -inset-2 rounded-2xl group-hover:bg-graydark/60 opacity-0 group-hover:opacity-100 duration-150 sm:-inset-3"></div>
+        <div className="absolute -z-10 -inset-2 rounded-2xl group-hover:bg-slate-500/60 opacity-0 group-hover:opacity-100 duration-150 sm:-inset-3"></div>
       </div>
       {isToolViewActive ? (
         <ToolViewModal close={closeViewModal} tool={toolState as ProductType} href={href} />
