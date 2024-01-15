@@ -5,21 +5,21 @@ import mergeTW from '@/utils/mergeTW';
 import { MouseEvent, ReactNode, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import QuestViewModal from '../QuestViewModal';
-import { GithubIssueNode } from '@/utils/github/models';
+import { GithubRepositoryIssue } from '@/utils/github/models';
 
 export default ({
   href,
   className,
-  issueNode,
+  issue,
   children,
 }: {
   href: string;
   className?: string;
-  issueNode: GithubIssueNode;
+  issue: GithubRepositoryIssue;
   children?: ReactNode;
 }) => {
   const [isQuestViewActive, setQuestViewActive] = useState(false);
-  const [repositoryIssue, setRepositoryIssue] = useState(issueNode);
+  const [repositoryIssue, setRepositoryIssue] = useState(issue);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -34,7 +34,7 @@ export default ({
     e.preventDefault();
     setTimeout(() => document.getElementById('nprogress')?.classList.add('hidden'), 200);
 
-    setRepositoryIssue(issueNode);
+    setRepositoryIssue(issue);
     window.history.pushState({ href }, '', href);
     setQuestViewActive(true);
     document.body.classList.add('overflow-hidden');

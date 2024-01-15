@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -38,12 +39,18 @@ export default () => {
   });
 
   const pathname = usePathname();
-  const { isLoggedin, session, supabase, handleLogout } = useSupabaseAuth();
+  const { isLoggedin, session, handleLogout } = useSupabaseAuth();
 
   const navigation = [
+    // {
+    //   title: 'Submit your Project / Idea',
+    //   path: isLoggedin ? '/account/tools' : '/login',
+    //   className:
+    //     'bg-green-500 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
+    // },
     {
-      title: 'Submit your Project / Idea',
-      path: isLoggedin ? '/account/tools' : '/login',
+      title: 'Submit a new issue on Github',
+      path: 'https://github.com/lowlevelers/lowlevelers.com/issues/new/choose',
       className:
         'bg-green-500 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
     },
@@ -74,12 +81,12 @@ export default () => {
         <div className="custom-screen items-center py-3 lg:flex">
           <div className="flex items-center justify-between lg:block">
             <div className="flex gap-x-4 items-center lg:hidden">
-              <button
+              {/* <button
                 aria-label="Search button"
                 onClick={() => setCommandActive(true)}
                 className="text-gray-400 hover:text-gray-200">
                 <IconSearch />
-              </button>
+              </button> */}
               <ButtonMenu isActive={isActive} setActive={() => setActive(!isActive)} />
               <div className="lg:hidden">
                 <AvatarMenu session={session} onLogout={handleLogout} />
@@ -92,7 +99,7 @@ export default () => {
             }`}>
             <div className="p-4 px-4 mt-8 text-sm bg-gray-900 rounded-lg lg:block lg:mt-0 lg:p-0 lg:bg-transparent">
               <ul className="justify-end items-center space-y-6 text-gray-400 lg:flex lg:space-x-6 lg:space-y-0">
-                {!isLoggedin ? (
+                {/* {!isLoggedin ? (
                   <li>
                     <button
                       onClick={() => setNewsletterModalActive(true)}
@@ -145,7 +152,7 @@ export default () => {
                       </div>
                     </div>
                   </div>
-                </li>
+                </li> */}
                 {navigation.map((item, idx) => {
                   return (
                     <li key={idx} className="hover:text-gray-200">
@@ -155,14 +162,14 @@ export default () => {
                     </li>
                   );
                 })}
-                <li className="hidden lg:block">
+                {/* <li className="hidden lg:block">
                   <button
                     aria-label="Search button"
                     onClick={() => setCommandActive(true)}
                     className="hover:text-gray-200">
                     <IconSearch />
                   </button>
-                </li>
+                </li> */}
                 <li className="hidden w-px h-6 bg-gray-700 lg:block"></li>
                 <li
                   className={`space-y-3 items-center gap-x-6 lg:flex lg:space-y-0 ${
@@ -175,7 +182,7 @@ export default () => {
           </div>
         </div>
       </nav>
-      {isBannerActive && !isLoggedin ? (
+      {/* {isBannerActive && !isLoggedin ? (
         <div className="animate-bottom-bannner fixed bottom-10 inset-x-0 z-30 max-w-xl mx-auto px-4">
           <div className=" flex items-center gap-x-3 bg-slate-500 p-3 rounded-lg">
             <div className="flex items-center justify-center rounded-full w-12 h-12 border-gray-700 bg-gray-900/70 text-gray-300">
@@ -201,8 +208,8 @@ export default () => {
         </div>
       ) : (
         ''
-      )}
-      <NewsletterModal isActive={isNewsletterModalActive} closeModal={setNewsletterModalActive} />
+      )} */}
+      {/* <NewsletterModal isActive={isNewsletterModalActive} closeModal={setNewsletterModalActive} /> */}
       <CommandPalette
         isCommandActive={isCommandActive}
         setCommandActive={() => {

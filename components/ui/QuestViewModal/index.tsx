@@ -1,19 +1,19 @@
 /* eslint-disable import/no-anonymous-default-export */
 'use client';
 
-import { IconVote, IconArrowTopRight, IconArrowLongLeft } from '@/components/Icons';
+import { IconArrowTopRight, IconArrowLongLeft } from '@/components/Icons';
 import LinkShiny from '@/components/ui/LinkShiny';
 import { Tabs } from '@/components/ui/TabsLink';
 import TabLink from '@/components/ui/TabsLink/TabLink';
-import { Tag, TagsGroup } from '@/components/ui/TagsGroup';
+import { TagsGroup } from '@/components/ui/TagsGroup';
 import Modal from '../Modal';
 import { useRouter } from 'next/navigation';
-import { GithubIssueNode } from '@/utils/github/models';
 import GithubAvatarList from '../GithubAvatarList';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import QuestCardLabels from '../QuestCard/QuestCardLabels';
+import { GithubRepositoryIssue } from '@/utils/github/models';
 
 export default ({
   href,
@@ -21,33 +21,18 @@ export default ({
   close,
 }: {
   href: string;
-  repositoryIssue: GithubIssueNode;
+  repositoryIssue: GithubRepositoryIssue;
   close: () => void;
 }) => {
-  const collectTotalReactionCount = (issueNode: GithubIssueNode) => {
-    const reactionList = issueNode.comments.nodes.map(node => node.reactions.totalCount);
-    return reactionList.length > 0 ? reactionList.reduce((a, b) => a + b) : 0;
-  };
-  const repositoryIssueAsignees = repositoryIssue.assignees.nodes.map(node => node.login);
-
   const router = useRouter();
-
   const tabs = [
     {
-      name: 'About product',
+      name: 'About Quest',
       sectionId: 'about',
     },
     {
       name: 'Comments',
       sectionId: 'comments',
-    },
-  ];
-
-  const stats = [
-    {
-      count: collectTotalReactionCount(repositoryIssue),
-      icon: <IconVote />,
-      label: 'Reactions',
     },
   ];
 
@@ -72,7 +57,7 @@ export default ({
             <h1 className="mt-3 text-gray-100 font-medium">{repositoryIssue.title}</h1>
             <div className="text-sm mt-3 flex items-center gap-x-3">
               <LinkShiny
-                href={repositoryIssue.id}
+                href={repositoryIssue.html_url}
                 target="_blank"
                 className="flex items-center gap-x-2">
                 View on Github
@@ -80,7 +65,7 @@ export default ({
               </LinkShiny>
             </div>
             <div className="mt-10">
-              <GithubAvatarList usernames={repositoryIssueAsignees} />
+              <GithubAvatarList users={repositoryIssue.assignees} />
             </div>
           </div>
         </div>
@@ -104,11 +89,11 @@ export default ({
                   children={repositoryIssue.body}
                   rehypePlugins={[rehypeRaw]}
                 />
-                {repositoryIssue.labels.totalCount > 0 ? (
+                {repositoryIssue.labels.length > 0 ? (
                   <div className="mt-6 flex flex-wrap gap-3 items-center">
                     <h3 className="text-sm text-gray-400 font-medium">Classified in</h3>
                     <TagsGroup>
-                      <QuestCardLabels labels={repositoryIssue.labels.nodes} />
+                      <QuestCardLabels labels={repositoryIssue.labels} />
                     </TagsGroup>
                   </div>
                 ) : (

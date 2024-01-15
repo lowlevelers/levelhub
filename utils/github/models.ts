@@ -286,6 +286,10 @@ export interface GithubLabel {
   color: string;
   createdAt: string;
   isDefault: boolean;
+  id: number;
+  url: string;
+  default: boolean;
+  description: string;
 }
 
 export interface GithubReaction {
@@ -298,57 +302,37 @@ export interface GithubComment {
   publishedAt: string; // You might want to use a Date type if applicable
 }
 
-export interface GithubAuthor {
-  avatarUrl: string;
-  login: string;
-}
-
-export interface GithubAssigneePageInfo {
-  startCursor: string | null;
-  endCursor: string | null;
-  hasNextPage: boolean;
-}
-
-export interface GithubAssignees {
-  nodes: Pick<GithubUser, 'login'>[];
-  pageInfo: GithubAssigneePageInfo;
-  totalCount: number;
-}
-
-export interface GithubIssueNode {
-  id: string;
-  title: string;
-  activeLockReason: string | null;
-  state: string;
-  stateReason: string | null;
-  closedAt: string | null; // You might want to use a Date type if applicable
-  isPinned: boolean;
-  labels: {
-    __typename: string;
-    totalCount: number;
-    nodes: GithubLabel[];
-  };
-  lastEditedAt: string | null; // You might want to use a Date type if applicable
+export type GithubRepositoryIssue = {
+  url: string;
   body: string;
-  comments: {
-    nodes: GithubComment[];
+  created_at: string;
+  repository_url: string;
+  labels_url: string;
+  comments_url: string;
+  events_url: string;
+  html_url: string;
+  id: number;
+  node_id: string;
+  number: number;
+  title: string;
+  user: GithubUser;
+  labels: GithubLabel[];
+  state: string;
+  locked: boolean;
+  assignee: GithubUser;
+  assignees: GithubUser[];
+  comments: number;
+  reactions: {
+    url: string;
+    total_count: number;
+    '+1': number;
+    '-1': number;
+    laugh: number;
+    hooray: number;
+    confused: number;
+    heart: number;
+    rocket: number;
+    eyes: number;
   };
-  author: GithubAuthor;
-  assignees: GithubAssignees;
-}
-
-export interface GithubIssueEdge {
-  node: GithubIssueNode;
-}
-
-export interface GithubIssuesData {
-  edges: GithubIssueEdge[];
-}
-
-export interface GithubRepositoryData {
-  issues: GithubIssuesData;
-}
-
-export interface GithubRepositoryResponse {
-  repository: GithubRepositoryData;
-}
+  timeline_url: string;
+};

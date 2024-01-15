@@ -1,12 +1,12 @@
-import { GithubAssignees } from '@/utils/github/models';
 import React from 'react';
 import GithubAvatarList from '../GithubAvatarList';
+import { GithubUser } from '@/utils/github/models';
 
-const QuestCardContributorAvatar = ({ assignees }: { assignees: GithubAssignees }) => {
+const QuestCardContributorAvatar = ({ assignees }: { assignees: GithubUser[] }) => {
   return (
     <div>
-      {assignees.nodes.length > 0 ? (
-        <GithubAvatarList usernames={assignees.nodes.map(asignee => asignee.login)} />
+      {assignees.length > 0 ? (
+        <GithubAvatarList users={assignees} />
       ) : (
         <ul className="max-w-4xl mx-auto gap-3 flex flex-wrap items-center">
           <li className="flex-none w-5 h-5 hover:scale-105 duration-200 sm:w-8 sm:h-8 bg-slate-600 rounded-md flex justify-center items-center">

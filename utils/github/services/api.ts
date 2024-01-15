@@ -11,24 +11,22 @@ import {
   GitHubContributionCalendar,
   GitHubUser,
   GraphData,
-  GithubRepositoryResponse,
+  GithubRepositoryIssue,
 } from '../models';
-import { GET_REPOSITORY_ISSUES_QUERY } from './gql-query';
 
 const DEFAULT_PER_PAGE = 30;
 export const GITHUB_API_TOKEN =
   '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';
 
-namespace GithubApiService {
-  export async function fetchGitHubUser(username: string): Promise<ContributionBasic> {
-    if (!GITHUB_API_TOKEN) {
-      throw new Error('Require GITHUB ACCESS TOKEN.');
-    }
+export async function fetchGitHubUser(username: string): Promise<ContributionBasic> {
+  if (!GITHUB_API_TOKEN) {
+    throw new Error('Require GITHUB ACCESS TOKEN.');
+  }
 
-    const res = await fetch('https://api.github.com/graphql', {
-      method: 'post',
-      body: JSON.stringify({
-        query: `
+  const res = await fetch('https://api.github.com/graphql', {
+    method: 'post',
+    body: JSON.stringify({
+      query: `
         {
           user(login: "${username}") {
             name
@@ -40,78 +38,67 @@ namespace GithubApiService {
           }
         }
       `,
-      }),
+    }),
+    headers: {
+      Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+      'content-type': 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`fetch error: ${res.statusText}.`);
+  }
+
+  const json: GitHubApiJson<{ user: GitHubUser | null }> = await res.json();
+
+  if (!json.data?.user) {
+    if (json.errors) {
+      const error = json.errors.at(0);
+      if (error) {
+        throw new Error(error.message);
+      }
+    }
+    throw new Error(json.message);
+  }
+
+  const { contributionsCollection, ...rest } = json.data.user;
+
+  return { contributionYears: contributionsCollection.years, ...rest };
+}
+
+export async function fetchRepositoryIssues(
+  repositoryOwner: string,
+  repositoryName: string
+): Promise<GithubRepositoryIssue[]> {
+  if (!GITHUB_API_TOKEN) {
+    throw new Error('Require GITHUB ACCESS TOKEN.');
+  }
+
+  const response = await axios.get(
+    `https://api.github.com/repos/${repositoryOwner}/${repositoryName}/issues`,
+    {
       headers: {
         Authorization: `Bearer ${GITHUB_API_TOKEN}`,
         'content-type': 'application/json',
       },
-    });
-
-    if (!res.ok) {
-      throw new Error(`fetch error: ${res.statusText}.`);
     }
+  );
 
-    const json: GitHubApiJson<{ user: GitHubUser | null }> = await res.json();
+  return response.data;
+}
 
-    if (!json.data?.user) {
-      if (json.errors) {
-        const error = json.errors.at(0);
-        if (error) {
-          throw new Error(error.message);
-        }
-      }
-      throw new Error(json.message);
-    }
-
-    const { contributionsCollection, ...rest } = json.data.user;
-
-    return { contributionYears: contributionsCollection.years, ...rest };
+export async function fetchContributionsCollection(
+  username: string,
+  year: ContributionYear
+): Promise<ContributionCalendar> {
+  if (!GITHUB_API_TOKEN) {
+    throw new Error('Require GITHUB ACCESS TOKEN.');
   }
 
-  export async function fetchRepositoryIssues(
-    repositoryOwner: string,
-    repositoryName: string
-  ): Promise<GithubRepositoryResponse> {
-    if (!GITHUB_API_TOKEN) {
-      throw new Error('Require GITHUB ACCESS TOKEN.');
-    }
-
-    const res = await fetch('https://api.github.com/graphql', {
-      method: 'post',
-      body: JSON.stringify({
-        query: GET_REPOSITORY_ISSUES_QUERY(repositoryOwner, repositoryName),
-        headers: {
-          Authorization: `Bearer ${GITHUB_API_TOKEN}`,
-          'content-type': 'application/json',
-        },
-      }),
-    });
-
-    if (!res.ok) {
-      throw new Error(`fetch error: ${res.statusText}.`);
-    }
-
-    const json: GitHubApiJson<GithubRepositoryResponse> = await res.json();
-
-    if (!json.data?.repository) {
-      throw new Error(json.message);
-    }
-
-    return { ...json.data };
-  }
-
-  export async function fetchContributionsCollection(
-    username: string,
-    year: ContributionYear
-  ): Promise<ContributionCalendar> {
-    if (!GITHUB_API_TOKEN) {
-      throw new Error('Require GITHUB ACCESS TOKEN.');
-    }
-
-    const res = await fetch('https://api.github.com/graphql', {
-      method: 'post',
-      body: JSON.stringify({
-        query: `
+  const res = await fetch('https://api.github.com/graphql', {
+    method: 'post',
+    body: JSON.stringify({
+      query: `
         {
           user(login: "${username}") {
             contributionsCollection(from: "${new Date(
@@ -130,187 +117,184 @@ namespace GithubApiService {
           }
         }
       `,
-      }),
-      headers: {
-        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
-        'content-type': 'application/json',
-      },
-    });
+    }),
+    headers: {
+      Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+      'content-type': 'application/json',
+    },
+  });
 
-    if (!res.ok) {
-      throw new Error(`fetch error: ${res.statusText}.`);
-    }
-
-    const json: GitHubApiJson<{ user: GitHubContributionCalendar | null }> = await res.json();
-
-    if (!json.data?.user) {
-      throw new Error(json.message);
-    }
-
-    const contributionCalendar = json.data.user.contributionsCollection.contributionCalendar;
-
-    return { ...contributionCalendar, year };
+  if (!res.ok) {
+    throw new Error(`fetch error: ${res.statusText}.`);
   }
 
-  export async function getRepoStargazers(repo: string, token?: string, page?: number) {
-    let url = `https://api.github.com/repos/${repo}/stargazers?per_page=${DEFAULT_PER_PAGE}`;
+  const json: GitHubApiJson<{ user: GitHubContributionCalendar | null }> = await res.json();
 
-    if (page !== undefined) {
-      url = `${url}&page=${page}`;
-    }
-    return axios.get(url, {
-      headers: {
-        Accept: 'application/vnd.github.v3.star+json',
-        Authorization: token ? `token ${token}` : '',
-        'User-Agent': 'Axios 0.21.1',
-      },
-    });
+  if (!json.data?.user) {
+    throw new Error(json.message);
   }
 
-  export async function getRepoInfo(repo: string): Promise<GitHubRepository> {
-    const { data } = await axios.get(`https://api.github.com/repos/${repo}`, {
-      headers: {
-        'User-Agent': 'Axios 0.21.1',
-      },
-    });
+  const contributionCalendar = json.data.user.contributionsCollection.contributionCalendar;
 
-    return data;
+  return { ...contributionCalendar, year };
+}
+
+export async function getRepoStargazers(repo: string, token?: string, page?: number) {
+  let url = `https://api.github.com/repos/${repo}/stargazers?per_page=${DEFAULT_PER_PAGE}`;
+
+  if (page !== undefined) {
+    url = `${url}&page=${page}`;
+  }
+  return axios.get(url, {
+    headers: {
+      Accept: 'application/vnd.github.v3.star+json',
+      Authorization: token ? `token ${token}` : '',
+      'User-Agent': 'Axios 0.21.1',
+    },
+  });
+}
+
+export async function getRepoInfo(repo: string): Promise<GitHubRepository> {
+  const { data } = await axios.get(`https://api.github.com/repos/${repo}`, {
+    headers: {
+      'User-Agent': 'Axios 0.21.1',
+    },
+  });
+
+  return data;
+}
+
+export async function getRepoStargazersCount(repo: string, token?: string) {
+  const { data } = await axios.get(`https://api.github.com/repos/${repo}`, {
+    headers: {
+      Accept: 'application/vnd.github.v3.star+json',
+      Authorization: token ? `token ${token}` : '',
+      'User-Agent': 'Axios 0.21.1',
+    },
+  });
+
+  return data.stargazers_count;
+}
+
+export async function getRepoStarRecords(repo: string, token: string, maxRequestAmount: number) {
+  const patchRes = await getRepoStargazers(repo, token);
+
+  const headerLink = patchRes.headers['link'] || '';
+
+  let pageCount = 1;
+  const regResult = /next.*&page=(\d*).*last/.exec(headerLink);
+
+  if (regResult) {
+    if (regResult[1] && Number.isInteger(Number(regResult[1]))) {
+      pageCount = Number(regResult[1]);
+    }
   }
 
-  export async function getRepoStargazersCount(repo: string, token?: string) {
-    const { data } = await axios.get(`https://api.github.com/repos/${repo}`, {
-      headers: {
-        Accept: 'application/vnd.github.v3.star+json',
-        Authorization: token ? `token ${token}` : '',
-        'User-Agent': 'Axios 0.21.1',
-      },
-    });
-
-    return data.stargazers_count;
+  if (pageCount === 1 && patchRes?.data?.length === 0) {
+    throw {
+      status: patchRes.status,
+      data: [],
+    };
   }
 
-  export async function getRepoStarRecords(repo: string, token: string, maxRequestAmount: number) {
-    const patchRes = await getRepoStargazers(repo, token);
-
-    const headerLink = patchRes.headers['link'] || '';
-
-    let pageCount = 1;
-    const regResult = /next.*&page=(\d*).*last/.exec(headerLink);
-
-    if (regResult) {
-      if (regResult[1] && Number.isInteger(Number(regResult[1]))) {
-        pageCount = Number(regResult[1]);
-      }
+  const requestPages: number[] = [];
+  if (pageCount < maxRequestAmount) {
+    requestPages.push(...utils.range(1, pageCount));
+  } else {
+    utils.range(1, maxRequestAmount).map(i => {
+      requestPages.push(Math.round((i * pageCount) / maxRequestAmount) - 1);
+    });
+    if (!requestPages.includes(1)) {
+      requestPages.unshift(1);
     }
+  }
 
-    if (pageCount === 1 && patchRes?.data?.length === 0) {
-      throw {
-        status: patchRes.status,
-        data: [],
-      };
-    }
+  const resArray = await Promise.all(
+    requestPages.map(page => {
+      return getRepoStargazers(repo, token, page);
+    })
+  );
 
-    const requestPages: number[] = [];
-    if (pageCount < maxRequestAmount) {
-      requestPages.push(...utils.range(1, pageCount));
-    } else {
-      utils.range(1, maxRequestAmount).map(i => {
-        requestPages.push(Math.round((i * pageCount) / maxRequestAmount) - 1);
-      });
-      if (!requestPages.includes(1)) {
-        requestPages.unshift(1);
-      }
-    }
+  const starRecordsMap: Map<string, number> = new Map();
 
-    const resArray = await Promise.all(
-      requestPages.map(page => {
-        return getRepoStargazers(repo, token, page);
-      })
-    );
-
-    const starRecordsMap: Map<string, number> = new Map();
-
-    if (requestPages.length < maxRequestAmount) {
-      const starRecordsData: {
-        starred_at: string;
-      }[] = [];
-      resArray.map(res => {
-        const { data } = res;
-        starRecordsData.push(...data);
-      });
-      for (let i = 0; i < starRecordsData.length; ) {
-        starRecordsMap.set(utils.getDateString(starRecordsData[i].starred_at), i + 1);
-        i += Math.floor(starRecordsData.length / maxRequestAmount) || 1;
-      }
-    } else {
-      resArray.map(({ data }, index) => {
-        if (data.length > 0) {
-          const starRecord = data[0];
-          starRecordsMap.set(
-            utils.getDateString(starRecord.starred_at),
-            DEFAULT_PER_PAGE * (requestPages[index] - 1)
-          );
-        }
-      });
-    }
-
-    const starAmount = await getRepoStargazersCount(repo, token);
-    starRecordsMap.set(utils.getDateString(Date.now()), starAmount);
-
-    const starRecords: {
-      date: string;
-      count: number;
+  if (requestPages.length < maxRequestAmount) {
+    const starRecordsData: {
+      starred_at: string;
     }[] = [];
-
-    starRecordsMap.forEach((v, k) => {
-      starRecords.push({
-        date: k,
-        count: v,
-      });
+    resArray.map(res => {
+      const { data } = res;
+      starRecordsData.push(...data);
     });
-
-    return starRecords;
-  }
-
-  export async function getRepoLogoUrl(repo: string, token?: string): Promise<string> {
-    const owner = repo.split('/')[0];
-    const { data } = await axios.get(`https://api.github.com/users/${owner}`, {
-      headers: {
-        Accept: 'application/vnd.github.v3.star+json',
-        Authorization: token ? `token ${token}` : '',
-        'User-Agent': 'Axios 0.21.1',
-      },
+    for (let i = 0; i < starRecordsData.length; ) {
+      starRecordsMap.set(utils.getDateString(starRecordsData[i].starred_at), i + 1);
+      i += Math.floor(starRecordsData.length / maxRequestAmount) || 1;
+    }
+  } else {
+    resArray.map(({ data }, index) => {
+      if (data.length > 0) {
+        const starRecord = data[0];
+        starRecordsMap.set(
+          utils.getDateString(starRecord.starred_at),
+          DEFAULT_PER_PAGE * (requestPages[index] - 1)
+        );
+      }
     });
-
-    return data.avatar_url;
   }
 
-  export async function fetchYearlyContributionByUsername(
-    year: number,
-    username: string
-  ): Promise<ContributionCalendar> {
-    try {
-      const contributionCalendar = await fetchContributionsCollection(username, year);
-      return contributionCalendar;
-    } catch (err) {
-      throw new Error('Error fetching contribution collection');
-    }
-  }
+  const starAmount = await getRepoStargazersCount(repo, token);
+  starRecordsMap.set(utils.getDateString(Date.now()), starAmount);
 
-  export async function fetchContributionCollectionsByUsername(username: string) {
-    try {
-      const githubUser = await fetchGitHubUser(username);
+  const starRecords: {
+    date: string;
+    count: number;
+  }[] = [];
 
-      const contributionCalendars = await Promise.all(
-        githubUser.contributionYears.map(year => fetchContributionsCollection(username, year))
-      );
+  starRecordsMap.forEach((v, k) => {
+    starRecords.push({
+      date: k,
+      count: v,
+    });
+  });
 
-      const data: GraphData = { ...githubUser, contributionCalendars };
-      return data;
-    } catch (err) {
-      throw new Error('Error fetching contribution collection');
-    }
+  return starRecords;
+}
+
+export async function getRepoLogoUrl(repo: string, token?: string): Promise<string> {
+  const owner = repo.split('/')[0];
+  const { data } = await axios.get(`https://api.github.com/users/${owner}`, {
+    headers: {
+      Accept: 'application/vnd.github.v3.star+json',
+      Authorization: token ? `token ${token}` : '',
+      'User-Agent': 'Axios 0.21.1',
+    },
+  });
+
+  return data.avatar_url;
+}
+
+export async function fetchYearlyContributionByUsername(
+  year: number,
+  username: string
+): Promise<ContributionCalendar> {
+  try {
+    const contributionCalendar = await fetchContributionsCollection(username, year);
+    return contributionCalendar;
+  } catch (err: any) {
+    throw new Error(err);
   }
 }
 
-export default GithubApiService;
+export async function fetchContributionCollectionsByUsername(username: string) {
+  try {
+    const githubUser = await fetchGitHubUser(username);
+
+    const contributionCalendars = await Promise.all(
+      githubUser.contributionYears.map(year => fetchContributionsCollection(username, year))
+    );
+
+    const data: GraphData = { ...githubUser, contributionCalendars };
+    return data;
+  } catch (err: any) {
+    throw new Error(err);
+  }
+}
