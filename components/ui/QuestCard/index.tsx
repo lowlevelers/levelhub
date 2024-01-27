@@ -58,7 +58,7 @@ export default ({
         <div
           onClick={handleClick}
           className={mergeTW(
-            `flex items-start py-2 px-4 bg-slate-950/50 group-hover:bg-slate-800/60 duration-150 relative cursor-pointer ${className}`
+            `flex items-start py-2 px-4 bg-stone-950/50 group-hover:bg-slate-800/60 duration-150 relative cursor-pointer ${className}`
           )}>
           {children}
         </div>

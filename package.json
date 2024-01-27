@@ -28,7 +28,6 @@
     "@supabase/supabase-js": "^2.24.0",
     "@types/mdx": "^2.0.10",
     "@types/prismjs": "^1.26.0",
-    "@usermaven/sdk-js": "^1.2.2",
     "antd": "^5.13.2",
     "axios": "^1.4.0",
     "dompurify": "^3.0.3",

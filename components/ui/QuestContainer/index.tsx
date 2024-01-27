@@ -3,14 +3,15 @@ import React, { useEffect, useState } from 'react';
 import QuestCategoriesSection from '../QuestCategoriesSection';
 import QuestCardList from '../QuestCardList';
 import { fetchRepositoryIssues } from '@/utils/github/services/api';
-import { GithubLabel, GithubRepositoryIssue } from '@/utils/github/models';
+import { GitHubRepository, GithubLabel, GithubRepositoryIssue } from '@/utils/github/models';
 import LoadableContainer from '../LoadableContainer';
 import { Skeleton } from 'antd';
 import { countExistentialObject } from '@/utils/objectUtils';
+import { GithubFilled } from '@ant-design/icons';
 
 type Props = {
-  repositoryName: string;
-  repositoryOwner: string;
+  repository: GitHubRepository;
+  questOwner?: string;
 };
 
 const collectUniqueCategories = (repositoryIssues: GithubRepositoryIssue[]) => {
@@ -25,7 +26,7 @@ const collectUniqueCategories = (repositoryIssues: GithubRepositoryIssue[]) => {
   return { uniqueCategories, categoriesCount };
 };
 
-const QuestContainer = ({ repositoryOwner, repositoryName }: Props) => {
+const QuestContainer = ({ repository, questOwner }: Props) => {
   const [repositoryIssues, setRepositoryIssues] = useState<GithubRepositoryIssue[]>([]);
   const [categories, setCategories] = useState<GithubLabel[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -34,7 +35,15 @@ const QuestContainer = ({ repositoryOwner, repositoryName }: Props) => {
     const init = async () => {
       try {
         setLoading(true);
-        const repositoryIssues = await fetchRepositoryIssues('lowlevelers', 'lowlevelers.com');
+        const fetchedRepositoryIssues = await fetchRepositoryIssues(
+          repository.owner.login,
+          repository.name
+        );
+        const repositoryIssues = questOwner
+          ? fetchedRepositoryIssues.filter(issue =>
+              issue.assignees.map(assignee => assignee.login).includes(questOwner)
+            )
+          : fetchedRepositoryIssues;
         setRepositoryIssues(repositoryIssues);
 
         const globalCategories = collectUniqueCategories(repositoryIssues);
@@ -49,34 +58,43 @@ const QuestContainer = ({ repositoryOwner, repositoryName }: Props) => {
       setLoading(false);
     };
     init();
-  }, [repositoryName, repositoryOwner]);
+  }, [repository]);
 
   return (
-    <div>
-      <div className="border-b border-gray-700 pb-4">
-        <h1 className="font-medium text-xl text-gray-50 pb-2">Quests</h1>
-        <p className="text-gray-500">
-          Collect experience and items through open-source contribution
-        </p>
+    <LoadableContainer isLoading={repositoryIssues.length === 0} loadComponent={<></>}>
+      <div className="p-7 my-5 bg-stone-950" style={{ width: '100%' }}>
+        <div className="border-b border-gray-700 pb-4">
+          <h1 className="font-medium text-md text-gray-50 pb-2">
+            {repository.name}{' '}
+            <GithubFilled
+              className="text-white"
+              style={{ cursor: 'pointer' }}
+              onClick={() =>
+                window.open(`https://github.com/${repository.owner.login}/${repository.name}`)
+              }
+            />
+          </h1>
+          <p className="text-gray-500">{repository.description}</p>
+        </div>
+        <LoadableContainer isLoading={loading} loadComponent={<Skeleton />}>
+          <QuestCategoriesSection categories={categories}>
+            {selectedCategories => (
+              <div className="mt-5">
+                {countExistentialObject(selectedCategories) > 0 ? (
+                  <QuestCardList
+                    issues={repositoryIssues.filter(issue =>
+                      issue.labels.some(label => selectedCategories[label.id])
+                    )}
+                  />
+                ) : (
+                  <QuestCardList issues={repositoryIssues} />
+                )}
+              </div>
+            )}
+          </QuestCategoriesSection>
+        </LoadableContainer>
       </div>
-      <LoadableContainer isLoading={loading} loadComponent={<Skeleton />}>
-        <QuestCategoriesSection categories={categories}>
-          {selectedCategories => (
-            <div className="mt-5">
-              {countExistentialObject(selectedCategories) > 0 ? (
-                <QuestCardList
-                  issues={repositoryIssues.filter(issue =>
-                    issue.labels.some(label => selectedCategories[label.id])
-                  )}
-                />
-              ) : (
-                <QuestCardList issues={repositoryIssues} />
-              )}
-            </div>
-          )}
-        </QuestCategoriesSection>
-      </LoadableContainer>
-    </div>
+    </LoadableContainer>
   );
 };
 

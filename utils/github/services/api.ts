@@ -66,6 +66,21 @@ export async function fetchGitHubUser(username: string): Promise<ContributionBas
   return { contributionYears: contributionsCollection.years, ...rest };
 }
 
+export async function fetchRepositories(repositoryOwner: string): Promise<GitHubRepository[]> {
+  if (!GITHUB_API_TOKEN) {
+    throw new Error('Require GITHUB ACCESS TOKEN.');
+  }
+
+  const response = await axios.get(`https://api.github.com/orgs/${repositoryOwner}/repos`, {
+    headers: {
+      Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+      'content-type': 'application/json',
+    },
+  });
+
+  return response.data;
+}
+
 export async function fetchRepositoryIssues(
   repositoryOwner: string,
   repositoryName: string

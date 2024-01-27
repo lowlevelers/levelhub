@@ -24,7 +24,7 @@ export default () => {
   ];
 
   return (
-    <footer className="mt-20 text-gray-400 bg-gray-900 px-4 py-5 max-w-screen-xl mx-auto md:px-8">
+    <footer className="mt-20 text-gray-400 px-4 py-5 max-w-screen-xl mx-auto md:px-8">
       <div className="border-t border-gray-800 pt-8">
         <div className="max-w-lg sm:mx-auto sm:text-center">
           <Brand className="sm:m-auto" />

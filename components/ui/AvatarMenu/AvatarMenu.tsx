@@ -20,7 +20,7 @@ export default ({ onLogout, session }: Props) => {
 
   const navigation = [
     { title: 'Profile', path: isLoggin ? `/@${user.username}` : '' },
-    { title: 'My tools', path: '/account/tools' },
+    // { title: 'My tools', path: '/account/tools' },
     { title: 'Edit profile', path: '/account/details' },
   ];
 
@@ -45,21 +45,21 @@ export default ({ onLogout, session }: Props) => {
         )}
       </button>
       <ul
-        className={`bg-slate-500 top-14 right-0 absolute rounded-lg w-52 shadow-md space-y-0 overflow-hidden ${
+        className={`bg-slate-700 top-14 right-0 absolute rounded-lg w-52 shadow-md space-y-0 overflow-hidden ${
           state ? '' : 'hidden'
         }`}>
         {navigation.map((item, idx) => (
           <li key={idx}>
             <LinkItem
               href={item.path}
-              className="block w-full py-2 px-3 font-normal text-gray-300 text-left rounded-none hover:bg-gray-700">
+              className="block w-full py-2 px-3 font-normal text-gray-300 text-left rounded-none hover:bg-slate-800">
               {item.title}
             </LinkItem>
           </li>
         ))}
         <Button
           onClick={onLogout}
-          className="block w-full py-2 px-3 font-normal text-gray-300 text-left rounded-none border-t border-gray-700 bg-transparent hover:bg-gray-700">
+          className="block w-full py-2 px-3 font-normal text-gray-300 text-left rounded-none border-t border-gray-700 bg-transparent hover:bg-slate-800">
           Logout
         </Button>
       </ul>

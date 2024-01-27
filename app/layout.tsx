@@ -3,7 +3,6 @@ import './globals.css';
 import './prismjs-theme.css';
 import './satoshi.css';
 import { Inter } from 'next/font/google';
-import Script from 'next/script';
 
 import SupabaseListener from '@/components/supabase/listener';
 import SupabaseProvider from '@/components/supabase/provider';
@@ -17,12 +16,6 @@ import ProfileFormModal from '@/components/ui/ProfileFormModal';
 import DashboardLayout from '@/components/DashboardLayout';
 
 export type TypedSupabaseClient = SupabaseClient<Database>;
-
-declare global {
-  interface Window {
-    usermavenQ: any; // Replace 'any' with the appropriate type of 'usermavenQ'
-  }
-}
 
 const { title, description, ogImage } = {
   title: 'LevelUp! - Community platforms of TheLowLevelers',

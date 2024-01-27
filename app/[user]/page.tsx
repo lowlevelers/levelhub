@@ -26,6 +26,8 @@ import { createServerClient } from '@/utils/supabase/server';
 import { type Metadata } from 'next';
 import ToolCardLink from '@/components/ui/ToolCard/ToolCardLink';
 import dynamic from 'next/dynamic';
+import QuestListContainer from '@/components/ui/QuestListContainer';
+import { fetchRepositories } from '@/utils/github/services/api';
 
 const TrendingToolsList = dynamic(() => import('@/components/ui/TrendingToolsList'), {
   ssr: false,
@@ -75,6 +77,7 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
   const browserService = createBrowserClient();
   const profileService = new ProfileService(browserService);
   const profile = await profileService.getByUsername(username);
+  const repositories = await fetchRepositories('lowlevelers');
 
   if (profile) {
     const tools = await new ProductsService(browserService).getUserProductsById(profile?.id);
@@ -83,8 +86,14 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
     const votedTools = await profileService.getUserVoteTools(profile?.id);
 
     return (
-      <div className="container-custom-screen mt-10 mb-32 space-y-10">
+      <div className="mt-10 mb-32 space-y-10">
         <UserProfileInfo profile={profile} />
+        <QuestListContainer
+          containerTitle="Your quests"
+          containerDescription="Finish ongoing quests to receive reward and community experience"
+          containerRepositories={repositories}
+          questOwner="chungquantin"
+        />
         {tools && tools?.length > 0 ? (
           <div>
             <h3 className="font-medium text-gray-50">Launches</h3>

@@ -75,7 +75,7 @@ export default () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-30 bg-gray-900 border-b border-gray-800 w-full">
+      <nav className="sticky top-0 z-30 bg-stone-950 border-b border-gray-800 w-full">
         <div className="custom-screen items-center py-3 lg:flex">
           <div className="flex items-center justify-between lg:block">
             <div className="flex gap-x-4 items-center lg:hidden">
