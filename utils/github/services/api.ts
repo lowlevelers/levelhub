@@ -15,14 +15,9 @@ import {
 } from '../models';
 
 const DEFAULT_PER_PAGE = 30;
-export const GITHUB_API_TOKEN =
-  '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';
+const GITHUB_API_TOKEN = process.env.GITHUB_API_TOKEN as string | undefined;
 
 export async function fetchGitHubUser(username: string): Promise<ContributionBasic> {
-  if (!GITHUB_API_TOKEN) {
-    throw new Error('Require GITHUB ACCESS TOKEN.');
-  }
-
   const res = await fetch('https://api.github.com/graphql', {
     method: 'post',
     body: JSON.stringify({
@@ -39,10 +34,12 @@ export async function fetchGitHubUser(username: string): Promise<ContributionBas
         }
       `,
     }),
-    headers: {
-      Authorization: `Bearer ${GITHUB_API_TOKEN}`,
-      'content-type': 'application/json',
-    },
+    headers: GITHUB_API_TOKEN
+      ? {
+          Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+          'content-type': 'application/json',
+        }
+      : {},
   });
 
   if (!res.ok) {
@@ -67,15 +64,13 @@ export async function fetchGitHubUser(username: string): Promise<ContributionBas
 }
 
 export async function fetchRepositories(repositoryOwner: string): Promise<GitHubRepository[]> {
-  if (!GITHUB_API_TOKEN) {
-    throw new Error('Require GITHUB ACCESS TOKEN.');
-  }
-
   const response = await axios.get(`https://api.github.com/orgs/${repositoryOwner}/repos`, {
-    headers: {
-      Authorization: `Bearer ${GITHUB_API_TOKEN}`,
-      'content-type': 'application/json',
-    },
+    headers: GITHUB_API_TOKEN
+      ? {
+          Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+          'content-type': 'application/json',
+        }
+      : {},
   });
 
   return response.data;
@@ -85,17 +80,15 @@ export async function fetchRepositoryIssues(
   repositoryOwner: string,
   repositoryName: string
 ): Promise<GithubRepositoryIssue[]> {
-  if (!GITHUB_API_TOKEN) {
-    throw new Error('Require GITHUB ACCESS TOKEN.');
-  }
-
   const response = await axios.get(
     `https://api.github.com/repos/${repositoryOwner}/${repositoryName}/issues`,
     {
-      headers: {
-        Authorization: `Bearer ${GITHUB_API_TOKEN}`,
-        'content-type': 'application/json',
-      },
+      headers: GITHUB_API_TOKEN
+        ? {
+            Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+            'content-type': 'application/json',
+          }
+        : {},
     }
   );
 
@@ -106,10 +99,6 @@ export async function fetchContributionsCollection(
   username: string,
   year: ContributionYear
 ): Promise<ContributionCalendar> {
-  if (!GITHUB_API_TOKEN) {
-    throw new Error('Require GITHUB ACCESS TOKEN.');
-  }
-
   const res = await fetch('https://api.github.com/graphql', {
     method: 'post',
     body: JSON.stringify({
@@ -133,10 +122,12 @@ export async function fetchContributionsCollection(
         }
       `,
     }),
-    headers: {
-      Authorization: `Bearer ${GITHUB_API_TOKEN}`,
-      'content-type': 'application/json',
-    },
+    headers: GITHUB_API_TOKEN
+      ? {
+          Authorization: `Bearer ${GITHUB_API_TOKEN}`,
+          'content-type': 'application/json',
+        }
+      : {},
   });
 
   if (!res.ok) {

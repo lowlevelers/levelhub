@@ -6,8 +6,8 @@ export default class ApiService {
 
   constructor() {
     this.supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL,
-      process.env.SUPABASE_SERVICE_ROLE_KEY,
+      process.env.NEXT_PUBLIC_SUPABASE_URL as string,
+      process.env.SUPABASE_SERVICE_ROLE_KEY as string,
       {
         auth: {
           autoRefreshToken: false,
@@ -40,7 +40,7 @@ export default class ApiService {
     });
 
     if (error !== null) throw new Error(error.message);
-    const res = data.map(i => ({
+    const res = data.map((i: any) => ({
       week: i.week,
       startDate: new Date(i.start_date),
       endDate: new Date(i.end_date),
@@ -52,9 +52,9 @@ export default class ApiService {
     }));
 
     await Promise.all(
-      res.map(async i => {
+      res.map(async (i: { products: { owner_id: string; email: string | undefined }[] }) => {
         await Promise.all(
-          i.products.map(async p => {
+          i.products.map(async (p: { owner_id: string; email: string | undefined }) => {
             if (!p.owner_id) return;
             const usr = await this.supabase.auth.admin.getUserById(p.owner_id);
             p.email = usr.data.user?.email;
