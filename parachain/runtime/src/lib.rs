@@ -532,12 +532,12 @@ construct_runtime!(
 		// Council: pallet_collective::<Instance1>,
 		// TechnicalCommittee: pallet_collective::<Instance2>::{Pallet, Call, Storage, Origin<T>, Event<T>, Config<T>},
 		// TechnicalMembership: pallet_membership::<Instance1>::{Pallet, Call, Storage, Event<T>, Config<T>},
-		// Referenda: pallet_referenda::{Pallet, Call, Storage, Event<T>},
+		Referenda: pallet_referenda::{Pallet, Call, Storage, Event<T>},
 		// Treasury: pallet_treasury::{Pallet, Call, Storage, Config<T>, Event<T>},
 		// Scheduler: pallet_scheduler::{Pallet, Call, Storage, Event<T>},
-		// Whitelist: pallet_whitelist::{Pallet, Call, Storage, Event<T>},
+		Whitelist: pallet_whitelist::{Pallet, Call, Storage, Event<T>},
 		Origins: pallet_custom_origins::{Origin},
-		// ConvictionVoting: pallet_conviction_voting::{Pallet, Call, Storage, Event<T>}
+		ConvictionVoting: pallet_conviction_voting::{Pallet, Call, Storage, Event<T>}
 	}
 );
 
