@@ -219,7 +219,7 @@ export default ({ href, tool, close }: { href: string; tool: ProductType; close:
               {tool?.name} {isLaunchStarted ? 'was launched by' : 'by'}{' '}
               <Link
                 href={`/@${owner?.username}`}
-                className="text-green-500 hover:text-green-400 duration-150">
+                className="text-green-600 hover:text-green-400 duration-150">
                 {owner?.full_name}
               </Link>{' '}
               {isLaunchStarted ? ' ' : 'Will be launched in '}

@@ -232,7 +232,7 @@ export default async function Page({
             {product.name} {isLaunchStarted ? 'was launched by' : 'by'}{' '}
             <Link
               href={`/@${owned?.username}`}
-              className="text-green-500 hover:text-green-400 duration-150">
+              className="text-green-600 hover:text-green-400 duration-150">
               {owned?.full_name}
             </Link>{' '}
             {isLaunchStarted ? ' ' : 'Will be launched in '}

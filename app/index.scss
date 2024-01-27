@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+$light-theme-colors: (
+  'hash_tag_color': #00a2ea,
+  'background_color': #fefefe,
+  'primary_color': #ffffff,
+  'dark_primary_color': #f1f1f1,
+  'dark_secondary_color': #d4dae1,
+  'secondary_color': #f6f8fa,
+  'sub_secondary_color': #0a96ff,
+  'highlight_color': #4e38f6,
+  'light_highlight_color': #8678f5,
+  'dark_highlight_color': #3f09a2,
+  'text_color': rgb(0, 0, 0),
+  'dark_text_color': rgb(135, 135, 135),
+  'text_color_contrast': white,
+  'dark_text_color_contrast': rgb(189, 189, 189),
+  'secondary_text_color': rgb(50, 29, 29),
+  'color_border': #e9e9e9,
+  'error_color': #e5534b,
+  'error_text_color': #e5534b,
+  'success_color': #2bb049,
+  'success_text_color': #2bb049,
+  'logo': #00c2ff,
+);
+
+$theme-colors: $light-theme-colors;
+
+:export {
+  @each $key, $value in $theme-colors {
+    #{unquote($key)}: $value;
+  }
+}
+
+.success-btn {
+  background-color: map-get($theme-colors, success_color);
+}
+
+.error-btn {
+  background-color: map-get($theme-colors, error_color);
+  color: white;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  overflow: hidden;
+}
+
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}

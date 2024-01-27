@@ -2,10 +2,10 @@ import Modal from './Modal';
 import Input from './Input';
 import Button from './Button';
 import { IconNewsletterEnvolpe } from '@/components/Icons';
-import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { FormEventHandler, useState } from 'react';
 import axios from 'axios';
 import Brand from './Brand/Brand';
+import { CloseOutlined } from '@ant-design/icons';
 
 function isValidEmail(email: string) {
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,7 +52,7 @@ export default ({
         <button
           onClick={() => closeModal(false)}
           className="relative z-10 p-1 rounded-md text-gray-400 hover:bg-gray-700 duration-150">
-          <XMarkIcon className="w-5 h-5" />
+          <CloseOutlined className="w-5 h-5" />
         </button>
       </div>
       <div className="text-center">

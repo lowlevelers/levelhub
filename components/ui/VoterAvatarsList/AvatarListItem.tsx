@@ -13,7 +13,7 @@ const AvatarListItem = ({ item, highlighted }: { item: Profile; highlighted?: bo
             <Avatar.Root key={item.username}>
               <Avatar.Image
                 className={`w-full h-full object-cover rounded-xl ${
-                  highlighted ? 'border-2 border-green-500' : ''
+                  highlighted ? 'border-2 border-green-600' : ''
                 }`}
                 src={item.avatar_url as string}
                 alt={item.full_name as string}

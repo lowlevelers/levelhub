@@ -146,7 +146,7 @@ function Profile() {
                 disabled={isEmailTyping}
               />
               {isEmailTyping ? (
-                <span className="absolute left-0 -top-1 text-sm bg-green-500 text-green-50 border border-green-600 rounded-full px-2 py-1">
+                <span className="absolute left-0 -top-1 text-sm bg-green-600 text-green-50 border border-green-600 rounded-full px-2 py-1">
                   Please{' '}
                   <a
                     href="https://twitter.com/devhunt_"
@@ -209,7 +209,7 @@ function Profile() {
             </div>
             <Button
               isLoad={isLoad}
-              className="flex justify-center w-full ring-offset-2 ring-green-500 focus:ring-2 hover:bg-green-400">
+              className="flex justify-center w-full ring-offset-2 ring-green-600 focus:ring-2 hover:bg-green-400">
               {isLoad ? 'Updating' : 'Save changes'}
             </Button>
           </div>

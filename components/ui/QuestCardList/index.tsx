@@ -2,48 +2,46 @@
 
 import React from 'react';
 
-import Name from '@/components/ui/ToolCard/Tool.Name';
-import mergeTW from '@/utils/mergeTW';
-import { IconVote } from '@/components/Icons';
-import QuestCardContributorAvatar from './QuestCardContributorAvatar';
-import QuestCard from '../QuestCard';
 import { GithubRepositoryIssue } from '@/utils/github/models';
-import { TagsGroup } from '../TagsGroup';
-import QuestCardLabels from '../QuestCard/QuestCardLabels';
-import { shortenString } from '@/utils/stringUtils';
-import moment from 'moment';
+import QuestCompleteCard from '../QuestCard/QuestCompleteCard';
+import { Col, Row } from 'antd';
+import { useBreakpoint } from '@/hooks';
 
 const QuestCardList = ({ issues }: { issues: GithubRepositoryIssue[] }) => {
+  const { isTablet } = useBreakpoint();
   return (
     <div>
-      {issues.map(issue => (
-        <QuestCard href={''} issue={issue}>
-          <div style={{ marginRight: 5 }}>
-            <QuestCardContributorAvatar assignees={issue.assignees} />
-          </div>
-          <div className="space-y-1">
-            <Name href={issue.html_url}>{shortenString(issue.title, 100)}</Name>
-            <p className="text-gray-500" style={{ fontSize: 'smaller' }}>
-              Created at {moment.utc(issue.created_at).format('DD-MM-YYYY HH:mm')}
-            </p>
-            <div style={{ marginTop: 10 }}>
-              <TagsGroup>
-                <QuestCardLabels labels={issue.labels} />
-              </TagsGroup>
-            </div>
-          </div>
-          <div className="flex-1 self-center flex justify-end">
-            <button
-              id="vote-item"
-              className={mergeTW(
-                `px-4 py-1 text-center text-gray-400 active:scale-[1.5] duration-200 rounded-md border bg-[linear-gradient(180deg,_#1E293B_0%,_rgba(30,_41,_59,_0.00)_100%)] ${'border-gray-700 hover:text-green-300'} opacity-60`
-              )}>
-              <IconVote className="mt-1 w-4 h-4 mx-auto pointer-events-none" />
-              <span className="text-sm pointer-events-none">{issue.reactions.total_count}</span>
-            </button>
-          </div>
-        </QuestCard>
-      ))}
+      <Row style={{ width: '100%' }} className="border-b border-gray-800 px-4 py-2 bg-stone-950">
+        <Col span={16}>
+          <h3 className="text-gray-500 text-sm font-bold" style={{ fontSize: 'smaller' }}>
+            TOPIC
+          </h3>
+        </Col>
+        <Col span={isTablet ? 8 : 4}>
+          <h3 className="text-gray-500 text-sm font-bold" style={{ fontSize: 'smaller' }}>
+            CONTRIBUTORS
+          </h3>
+        </Col>
+        {!isTablet && (
+          <React.Fragment>
+            <Col span={2}>
+              <h3 className="text-gray-500 text-sm font-bold" style={{ fontSize: 'smaller' }}>
+                REACTIONS
+              </h3>
+            </Col>
+            <Col span={2}>
+              <h3 className="text-gray-500 text-sm font-bold" style={{ fontSize: 'smaller' }}>
+                REPLIES
+              </h3>
+            </Col>
+          </React.Fragment>
+        )}
+      </Row>
+      <div>
+        {issues.map(issue => (
+          <QuestCompleteCard key={issue.node_id} issue={issue} />
+        ))}
+      </div>
     </div>
   );
 };

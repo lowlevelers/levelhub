@@ -102,9 +102,6 @@ export default ({
               </div>
             </div>
           </div>
-          <div className="container-custom-screen" id="launches">
-            <h3 className="text-gray-50 font-medium">Other similar Quests</h3>
-          </div>
         </div>
       </Modal>
     </>

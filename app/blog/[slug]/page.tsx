@@ -4,8 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import HighlightCode from '@/components/ui/HighlightCode';
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { BlogClient } from 'seobot';
+import { IconChevronRight } from '@/components/Icons/IconChevronRight';
 
 async function getPost(slug: string) {
   const key = process.env.SEOBOT_API_KEY;
@@ -56,16 +56,16 @@ export default async function Article({ params: { slug } }: { params: { slug: st
     <section className="max-w-3xl mt-20 mx-auto px-4 md:px-8">
       {post.category ? (
         <div className="flex flex-wrap items-center gap-2 mb-1 w-full text-sm">
-          <a className="text-green-500 hover:text-green-400 duration-200" href="/">
+          <a className="text-green-600 hover:text-green-400 duration-200" href="/">
             Home
           </a>
-          <ChevronRightIcon className="w-4 h-4 text-gray-500" />
-          <Link className="text-green-500 hover:text-green-400 duration-200" href="/blog/">
+          <IconChevronRight className="w-4 h-4 text-gray-500" />
+          <Link className="text-green-600 hover:text-green-400 duration-200" href="/blog/">
             Blog
           </Link>
-          <ChevronRightIcon className="w-4 h-4 text-gray-500" />
+          <IconChevronRight className="w-4 h-4 text-gray-500" />
           <Link
-            className="text-green-500 hover:text-green-400 duration-200"
+            className="text-green-600 hover:text-green-400 duration-200"
             href={`/blog/category/${post.category.slug}`}>
             {post.category.title}
           </Link>
@@ -88,7 +88,7 @@ export default async function Article({ params: { slug } }: { params: { slug: st
         </div>
       ) : null}
       <div
-        className="prose prose-a:text-green-500 hover:prose-a:text-green-400 prose-invert mt-8"
+        className="prose prose-a:text-green-600 hover:prose-a:text-green-400 prose-invert mt-8"
         dangerouslySetInnerHTML={{ __html: post.html }}></div>
       <div className="flex flex-wrap gap-2 justify-start w-full">
         {(post.tags || []).map((t: any, ix: number) => (
@@ -101,7 +101,7 @@ export default async function Article({ params: { slug } }: { params: { slug: st
         ))}
       </div>
       {post.relatedPosts?.length ? (
-        <div className="mt-8 prose prose-a:no-underline hover:prose-a:underline hover:prose-a:text-green-500 prose-invert">
+        <div className="mt-8 prose prose-a:no-underline hover:prose-a:underline hover:prose-a:text-green-600 prose-invert">
           <h2>Related posts</h2>
           <ul className="text-base">
             {post.relatedPosts.map((p: any, ix: number) => (

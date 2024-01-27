@@ -56,7 +56,7 @@ export default function LaunchPadScreen() {
   function prevWeekTools(group: { products: ExtendedProduct[] }) {
     return (
       <LoadableContainer isLoading={group.products.length === 0} loadComponent={<></>}>
-        <div className="border-t border-gray-800 pt-8 mt-8 text-sm text-green-500">
+        <div className="border-t border-gray-800 pt-8 mt-8 text-sm text-green-600">
           <p className="mt-8">Past winners 👑</p>
         </div>
         <ul className="mt-3 divide-y divide-gray-800/60">
@@ -71,7 +71,7 @@ export default function LaunchPadScreen() {
   function weekWinnerTools(products: ExtendedProduct[]) {
     return (
       <LoadableContainer isLoading={products.length === 0} loadComponent={<></>}>
-        <div className="border-t border-gray-800 pt-8 mt-8 text-sm text-green-500">
+        <div className="border-t border-gray-800 pt-8 mt-8 text-sm text-green-600">
           <p className="mt-8">Past winners 👑</p>
         </div>
         <ul className="relative mt-3 divide-y divide-gray-800/60">
@@ -109,7 +109,7 @@ export default function LaunchPadScreen() {
           <div>😢 There is no products / ideas submitted</div>
           <Link
             href={isLoggedin ? '/account/tools' : '/login'}
-            className={`mt-5 block bg-green-500 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2`}>
+            className={`mt-5 block bg-green-600 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2`}>
             Submit Now 🔥
           </Link>
         </div>

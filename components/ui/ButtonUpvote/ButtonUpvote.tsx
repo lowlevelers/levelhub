@@ -113,10 +113,10 @@ export default ({
         onClick={toggleVote}
         {...props}
         onMouseMove={handleHoverEffect}
-        className={`flex items-center gap-x-3 hover:scale-[1.02] active:scale-100 ring-offset-1 ring-green-500 focus:ring-2 bg-transparent overflow-hidden relative duration-200 group ${
+        className={`flex items-center gap-x-3 hover:scale-[1.02] active:scale-100 ring-offset-1 ring-green-600 focus:ring-2 bg-transparent overflow-hidden relative duration-200 group ${
           isUpvoted
-            ? 'focus:ring-offset-0 focus:ring-0 border border-green-500 text-green-500'
-            : 'bg-green-500 hover:bg-green-600 active:bg-green-600'
+            ? 'focus:ring-offset-0 focus:ring-0 border border-green-600 text-green-600'
+            : 'bg-green-600 hover:bg-green-600 active:bg-green-600'
         } ${className}`}>
         <div className="flex items-center gap-x-2">
           <IconVote className="w-4 h-4" />
@@ -124,7 +124,7 @@ export default ({
             {votesCount}
           </span>
         </div>
-        <span className={`w-px h-4 ${isUpvoted ? 'bg-green-500' : 'bg-green-300'}`}></span>
+        <span className={`w-px h-4 ${isUpvoted ? 'bg-green-600' : 'bg-green-300'}`}></span>
         {isUpvoted ? 'Upvoted' : 'Upvote'}
         <div
           ref={shadowElRef}
@@ -138,7 +138,7 @@ export default ({
         title={modalInfo.title}
         description={modalInfo.desc}
         onCancel={() => setModalActive(false)}>
-        <LinkItem href="/" className="flex-1 block w-full text-sm bg-green-500 hover:bg-green-400">
+        <LinkItem href="/" className="flex-1 block w-full text-sm bg-green-600 hover:bg-green-400">
           Explore other tools
         </LinkItem>
         <Button

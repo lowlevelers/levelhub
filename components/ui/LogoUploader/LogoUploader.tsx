@@ -22,7 +22,7 @@ export default ({
           htmlFor="logo-upload"
           className="relative flex-none cursor-pointer w-24 h-24 rounded-full border border-gray-700 border-dashed">
           {src ? <img src={src} className="w-full h-full rounded-full" /> : ''}
-          {isLoad ? <IconLoading className="absolute inset-0 m-auto text-green-500" /> : ''}
+          {isLoad ? <IconLoading className="absolute inset-0 m-auto text-green-600" /> : ''}
         </label>
         <div>
           <p className="text-gray-300">Tool logo</p>

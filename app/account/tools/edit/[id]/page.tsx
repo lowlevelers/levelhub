@@ -34,7 +34,7 @@ interface Inputs {
 }
 
 export default () => {
-  const { id } = useParams();
+  const { id } = useParams() as any;
   const browserService = createBrowserClient();
   const pricingTypesList = new ProductPricingTypesService(browserService).getAll();
   const productService = new ProductsService(browserService);
@@ -345,7 +345,7 @@ export default () => {
                   <a
                     href="https://twitter.com/johnrushx"
                     target="_blank"
-                    className="text-green-500 hover:text-green-400">
+                    className="text-green-600 hover:text-green-400">
                     contact us
                   </a>{' '}
                   if you want to update or cancel the launch.
@@ -368,7 +368,7 @@ export default () => {
               <Button
                 isLoad={isUpdate}
                 type="submit"
-                className="w-full hover:bg-green-400 ring-offset-2 ring-green-500 focus:ring">
+                className="w-full hover:bg-green-400 ring-offset-2 ring-green-600 focus:ring">
                 Update
               </Button>
             </div>

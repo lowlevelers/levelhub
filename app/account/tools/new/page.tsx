@@ -24,8 +24,7 @@ import { useRouter } from 'next/navigation';
 import SelectLaunchDate from '@/components/ui/SelectLaunchDate';
 import axios from 'axios';
 import ProfileService from '@/utils/supabase/services/profile';
-import { usermaven } from '@/utils/usermaven';
-import Alert from '@/components/ui/Alert';
+import { Alert } from 'antd';
 
 interface Inputs {
   tool_name: string;
@@ -209,7 +208,7 @@ export default () => {
 
   return (
     <section className="container-custom-screen">
-      <Alert context="Any non-dev tools will be subject to removal. Please ensure that your submission is relevant to the developer community." />
+      <Alert message="Any non-dev tools will be subject to removal. Please ensure that your submission is relevant to the developer community." />
       <h1 className="text-xl text-gray-50 font-semibold mt-6">Launch a tool</h1>
       <div className="mt-12">
         <FormLaunchWrapper onSubmit={handleSubmit(onSubmit as () => void)}>
@@ -415,7 +414,7 @@ export default () => {
               <Button
                 type="submit"
                 isLoad={isLaunching}
-                className="w-full hover:bg-green-400 ring-offset-2 ring-green-500 focus:ring">
+                className="w-full hover:bg-green-400 ring-offset-2 ring-green-600 focus:ring">
                 Schedule my BUILD for Launch
               </Button>
               <p className="text-sm text-gray-500 mt-2">* no worries, you can change it later</p>

@@ -1,4 +1,4 @@
-import { ArrowSmallRightIcon } from '@heroicons/react/24/outline';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 
 interface ArticleProps {
@@ -40,9 +40,9 @@ const ArticleCard: React.FC<ArticleProps> = ({ article }) => {
         </div>
         <Link
           href={`/blog/${article.slug}`}
-          className="flex items-center text-sm text-green-500 hover:text-green-400 font-medium group">
+          className="flex items-center text-sm text-green-600 hover:text-green-400 font-medium group">
           Read More
-          <ArrowSmallRightIcon className="w-4 h-4 group-hover:transtone-x-1 duration-150" />
+          <ArrowRightOutlined className="w-4 h-4 group-hover:translate-x-1 duration-150" />
         </Link>
       </div>
     </li>

@@ -119,7 +119,7 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
                     </div>
                     <div className="flex-1 self-center flex justify-end">
                       <Votes
-                        className="text-green-500"
+                        className="text-green-600"
                         count={tool.votes_count}
                         productId={tool?.id}
                         launchDate={tool.launch_date}

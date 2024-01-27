@@ -117,7 +117,7 @@ export default ({
         </CodeBlock>
       </div>
       <div className="mt-3 flex gap-x-3">
-        <Button className="ring-offset-2 ring-green-500 focus:ring-2" onClick={copyDone}>
+        <Button className="ring-offset-2 ring-green-600 focus:ring-2" onClick={copyDone}>
           I've done this
         </Button>
         <Button className="bg-gray-700 hover:bg-gray-600" onClick={() => setModalOpen(false)}>

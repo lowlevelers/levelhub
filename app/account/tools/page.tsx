@@ -64,7 +64,7 @@ export default () => {
       <ul className="mt-6 divide-y divide-gray-800/60">
         {isLoad ? (
           <div>
-            <IconLoading className="w-6 h-6 mx-auto text-green-500" />
+            <IconLoading className="w-6 h-6 mx-auto text-green-600" />
           </div>
         ) : tools.length > 0 ? (
           tools.map((tool: ProductType, idx: number) => (

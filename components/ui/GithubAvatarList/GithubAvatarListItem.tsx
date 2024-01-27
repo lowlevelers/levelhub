@@ -19,14 +19,14 @@ const GithubAvatarListItem = ({
             <Avatar.Root key={item.login}>
               <Avatar.Image
                 className={`w-full h-full object-cover rounded-xl ${
-                  highlighted ? 'border-2 border-green-500' : ''
+                  highlighted ? 'border-2 border-green-600' : ''
                 }`}
                 src={item.avatar_url as string}
                 alt={item.login as string}
               />
               <Avatar.Fallback
                 className="flex items-center justify-center text-gray-300 h-full w-full bg-slate-500 text-[15px] font-medium rounded-xl"
-                delayMs={600}>
+                delayMs={200}>
                 {item.login?.slice(0, 2).toUpperCase()}
               </Avatar.Fallback>
             </Avatar.Root>

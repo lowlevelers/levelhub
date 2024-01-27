@@ -26,7 +26,7 @@ export default ({ children }: { children: ReactNode }) => {
 
   return isLoad ? (
     <div className="min-h-screen">
-      <IconLoading className="w-7 h-7 text-green-500 mx-auto mt-16" />
+      <IconLoading className="w-7 h-7 text-green-600 mx-auto mt-16" />
     </div>
   ) : isTool ? (
     children

@@ -11,14 +11,10 @@ import { createServerClient } from '@/utils/supabase/server';
 import type { Database, Profile } from '@/utils/supabase/types';
 import type { SupabaseClient } from '@supabase/auth-helpers-nextjs';
 import ProfileService from '@/utils/supabase/services/profile';
-import Banner from '@/components/ui/Banner';
 import ModalBannerCodeClient from '@/components/ui/ModalBannerCode/ModalBannerCodeClient';
 
-import dynamic from 'next/dynamic';
 import ProfileFormModal from '@/components/ui/ProfileFormModal';
 import DashboardLayout from '@/components/DashboardLayout';
-
-const ChatWindow = dynamic(() => import('@/components/ui/ChatWindow'), { ssr: false });
 
 export type TypedSupabaseClient = SupabaseClient<Database>;
 
@@ -86,7 +82,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <ProfileFormModal
               isModalOpen={user ? (profileNoCache?.social_url == null ? true : false) : false}
             />
-            {/* <Banner /> */}
             <ModalBannerCodeClient />
             <DashboardLayout>{children}</DashboardLayout>
           </SupabaseProvider>

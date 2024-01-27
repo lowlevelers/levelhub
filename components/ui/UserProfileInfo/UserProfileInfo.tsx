@@ -2,7 +2,7 @@ import { type Profile } from '@/utils/supabase/types';
 import Avatar from '../Avatar/Avatar';
 import { IconGlobeAlt } from '@/components/Icons/IconGlobeAlt';
 import { ReactNode } from 'react';
-import { AtSymbolIcon } from '@heroicons/react/24/solid';
+import { TwitterOutlined } from '@ant-design/icons';
 
 function ShowElement({ children, val }: { children: ReactNode; val: any }) {
   return val ? <>{children}</> : <></>;
@@ -44,7 +44,7 @@ export default ({ profile }: { profile: Profile }) => (
             href={profile.social_url || ''}
             target="_blank"
             className="inline-flex items-center gap-x-2 text-gray-500 hover:text-gray-400 text-sm duration-150">
-            <AtSymbolIcon className="w-5 h-5" />
+            <TwitterOutlined className="w-5 h-5" />
             Social Media
           </a>
         </ShowElement>

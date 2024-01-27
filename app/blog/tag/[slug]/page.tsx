@@ -1,8 +1,8 @@
+import { IconChevronRight } from '@/components/Icons/IconChevronRight';
 import ArticleCard from '@/components/ui/Blog/ArticleCard';
 import Pagination from '@/components/ui/Blog/Pagination';
 import { type Metadata } from 'next';
 import Link from 'next/link';
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { BlogClient } from 'seobot';
 
 async function getPosts(slug: string, page: number) {
@@ -60,11 +60,11 @@ export default async function Tag({
   return (
     <section className="max-w-3xl mt-20 mx-auto px-4 md:px-8">
       <div className="flex flex-wrap items-center gap-2 text-sm mb-4">
-        <a className="text-green-500 hover:text-green-400 duration-200" href="/">
+        <a className="text-green-600 hover:text-green-400 duration-200" href="/">
           Home
         </a>
-        <ChevronRightIcon className="w-4 h-4 text-gray-500" />
-        <Link className="text-green-500 hover:text-green-400 duration-200" href="/blog/">
+        <IconChevronRight className="w-4 h-4 text-gray-500" />
+        <Link className="text-green-600 hover:text-green-400 duration-200" href="/blog/">
           Blog
         </Link>
       </div>

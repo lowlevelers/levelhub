@@ -1,6 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import {
+  CalendarOutlined,
+  GithubFilled,
+  HomeOutlined,
+  LayoutOutlined,
+  RocketOutlined,
+  StarOutlined,
+} from '@ant-design/icons';
+import { MIDDLE_STYLE } from '@/constants';
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -21,7 +30,8 @@ const SiderBarItem = ({
   return (
     <Link
       href={`/${href}`}
-      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-small text-white duration-300 ease-in-out hover:bg-gray-600 dark:hover:bg-meta-4 ${
+      style={{ fontSize: 15 }}
+      className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-2 font-small text-white duration-300 ease-in-out hover:bg-gray-600 dark:hover:bg-meta-4 ${
         pathname?.includes(href) && 'bg-gray-700 dark:bg-meta-4'
       }`}>
       {icon}
@@ -75,10 +85,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   return (
     <aside
       ref={sidebar}
-      style={{ minWidth: 250 }}
-      className={`absolute left-0 top-0 z-9999 flex h-screen w-102.5 flex-col overflow-y-hidden duration-300 ease-linear lg:static lg:translate-x-0 ${
+      style={{ maxWidth: 250 }}
+      className={`absolute bg-slate-950 left-0 top-0 z-9999 flex h-screen w-102.5 flex-col overflow-y-hidden duration-300 ease-linear lg:static lg:translate-x-0 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } border-r border-slate-800 `}>
+      } border-r border-gray-800 `}>
       {/* <!-- SIDEBAR HEADER --> */}
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <button
@@ -102,67 +112,45 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         </button>
       </div>
       {/* <!-- SIDEBAR HEADER --> */}
-
       <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
         {/* <!-- Sidebar Menu --> */}
-        <nav className="mt-5 py-4 px-4 lg:mt-9 lg:px-6">
+        <nav className="px-2 lg:mt-9 lg:px-4">
           {/* <!-- Menu Group --> */}
+          <div className="border-b border-gray-700 pb-4 mb-5">
+            <div style={{ ...MIDDLE_STYLE, justifyContent: 'space-between' }} className="mb-5">
+              <h1 className="text-md font-bold text-white">LevelUp!</h1>
+              <GithubFilled
+                className="text-white"
+                style={{ cursor: 'pointer' }}
+                onClick={() => window.open('https://github.com/lowlevelers')}
+              />
+            </div>
+            <p className="mt-4 text-sm text-gray-500">
+              Join our community, grow your knowledge and learn from others!
+            </p>
+          </div>
           <div>
-            <h3 className="mb-4 ml-4 text-sm font-semibold text-gray-700">GENERAL</h3>
-
+            <h3 className="mb-4 text-sm font-semibold text-gray-500">GENERAL</h3>
             <ul className="mb-6 flex flex-col gap-1.5">
               <li>
                 <SiderBarItem
-                  icon={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="16"
-                      width="18"
-                      viewBox="0 0 576 512">
-                      <path
-                        fill="#ffffff"
-                        d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"
-                      />
-                    </svg>
-                  }
+                  icon={<HomeOutlined />}
                   itemName="Overview"
                   pathname={pathname}
                   href="#"
                 />
               </li>
-              {/* <li>
+              <li>
                 <SiderBarItem
-                  icon={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="16"
-                      width="16"
-                      viewBox="0 0 512 512">
-                      <path
-                        fill="#ffffff"
-                        d="M96 256H128V512H0V352H32V320H64V288H96V256zM512 352V512H384V256H416V288H448V320H480V352H512zM320 64H352V448H320V416H192V448H160V64H192V32H224V0H288V32H320V64zM288 128H224V192H288V128z"
-                      />
-                    </svg>
-                  }
+                  icon={<RocketOutlined />}
                   itemName="Launch Pad"
                   pathname={pathname}
                   href="#"
                 />
-              </li> */}
+              </li>
               <li>
                 <SiderBarItem
-                  icon={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="16"
-                      width="16"
-                      viewBox="0 0 512 512">
-                      <path
-                        fill="#ffffff"
-                        d="M152.1 38.2c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 113C-2.3 103.6-2.3 88.4 7 79s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zm0 160c9.9 8.9 10.7 24 1.8 33.9l-72 80c-4.4 4.9-10.6 7.8-17.2 7.9s-12.9-2.4-17.6-7L7 273c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l22.1 22.1 55.1-61.2c8.9-9.9 24-10.7 33.9-1.8zM224 96c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zm0 160c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32zM160 416c0-17.7 14.3-32 32-32H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H192c-17.7 0-32-14.3-32-32zM48 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
-                      />
-                    </svg>
-                  }
+                  icon={<StarOutlined />}
                   itemName="Quests"
                   pathname={pathname}
                   href="#"
@@ -171,32 +159,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <SiderBarItem
                   href="events"
-                  icon={
-                    <svg
-                      className="fill-current"
-                      width="18"
-                      height="19"
-                      viewBox="0 0 18 19"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <g clipPath="url(#clip0_130_9756)">
-                        <path
-                          d="M15.7501 0.55835H2.2501C1.29385 0.55835 0.506348 1.34585 0.506348 2.3021V15.8021C0.506348 16.7584 1.29385 17.574 2.27822 17.574H15.7782C16.7345 17.574 17.5501 16.7865 17.5501 15.8021V2.3021C17.522 1.34585 16.7063 0.55835 15.7501 0.55835ZM6.69385 10.599V6.4646H11.3063V10.5709H6.69385V10.599ZM11.3063 11.8646V16.3083H6.69385V11.8646H11.3063ZM1.77197 6.4646H5.45635V10.5709H1.77197V6.4646ZM12.572 6.4646H16.2563V10.5709H12.572V6.4646ZM2.2501 1.82397H15.7501C16.0313 1.82397 16.2563 2.04897 16.2563 2.33022V5.2271H1.77197V2.3021C1.77197 2.02085 1.96885 1.82397 2.2501 1.82397ZM1.77197 15.8021V11.8646H5.45635V16.3083H2.2501C1.96885 16.3083 1.77197 16.0834 1.77197 15.8021ZM15.7501 16.3083H12.572V11.8646H16.2563V15.8021C16.2563 16.0834 16.0313 16.3083 15.7501 16.3083Z"
-                          fill=""
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_130_9756">
-                          <rect
-                            width="18"
-                            height="18"
-                            fill="white"
-                            transform="translate(0 0.052124)"
-                          />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  }
+                  icon={<CalendarOutlined />}
                   pathname={pathname}
                   itemName={'Events'}
                 />
@@ -206,7 +169,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
           {/* <!-- Others Group --> */}
           <div>
-            <h3 className="mb-4 ml-4 text-sm font-semibold text-gray-700">OTHERS</h3>
+            <h3 className="mb-4 text-sm font-semibold text-gray-500">PERSONAL</h3>
 
             <ul className="mb-6 flex flex-col gap-1.5">
               {/* <!-- Menu Item Profile --> */}

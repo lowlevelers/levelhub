@@ -98,7 +98,7 @@ export default ({
         title={modalInfo.title}
         description={modalInfo.desc}
         onCancel={() => setModalActive(false)}>
-        <LinkItem href="/" className="flex-1 block w-full text-sm bg-green-500 hover:bg-green-400">
+        <LinkItem href="/" className="flex-1 block w-full text-sm bg-green-600 hover:bg-green-400">
           Explore other tools
         </LinkItem>
         <Button

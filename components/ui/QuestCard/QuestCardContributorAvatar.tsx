@@ -1,11 +1,13 @@
 import React from 'react';
 import GithubAvatarList from '../GithubAvatarList';
 import { GithubUser } from '@/utils/github/models';
+import { useHydration } from '@/hooks';
 
 const QuestCardContributorAvatar = ({ assignees }: { assignees: GithubUser[] }) => {
+  const hydrated = useHydration();
   return (
     <div>
-      {assignees.length > 0 ? (
+      {hydrated && assignees.length > 0 ? (
         <GithubAvatarList users={assignees} />
       ) : (
         <ul className="max-w-4xl mx-auto gap-3 flex flex-wrap items-center">

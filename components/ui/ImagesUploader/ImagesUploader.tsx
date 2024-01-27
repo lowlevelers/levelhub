@@ -33,7 +33,7 @@ export const ImagesUploader = ({
             isLoad ? ' pointer-events-none' : ''
           } relative flex-none flex items-center justify-center w-full max-w-[13rem] h-36 rounded-md overflow-hidden border border-dashed border-gray-700 cursor-pointer`}>
           {isLoad ? (
-            <IconLoading className="absolute inset-0 m-auto text-green-500" />
+            <IconLoading className="absolute inset-0 m-auto text-green-600" />
           ) : (
             <div className="text-sm text-gray-300 space-y-1">
               <IconPlus className="mx-auto w-6 h-6" />

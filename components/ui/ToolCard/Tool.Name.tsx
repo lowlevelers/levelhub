@@ -2,8 +2,8 @@
 
 import mergeTW from '@/utils/mergeTW';
 import { ReactNode } from 'react';
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
+import { LinkOutlined } from '@ant-design/icons';
 
 export default ({
   className,
@@ -20,11 +20,11 @@ export default ({
     {toolHref ? <Link href={toolHref}>{children}</Link> : children}
     <a
       id="tool-title"
-      href={`${href}?ref=devhunt`}
-      onClick={() => window.open(`${href}?ref=devhunt`)}
+      href={`${href}?ref=levelup`}
+      onClick={() => window.open(`${href}?ref=levelup`)}
       target="_blank"
       className="hidden group-hover/card:block">
-      <ArrowTopRightOnSquareIcon className="w-4 h-4 pointer-events-none" />
+      <LinkOutlined className="w-4 h-4 pointer-events-none" />
     </a>
   </h3>
 );

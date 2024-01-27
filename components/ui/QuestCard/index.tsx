@@ -54,15 +54,15 @@ export default ({
 
   return (
     <>
-      <div className="relative group my-6 group/card">
+      <div className="relative group my-2 group/card">
         <div
           onClick={handleClick}
           className={mergeTW(
-            `flex items-start gap-x-4 py-1 px-2 relative rounded-2xl cursor-pointer ${className}`
+            `flex items-start py-2 px-4 bg-slate-950/50 group-hover:bg-slate-800/60 duration-150 relative cursor-pointer ${className}`
           )}>
           {children}
         </div>
-        <div className="absolute -z-10 rounded-2xl group-hover:bg-slate-700/60 opacity-0 group-hover:opacity-100 duration-150 sm:-inset-2"></div>
+        <div className="absolute -z-10 group-hover:bg-slate-700/60 opacity-0 group-hover:opacity-100 duration-150 sm:-inset-2"></div>
       </div>
       {isQuestViewActive ? (
         <QuestViewModal close={closeViewModal} repositoryIssue={repositoryIssue} href={href} />

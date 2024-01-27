@@ -434,8 +434,8 @@ video {
 ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
-  --tw-transtone-x: 0;
-  --tw-transtone-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
   --tw-rotate: 0;
   --tw-skew-x: 0;
   --tw-skew-y: 0;
@@ -484,8 +484,8 @@ video {
 ::backdrop {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
-  --tw-transtone-x: 0;
-  --tw-transtone-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
   --tw-rotate: 0;
   --tw-skew-x: 0;
   --tw-skew-y: 0;

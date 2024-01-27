@@ -11,7 +11,7 @@ import { createBrowserClient } from '@/utils/supabase/browser';
 import ProfileService from '@/utils/supabase/services/profile';
 import LabelError from '@/components/ui/LabelError/LabelError';
 import validateURL from '@/utils/validateURL';
-import Alert from '../Alert';
+import { Alert } from 'antd';
 
 function ProfileFormModal() {
   const { session, user } = useSupabase();
@@ -101,8 +101,8 @@ function ProfileFormModal() {
     <>
       <div>
         <Alert
-          variant="warning"
-          context={
+          type="warning"
+          message={
             "We need this to verify that you're a human so that we can monitor the voting and make sure there are no fake upvotes."
           }
         />
@@ -167,7 +167,7 @@ function ProfileFormModal() {
             </div>
             <Button
               isLoad={isLoad}
-              className="flex justify-center w-full ring-offset-2 ring-green-500 focus:ring-2 hover:bg-green-400">
+              className="flex justify-center w-full ring-offset-2 ring-green-600 focus:ring-2 hover:bg-green-400">
               {isLoad ? 'Updating' : 'Save your profile'}
             </Button>
           </div>

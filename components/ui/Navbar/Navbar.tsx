@@ -15,9 +15,7 @@ import ProductsService from '@/utils/supabase/services/products';
 import { type Product } from '@/utils/supabase/types';
 import { IconSearch } from '@/components/Icons';
 import categories from '@/utils/categories';
-import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import NewsletterModal from '../NewsletterModal';
-import { BellAlertIcon, BellIcon } from '@heroicons/react/24/outline';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import { useSupabaseAuth } from '@/hooks/useSupabaseAuth';
 import Brand from '../Brand/Brand';
@@ -46,13 +44,13 @@ export default () => {
     //   title: 'Submit your Project / Idea',
     //   path: isLoggedin ? '/account/tools' : '/login',
     //   className:
-    //     'bg-green-500 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
+    //     'bg-green-600 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
     // },
     {
       title: 'Submit a new issue on Github',
       path: 'https://github.com/lowlevelers/lowlevelers.com/issues/new/choose',
       className:
-        'bg-green-500 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
+        'bg-green-600 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
     },
   ];
 
@@ -191,7 +189,7 @@ export default () => {
             <p className="flex-1 text-sm text-gray-300">
               <button
                 onClick={() => setNewsletterModalActive(true)}
-                className="text-gray-100 hover:text-green-500 duration-150 underline">
+                className="text-gray-100 hover:text-green-600 duration-150 underline">
                 Subscribe
               </button>{' '}
               to get weekly email with best new dev tools.
