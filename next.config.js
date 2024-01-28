@@ -15,6 +15,7 @@ const nextConfig = {
     NEWSLETTER_FORM_ID: process.env.NEWSLETTER_FORM_ID,
     AUTH_TOKEN_PASSWORD: process.env.AUTH_TOKEN_PASSWORD,
     AUTH_TOKEN_API_KEY: process.env.AUTH_TOKEN_API_KEY,
+    GITHUB_API_TOKEN: process.env.GITHUB_API_TOKEN,
   },
   images: {
     remotePatterns: [

@@ -1,9 +1,7 @@
-import QuestListContainer from '@/components/ui/QuestListContainer';
-import { fetchRepositories } from '@/utils/github/services/api';
+import ClientQuestListContianer from '@/components/ui/QuestContainer/ClientQuestListContainer';
 import Link from 'next/link';
 
 export default async function Home() {
-  const repositories = await fetchRepositories('lowlevelers');
   return (
     <div>
       <div className="space-y-2 pb-8 pt-6 md:space-y-5">
@@ -53,10 +51,10 @@ export default async function Home() {
           ))}
         </div>
       </div>
-      <QuestListContainer
+      <ClientQuestListContianer
         containerTitle="Community Quests"
         containerDescription="Collect experience and items through open-source contribution"
-        containerRepositories={repositories}
+        organizationName={'lowlevelers'}
       />
     </div>
   );

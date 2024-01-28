@@ -119,7 +119,7 @@ export default ({ href, tool, close }: { href: string; tool: ProductType; close:
         onCancel={close}
         variant="custom"
         classNameContainer="px-0 py-0 sm:py-8"
-        className="max-w-4xl bg-gray-900 px-0 py-8 view-modal">
+        className="max-w-4xl bg-slate-900 px-0 py-8 view-modal">
         <div>
           <div className="container-custom-screen pt-4 pb-10">
             <button

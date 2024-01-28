@@ -34,7 +34,7 @@ export default () => {
         </div>
         <ul className="text-sm font-medium items-center justify-center mt-8 space-y-5 sm:flex sm:space-x-4 sm:space-y-0">
           {footerNavs.map((item, idx) => (
-            <li>
+            <li key={item.name}>
               <a key={idx} href={item.href} className="block hover:text-gray-200">
                 {item.name}
               </a>
