@@ -26,6 +26,7 @@ export async function fetchOptimizedRepositories(
 
   const { repositoriesNames: cachedRepositoryNames, isRevalidated } =
     await getRevalidatedRepositoryNames(repositoryOwner);
+
   // If the cache is expired (isRevalidated) force the branch to `not cached` case
   if (cachedRepositoryNames.length > 0 && !isRevalidated) {
     // repositories are cached

@@ -43,7 +43,7 @@ export default ({
         onCancel={close}
         variant="custom"
         classNameContainer="px-0 py-0 sm:py-8"
-        className="max-w-4xl bg-slate-950 px-0 py-8 view-modal">
+        className="max-w-4xl bg-stone-950 px-0 py-8 view-modal">
         <div>
           <div className="container-custom-screen pt-4 pb-10">
             <button
