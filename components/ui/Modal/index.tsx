@@ -31,7 +31,7 @@ export default ({
       <div className={mergeTW(`flex items-center min-h-screen px-4 py-8 ${classNameContainer}`)}>
         <div
           className={mergeTW(
-            `relative z-10 w-full max-w-lg p-4 mx-auto bg-slate-800 rounded-md shadow-xl ${className}`
+            `relative z-10 w-full max-w-lg p-4 mx-auto bg-slate-900 rounded-md shadow-xl ${className}`
           )}>
           {variant == 'default' ? (
             <div className="py-3 sm:flex">

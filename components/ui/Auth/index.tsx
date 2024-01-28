@@ -7,31 +7,22 @@ import axios from 'axios';
 import Button from '@/components/ui/Button';
 import Modal from '@/components/ui/Modal';
 import Brand from '@/components/ui/Brand';
-import { GithubProvider, GoogleProvider } from '../AuthProviderButtons';
+import { GithubProvider } from '../AuthProviderButtons';
 import ProfileService from '@/utils/supabase/services/profile';
 import { createBrowserClient } from '@/utils/supabase/browser';
 import { useRouter } from 'next/navigation';
+import { Wallet, getWallets } from '@talismn/connect-wallets';
+import PolkadotWalletSelector from '../PolkadotWalletSelector';
 // Supabase auth needs to be triggered client-side
 
 export default function Auth({ onLogout }: { onLogout?: () => void }) {
   const { supabase, session, user } = useSupabase();
-  const [isGoogleAuthLoad, setGoogleAuthLoad] = useState<boolean>(false);
   const [isGithubAuthLoad, setGithubAuthLoad] = useState<boolean>(false);
   const [isModalActive, setModalActive] = useState<boolean>(false);
 
   const router = useRouter();
 
   const profile = new ProfileService(createBrowserClient());
-
-  const handleGoogleLogin = async () => {
-    setGoogleAuthLoad(true);
-    const { error } = await supabase.auth.signInWithOAuth({ provider: 'google' });
-    if (error != null) {
-      console.log({ error });
-    }
-    setGoogleAuthLoad(false);
-    setModalActive(false);
-  };
 
   const handleGitHubLogin = async () => {
     setGithubAuthLoad(true);
@@ -70,12 +61,6 @@ export default function Auth({ onLogout }: { onLogout?: () => void }) {
     HandleSignInNotification();
   }, []);
 
-  // console.log(session && session.user)
-
-  // this `session` is from the root loader - server-side
-  // therefore, it can safely be used to conditionally render
-  // SSR pages without issues with hydration
-
   return Boolean(session) ? (
     <div className="hidden md:block">
       <AvatarMenu session={session} onLogout={onLogout} />
@@ -96,16 +81,12 @@ export default function Auth({ onLogout }: { onLogout?: () => void }) {
             <h1 className="text-gray-50 text-lg font-semibold">Log in to your account</h1>
             <p className="text-gray-300">Let's explore together, the legit way!</p>
           </div>
+          <PolkadotWalletSelector />
           <GithubProvider
             isLoad={isGithubAuthLoad}
             onClick={handleGitHubLogin}
             className="w-full justify-center mt-4"
           />
-          {/* <GoogleProvider
-            isLoad={isGoogleAuthLoad}
-            onClick={handleGoogleLogin}
-            className="w-full justify-center mt-2"
-          /> */}
         </div>
       </Modal>
     </div>
