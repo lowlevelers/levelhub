@@ -3,7 +3,7 @@ import BlurBackground from '../BlurBackground/BlurBackground';
 import mergeTW from '@/utils/mergeTW';
 
 type Props = {
-  title?: string;
+  title?: ReactNode;
   description?: string;
   icon?: ReactNode;
   children: ReactNode;

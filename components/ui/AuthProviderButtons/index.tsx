@@ -15,7 +15,7 @@ export const GithubProvider = ({ isLoad, className, ...props }: ProviderType) =>
     isLoad={isLoad}
     child={<IconGithub />}
     className={mergeTW(
-      `text-sm font-medium mt-8 mx-auto flex text-gray-800 bg-gray-50 hover:bg-gray-200 active:bg-gray-100 ${className}`
+      `text-sm font-medium mt-4 mx-auto flex text-white bg-slate-800 hover:bg-slate-600 active:bg-gray-100 ${className}`
     )}>
     Continue with Github
   </Button>

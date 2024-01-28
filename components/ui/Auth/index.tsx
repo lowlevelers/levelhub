@@ -79,14 +79,14 @@ export default function Auth({ onLogout }: { onLogout?: () => void }) {
           <div className="">
             <Brand w="130" h="40" className="mx-auto" />
             <h1 className="text-gray-50 text-lg font-semibold">Log in to your account</h1>
-            <p className="text-gray-300">Let's explore together, the legit way!</p>
+            <p className="text-gray-300">Let's level up your Polkadot career together!</p>
           </div>
-          <PolkadotWalletSelector />
           <GithubProvider
             isLoad={isGithubAuthLoad}
             onClick={handleGitHubLogin}
             className="w-full justify-center mt-4"
           />
+          <PolkadotWalletSelector />
         </div>
       </Modal>
     </div>
