@@ -62,7 +62,7 @@ const QuestContainer = ({ repository, questOwner }: Props) => {
 
   return (
     <LoadableContainer isLoading={repositoryIssues.length === 0} loadComponent={<></>}>
-      <div className="p-7 my-5 bg-stone-950" style={{ width: '100%' }}>
+      <div className="border border-gray-800 p-7 my-5 bg-stone-950" style={{ width: '100%' }}>
         <div className="border-b border-gray-700 pb-4">
           <h1 className="font-medium text-md text-gray-50 pb-2">
             {repository.name}{' '}

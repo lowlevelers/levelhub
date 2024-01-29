@@ -149,7 +149,24 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   icon={<HomeOutlined />}
                   itemName="Overview"
                   pathname={pathname}
-                  href=""
+                  href="#"
+                />
+              </li>
+              <li>
+                <SiderBarItem
+                  icon={<UserOutlined />}
+                  itemName="Members"
+                  pathname={pathname}
+                  href="members"
+                />
+              </li>
+              <li>
+                <SiderBarItem
+                  icon={<div style={{ marginRight: 3 }}>🤝</div>}
+                  itemName="Trade"
+                  pathname={pathname}
+                  href="characters"
+                  disabled
                 />
               </li>
               <li>
@@ -167,6 +184,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   itemName="Quests"
                   pathname={pathname}
                   href="quests"
+                  disabled
                 />
               </li>
               <li>
@@ -189,14 +207,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     icon={<UserOutlined />}
                     href={`@${user.username}`}
                     itemName="Profile"
-                    pathname={pathname}
-                  />
-                </li>
-                <li>
-                  <SiderBarItem
-                    href="settings"
-                    icon={<SettingOutlined />}
-                    itemName="Settings"
                     pathname={pathname}
                   />
                 </li>

@@ -181,7 +181,7 @@ export default class ProductsService extends BaseDbService {
 
       if (error !== null) throw new Error(error.message);
 
-      return data.map(i => ({
+      return data.map((i: any) => ({
         week: i.week_number,
         startDate: new Date(i.start_date),
         endDate: new Date(i.end_date),
@@ -259,7 +259,7 @@ export default class ProductsService extends BaseDbService {
     sortBy: string,
     ascending: boolean
   ): Promise<ExtendedProduct[]> {
-    const { data: products, error } = (await this.getProducts(sortBy, ascending)).neq(
+    const { data: products, error } = ((await this.getProducts(sortBy, ascending)) as any).neq(
       'id',
       productId
     ) as { data: ExtendedProduct[]; error: string };
@@ -483,9 +483,9 @@ export default class ProductsService extends BaseDbService {
 
     if (error !== null) throw new Error(error.message);
 
-    const userIds = data?.map(c => [c.products?.profiles?.id]).flat();
+    const userIds: string[] = data?.map(c => [c.products?.profiles?.id]).flat() as string[];
     const userWithEmailsMap = await new UsersService(this.supabase).getUserWithEmails(userIds);
-    data?.forEach(c => {
+    data?.forEach((c: any) => {
       c.products.profiles.email = userWithEmailsMap.get(c.products.profiles.id);
     });
 

@@ -29,6 +29,11 @@ export default class UsersService extends BaseDbService {
     );
   }
 
+  async getAllUserProfiles(): Promise<Profile[]> {
+    const { data } = await this.supabase.from('profiles').select();
+    return data || [];
+  }
+
   async fullFillWithUserEmails(profiles: Partial<Profile>[]): Promise<ProfileWithEmail[]> {
     const uniqueIds = Array.from(new Set(profiles.map(p => p.id))) as string[];
     const { data, error } = await this.supabase.rpc('get_user_emails_by_ids', {
@@ -45,7 +50,7 @@ export default class UsersService extends BaseDbService {
       })
     );
 
-    return profiles.map(p => ({
+    return profiles.map((p: any) => ({
       ...p,
       email: usersMap.get(p.id) ?? '',
     })) as ProfileWithEmail[];
