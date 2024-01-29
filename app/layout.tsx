@@ -21,18 +21,18 @@ export type TypedSupabaseClient = SupabaseClient<Database>;
 const { title, description, ogImage } = {
   title: 'LevelUp! - Community platforms of TheLowLevelers',
   description: 'Level up your Polkadot career!',
-  ogImage: 'https://devhunt.org/devhuntog.png?v=2',
+  ogImage: 'https://up.lowlevelers.com/levelup-og.png',
 };
 
 export const metadata = {
   title,
   description,
-  metadataBase: new URL('https://devhunt.org'),
+  metadataBase: new URL('https://up.lowlevelers.com'),
   openGraph: {
     title,
     description,
     images: [ogImage],
-    url: 'https://devhunt.org',
+    url: 'https://up.lowlevelers.com',
   },
   twitter: {
     card: 'summary_large_image',

@@ -14,6 +14,7 @@ const nextConfig = {
     AUTH_TOKEN_PASSWORD: process.env.AUTH_TOKEN_PASSWORD,
     AUTH_TOKEN_API_KEY: process.env.AUTH_TOKEN_API_KEY,
     GITHUB_API_TOKEN: process.env.GITHUB_API_TOKEN,
+    NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
   },
   images: {
     remotePatterns: [

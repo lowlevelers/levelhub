@@ -10,15 +10,15 @@ export default () => {
       name: 'About',
     },
     {
-      href: 'https://github.com/MarsX-dev/devhunt',
+      href: 'https://github.com/lowlevelers',
       name: 'GitHub Repository',
     },
     {
-      href: '/blog',
+      href: 'https://lowlevelers.com/blog',
       name: 'Blog',
     },
     {
-      href: 'https://twitter.com/johnrushx',
+      href: 'https://twitter.com/lowlevelers',
       name: 'Contact',
     },
   ];
