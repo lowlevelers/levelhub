@@ -13,22 +13,25 @@ const HomePageHeader = (props: Props) => {
   const { user } = useSupabase();
   return (
     <div>
-      <div
-        className="border-b border-gray-700 pb-4"
-        style={{ ...MIDDLE_STYLE, justifyContent: 'space-between' }}>
-        <div>
-          <Space size={20}>
-            <Avatar className="w-10 h-10" src={user.avatar_url || ''} />
-            <div>
-              <h1 className="font-medium text-xl text-gray-50">{user.username}</h1>
-              <p className="text-gray-500">
-                Your current community rank is <span className="text-green-500 font-md">Nomad</span>
-              </p>
-            </div>
-          </Space>
+      {user && (
+        <div
+          className="border-b border-gray-700 pb-4"
+          style={{ ...MIDDLE_STYLE, justifyContent: 'space-between' }}>
+          <div>
+            <Space size={20}>
+              <Avatar className="w-10 h-10" src={user.avatar_url || ''} />
+              <div>
+                <h1 className="font-medium text-xl text-gray-50">{user.username}</h1>
+                <p className="text-gray-500">
+                  Your current community rank is{' '}
+                  <span className="text-green-500 font-md">Nomad</span>
+                </p>
+              </div>
+            </Space>
+          </div>
+          <PolkadotWalletSelector />
         </div>
-        <PolkadotWalletSelector />
-      </div>
+      )}
       <div className="space-y-2 pb-8 pt-6 md:space-y-5">
         <div className="lg:flex lg:justify-evenly">
           {[
