@@ -1,4 +1,4 @@
-import { WithWalletProps } from './types';
+import { WithWalletProps } from '../../../utils/web3-wallet/types';
 import styles from './WalletSelect.module.css';
 
 export function NoAccounts({ wallet: selectedWallet }: WithWalletProps) {

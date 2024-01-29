@@ -1,5 +1,5 @@
 import { IconChevronRight } from '@/components/Icons/IconChevronRight';
-import { WithWalletProps } from './types';
+import { WithWalletProps } from '../../../utils/web3-wallet/types';
 import styles from './WalletSelect.module.css';
 
 export function InstallExtension({ wallet: selectedWallet }: WithWalletProps) {

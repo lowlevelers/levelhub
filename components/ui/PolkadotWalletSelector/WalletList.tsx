@@ -1,5 +1,5 @@
 import { Wallet } from '@talismn/connect-wallets';
-import { ListWithClickProps } from './types';
+import { ListWithClickProps } from '@/utils/web3-wallet/types';
 import Button from '../Button/Button';
 import { MIDDLE_STYLE } from '@/constants';
 import mergeTW from '@/utils/mergeTW';

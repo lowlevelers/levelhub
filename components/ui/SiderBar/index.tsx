@@ -12,6 +12,7 @@ import {
 } from '@ant-design/icons';
 import { MIDDLE_STYLE } from '@/constants';
 import { useSupabase } from '@/components/supabase/provider';
+import Brand from '../Brand/Brand';
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -124,7 +125,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           {/* <!-- Menu Group --> */}
           <div className="border-b border-gray-700 pb-4 mb-5">
             <div style={{ ...MIDDLE_STYLE, justifyContent: 'space-between' }} className="mb-5">
-              <h1 className="text-md font-bold text-white">LevelUp!</h1>
+              <div style={{ ...MIDDLE_STYLE }}>
+                <Brand w="30" h="30" />
+                <h1 className="text-md font-bold text-white" style={{ marginLeft: 10 }}>
+                  LevelUp!
+                </h1>
+              </div>
               <GithubFilled
                 className="text-white"
                 style={{ cursor: 'pointer' }}

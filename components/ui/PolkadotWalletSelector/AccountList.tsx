@@ -1,7 +1,7 @@
 import { IconChevronRight } from '@/components/Icons/IconChevronRight';
 import { truncateMiddle } from './ListSkeleton';
 import styles from './WalletSelect.module.css';
-import { ListWithClickProps } from './types';
+import { ListWithClickProps } from '../../../utils/web3-wallet/types';
 import { WalletAccount } from '@talismn/connect-wallets';
 import React from 'react';
 

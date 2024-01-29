@@ -3,7 +3,7 @@
 import { useSupabase } from '@/components/supabase/provider';
 import Brand from '@/components/ui/Brand';
 import { useState } from 'react';
-import { GithubProvider, GoogleProvider } from '../AuthProviderButtons';
+import { GithubProvider } from '../AuthProviderButtons';
 
 const getURL = () => {
   let url =
@@ -19,18 +19,7 @@ const getURL = () => {
 
 export default () => {
   const { supabase } = useSupabase();
-  const [isGoogleAuthLoad, setGoogleAuthLoad] = useState<boolean>(false);
   const [isGithubAuthLoad, setGithubAuthLoad] = useState<boolean>(false);
-
-  const handleGoogleLogin = async () => {
-    setGoogleAuthLoad(true);
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: getURL(),
-      },
-    });
-  };
 
   const handleGithubLogin = async () => {
     setGithubAuthLoad(true);
@@ -55,7 +44,6 @@ export default () => {
             </p>
           </div>
           <GithubProvider isLoad={isGithubAuthLoad} onClick={handleGithubLogin} />
-          {/* <GoogleProvider isLoad={isGoogleAuthLoad} onClick={handleGoogleLogin} /> */}
         </div>
       </div>
     </section>

@@ -14,6 +14,7 @@ import ModalBannerCodeClient from '@/components/ui/ModalBannerCode/ModalBannerCo
 
 import ProfileFormModal from '@/components/ui/ProfileFormModal';
 import DashboardLayout from '@/components/DashboardLayout';
+import PolkadotWalletProvider from '@/components/ui/PolkadotWalletProvider';
 
 export type TypedSupabaseClient = SupabaseClient<Database>;
 
@@ -71,12 +72,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className={inter.className}>
         <main>
           <SupabaseProvider user={profile as Profile} session={session}>
-            <SupabaseListener serverAccessToken={session?.access_token} />
-            <ProfileFormModal
-              isModalOpen={user ? (profileNoCache?.social_url == null ? true : false) : false}
-            />
-            <ModalBannerCodeClient />
-            <DashboardLayout>{children}</DashboardLayout>
+            <PolkadotWalletProvider>
+              <SupabaseListener serverAccessToken={session?.access_token} />
+              <ProfileFormModal
+                isModalOpen={user ? (profileNoCache?.social_url == null ? true : false) : false}
+              />
+              <ModalBannerCodeClient />
+              <DashboardLayout>{children}</DashboardLayout>
+            </PolkadotWalletProvider>
           </SupabaseProvider>
         </main>
       </body>

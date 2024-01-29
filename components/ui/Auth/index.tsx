@@ -10,20 +10,15 @@ import Brand from '@/components/ui/Brand';
 import { GithubProvider } from '../AuthProviderButtons';
 import ProfileService from '@/utils/supabase/services/profile';
 import { createBrowserClient } from '@/utils/supabase/browser';
-import { useRouter } from 'next/navigation';
-import { Wallet, getWallets } from '@talismn/connect-wallets';
-import PolkadotWalletSelector from '../PolkadotWalletSelector';
+import { MIDDLE_STYLE } from '@/constants';
+import { Space } from 'antd';
 // Supabase auth needs to be triggered client-side
 
 export default function Auth({ onLogout }: { onLogout?: () => void }) {
   const { supabase, session, user } = useSupabase();
   const [isGithubAuthLoad, setGithubAuthLoad] = useState<boolean>(false);
   const [isModalActive, setModalActive] = useState<boolean>(false);
-
-  const router = useRouter();
-
   const profile = new ProfileService(createBrowserClient());
-
   const handleGitHubLogin = async () => {
     setGithubAuthLoad(true);
     const { error } = await supabase.auth.signInWithOAuth({ provider: 'github' });
@@ -62,9 +57,9 @@ export default function Auth({ onLogout }: { onLogout?: () => void }) {
   }, []);
 
   return Boolean(session) ? (
-    <div className="hidden md:block">
+    <Space size={20} style={{ ...MIDDLE_STYLE }}>
       <AvatarMenu session={session} onLogout={onLogout} />
-    </div>
+    </Space>
   ) : (
     <div className="flex items-center">
       <Button variant="shiny" onClick={() => setModalActive(true)}>
@@ -86,7 +81,6 @@ export default function Auth({ onLogout }: { onLogout?: () => void }) {
             onClick={handleGitHubLogin}
             className="w-full justify-center mt-4"
           />
-          <PolkadotWalletSelector />
         </div>
       </Modal>
     </div>

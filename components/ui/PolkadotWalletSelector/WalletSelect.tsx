@@ -5,11 +5,11 @@ import { WalletList } from './WalletList';
 import { AccountList } from './AccountList';
 import { InstallExtension } from './InstallExtension';
 import { NoAccounts } from './NoAccounts';
-import { saveAndDispatchWalletSelect } from './saveAndDispatchWalletSelect';
 import { Loading } from './Loading';
 import Modal from '../Modal';
 import { CloseOutlined } from '@ant-design/icons';
 import { MIDDLE_STYLE } from '@/constants';
+import { saveAndDispatchWalletSelect } from '@/utils/web3-wallet';
 
 export interface WalletSelectProps {
   dappName: string;
@@ -63,11 +63,6 @@ export function WalletSelect(props: WalletSelectProps) {
   const onModalOpen = useCallback(() => {
     const wallets = getWallets();
     const installedWallets = wallets.filter(wallet => wallet.installed);
-    // check if Talisman is installed in installedWallets, if not, add Talisman to the list of installed wallets
-    if (!installedWallets.find(wallet => wallet.extensionName === 'talisman')) {
-      // push talisman to the first position
-      installedWallets.unshift(new TalismanWallet());
-    }
     const updatedWalletList = onlyShowInstalled ? installedWallets : walletList;
     setWallets(updatedWalletList || wallets);
     setIsOpen(true);
@@ -89,10 +84,6 @@ export function WalletSelect(props: WalletSelectProps) {
   }, [onWalletConnectClose]);
 
   useEffect(() => {
-    // TODO: Commenting out for now.
-    // In the webapp, the `wallet.installed` is sometimes delayed for some reason.
-    // Will need to figure out how to solve this one.
-    // removeIfUninstalled();
     return () => {
       if (unsubscribe) {
         Object.values(unsubscribe).forEach(unsubscribeFn => {
@@ -108,14 +99,12 @@ export function WalletSelect(props: WalletSelectProps) {
     }
   }, [onModalOpen, open]);
 
-  // TODO: Do proper error clearing...
   useEffect(() => {
     if (!selectedWallet) {
       setError(undefined);
     }
   }, [selectedWallet]);
 
-  // Update error on consumers...
   useEffect(() => {
     if (onError) {
       onError(error || undefined);

@@ -1,4 +1,4 @@
-import { buildCachePayload, getRevalidatedJsonData, storeJsonData } from '../../cacheUtils';
+import { buildCachePayload, getRevalidatedJsonData, storeJsonCacheData } from '../../cacheUtils';
 import { GitHubRepository } from '../models';
 import { fetchRepositories } from './api';
 
@@ -42,13 +42,13 @@ export async function fetchOptimizedRepositories(
     // not cached yet, must fetch from remote
     const repositories = await fetchRepositories(repositoryOwner);
     for (const repository of repositories) {
-      storeJsonData<GitHubRepository>(
+      storeJsonCacheData<GitHubRepository>(
         buildRespositoryKey(repository.name),
         buildCachePayload(repository, CACHE_EXPIRATION_MS)
       );
     }
     const repositoryNames = repositories.map(repo => repo.name.toString());
-    storeJsonData<string[]>(
+    storeJsonCacheData<string[]>(
       repositoryOwner,
       buildCachePayload(repositoryNames, CACHE_EXPIRATION_MS)
     );
