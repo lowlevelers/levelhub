@@ -23,17 +23,19 @@ const MemberCard = ({ user }: Props) => {
         // Convert the hash buffer to an array of integers
         const hashArrayBuffer = await hashBuffer;
         const hashArray = Array.from(new Uint8Array(hashArrayBuffer));
-        // Sum the array values and map it to a range of 1 to 4
+        // Sum the array values and map it to a range
         const sum = hashArray.reduce((acc, value) => acc + value, 0);
         return sum;
       };
 
-      const memberDna = await generateMemberDna(user.username || '');
+      const START_YEAR = 2024;
+      const memberDna =
+        (await generateMemberDna(`${user.avatar_url}${user.username}` || '')) * START_YEAR;
 
       const characterClassNonce = (memberDna % CHARACTER_CLASESS.length) + 1;
       const characterClass = CHARACTER_CLASESS[characterClassNonce - 1];
 
-      const variantNonce = ((memberDna * 21) % characterClass.variants.length) + 1;
+      const variantNonce = (characterClassNonce % characterClass.variants.length) + 1;
       const characterVariant = characterClass.variants[variantNonce - 1];
 
       setCharacterClass(characterClass.name);
