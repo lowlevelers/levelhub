@@ -17,13 +17,13 @@ export function AccountList(props: ListWithClickProps<WalletAccount>) {
           <button
             key={`${account.source}-${account.address}`}
             className={styles['row-button']}
-            style={{ marginTop: 10 }}
+            style={{ marginTop: 10, width: '100%', borderRadius: 5 }}
             onClick={() => onClick?.(account)}>
-            <span style={{ textAlign: 'left' }}>
-              <div>{account.name}</div>
-              <div style={{ fontSize: 'small', opacity: 0.5 }}>
-                {truncateMiddle(account.address)}
-              </div>
+            <span
+              style={{ textAlign: 'left', width: '100%', borderRadius: 5, padding: '5px 10px' }}
+              className="hover:bg-slate-800 full-w">
+              <div className="text-white font-medium">{account.name}</div>
+              <div className="text-gray-500 text-sm">{truncateMiddle(account.address)}</div>
             </span>
             <IconChevronRight />
           </button>
