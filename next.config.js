@@ -16,15 +16,5 @@ const nextConfig = {
     GITHUB_API_TOKEN: process.env.GITHUB_API_TOKEN,
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'mars-images.imgix.net',
-        port: '',
-        pathname: '/seobot/devhunt.org/**',
-      },
-    ],
-  },
 };
 module.exports = nextConfig;

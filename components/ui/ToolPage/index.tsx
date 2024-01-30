@@ -100,7 +100,7 @@ export default async function ToolPage({ slug }: { slug: string }): Promise<JSX.
         <Title className="mt-1">{product?.slogan}</Title>
         <div className="text-sm mt-3 flex items-center gap-x-3">
           <LinkShiny
-            href={`${addHttpsToUrl(product?.demo_url as string)}?ref=devhunt`}
+            href={`${addHttpsToUrl(product?.demo_url as string)}?ref=levelup`}
             target="_blank"
             className="flex items-center gap-x-2">
             Live preview

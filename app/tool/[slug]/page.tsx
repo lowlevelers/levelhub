@@ -49,7 +49,7 @@ export async function generateMetadata({
   return {
     title: `${tool?.name} - ${tool?.slogan}`,
     description: tool?.slogan,
-    metadataBase: new URL('https://devhunt.org'),
+    metadataBase: new URL('https://up.lowlevelers.com'),
     alternates: {
       canonical: `/tool/${slug}`,
     },
@@ -58,7 +58,7 @@ export async function generateMetadata({
       title: `${tool?.name} - ${tool?.slogan}`,
       description: tool?.slogan ?? '',
       images: tool?.asset_urls ?? [],
-      url: `https://devhunt.org/tool/${slug}`,
+      url: `https://up.lowlevelers.com/tool/${slug}`,
     },
     twitter: {
       title: `${tool?.name} - ${tool?.slogan}`,

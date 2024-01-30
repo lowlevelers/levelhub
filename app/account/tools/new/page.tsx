@@ -188,7 +188,7 @@ export default () => {
         )
         .then(async res => {
           const DISCORD_TOOL_WEBHOOK = process.env.DISCOR_TOOL_WEBHOOK as string;
-          const toolURL = `https://devhunt.org/tool/${res?.slug}`;
+          const toolURL = `https://up.lowlevelers.com/tool/${res?.slug}`;
           const content = `**${res?.name}** by ${profile?.full_name} [open the tool](${toolURL})`;
           DISCORD_TOOL_WEBHOOK ? await axios.post(DISCORD_TOOL_WEBHOOK, { content }) : '';
           setLaunching(false);

@@ -26,7 +26,7 @@ export async function generateMetadata({
   if (getOriginalSlug(slug))
     return {
       title: `Best ${getOriginalSlug(slug)} Tools`,
-      metadataBase: new URL('https://devhunt.org'),
+      metadataBase: new URL('https://up.lowlevelers.com'),
       alternates: {
         canonical: `/tools/${slug}`,
       },

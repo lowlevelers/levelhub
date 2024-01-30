@@ -18,7 +18,7 @@ export default ({ profile }: { profile: Profile }) => (
       />
       <div className="mt-4 sm:mt-0">
         <h1 className="text-2xl text-gray-50 font-medium">
-          {profile?.full_name || 'DevHunt user'}
+          {profile?.full_name || 'LevelUp! user'}
         </h1>
         <p className="mt-1 text-sm text-gray-400">{profile?.headline}</p>
       </div>

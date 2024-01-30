@@ -52,7 +52,7 @@ export async function generateMetadata({
   return {
     title: `${profile?.full_name}'s profile on Panomos - Panomos`,
     description: `Discover the tools that ${profile?.full_name}, is passionate about on Panomos`,
-    metadataBase: new URL('https://devhunt.org'),
+    metadataBase: new URL('https://up.lowlevelers.com'),
     alternates: {
       canonical: `${decodeURIComponent(user)}`,
     },
@@ -61,7 +61,7 @@ export async function generateMetadata({
       title: `${profile?.full_name}'s profile on Panomos - Panomos`,
       description: `Discover the tools that ${profile?.full_name}, is passionate about on Panomos`,
       images: [(profile?.avatar_url as string) || ''],
-      url: `https://devhunt.org/${decodeURIComponent(user)}`,
+      url: `https://up.lowlevelers.com/${decodeURIComponent(user)}`,
     },
     twitter: {
       title: `${profile?.full_name}'s profile on Panomos - Panomos`,

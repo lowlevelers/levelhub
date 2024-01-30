@@ -1,7 +1,8 @@
 (function () {
   window.onload = () => {
     var scriptTag = document.querySelector('script[data-url]');
-    var customUrl = (scriptTag && scriptTag.getAttribute('data-url')) || 'https://devhunt.org/';
+    var customUrl =
+      (scriptTag && scriptTag.getAttribute('data-url')) || 'https://up.lowlevelers.com/';
 
     var divElement = document.createElement('div');
 
