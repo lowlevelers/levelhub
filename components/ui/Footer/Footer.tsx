@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 'use client';
 
+import { MIDDLE_STYLE } from '@/constants';
 import Brand from '../Brand/Brand';
 
 export default () => {
@@ -26,7 +27,9 @@ export default () => {
   return (
     <footer className="mt-20 text-gray-400 px-4 py-5 max-w-screen-xl mx-auto md:px-8">
       <div className="border-t border-gray-800 pt-8">
-        <div className="max-w-lg sm:mx-auto sm:text-center">
+        <div
+          className="max-w-lg sm:mx-auto sm:text-center"
+          style={{ ...MIDDLE_STYLE, flexDirection: 'column' }}>
           <Brand className="sm:m-auto" />
           <p className="leading-relaxed mt-3 text-gray-300 text-[15px]">
             Level up your Polkadot career!
