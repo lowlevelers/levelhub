@@ -7,7 +7,7 @@ import { createBrowserClient } from '@/utils/supabase/browser';
 const { title, description, ogImage } = {
   title: 'Dev Hunt – The best new Dev Tools every day.',
   description: 'Level up your Polkadot career!',
-  ogImage: 'https://up.lowlevelers.com/levelup-og.png',
+  ogImage: 'https://apps.openguild.wtf/levelup-og.png',
 };
 
 export const metadata = {
@@ -17,7 +17,7 @@ export const metadata = {
     title,
     description,
     images: [ogImage],
-    url: 'https://up.lowlevelers.com',
+    url: 'https://apps.openguild.wtf',
   },
   twitter: {
     card: 'summary_large_image',

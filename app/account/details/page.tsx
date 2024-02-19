@@ -149,7 +149,7 @@ function Profile() {
                 <span className="absolute left-0 -top-1 text-sm bg-green-600 text-green-50 border border-green-600 rounded-full px-2 py-1">
                   Please{' '}
                   <a
-                    href="https://twitter.com/lowlevelers"
+                    href="https://twitter.com/openguildwtf"
                     target="_blank"
                     className="font-medium underline">
                     contact us

@@ -30,7 +30,7 @@ export function WalletList(props: ListWithClickProps<Wallet>) {
             }
             onClick={() => handleWalletClicked(wallet)}
             className={mergeTW(
-              `text-sm font-medium mt-4 mx-auto flex text-white bg-slate-800 hover:bg-slate-600 active:bg-gray-100`
+              `text-sm font-medium mt-4 mx-auto flex text-gray-600 bg-gray-200 hover:bg-gray-400 active:bg-gray-100`
             )}>
             {wallet.title}{' '}
             {wallet.installed && (

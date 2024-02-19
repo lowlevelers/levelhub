@@ -2,8 +2,8 @@ import { Wallet, WalletAccount } from '@talismn/connect-wallets';
 import { isWalletInstalled } from '@talismn/connect-wallets';
 import { getJsonData, storeJsonData } from '../cacheUtils';
 
-export const WEB3_SELECTED_WALLET_NAME = '@lowlevelers/selected-wallet-name';
-export const WEB3_SELECTED_ACCOUNT_ADDRESS = '@lowlevelers/selected-account-address';
+export const WEB3_SELECTED_WALLET_NAME = '@openguild-wtf/selected-wallet-name';
+export const WEB3_SELECTED_ACCOUNT_ADDRESS = '@openguild-wtf/selected-account-address';
 
 export function saveAndDispatchWalletSelect(wallet: Wallet) {
   storeJsonData(WEB3_SELECTED_WALLET_NAME, wallet.extensionName);

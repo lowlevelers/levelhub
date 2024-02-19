@@ -52,7 +52,7 @@ export async function generateMetadata({
   return {
     title: `${profile?.full_name}'s profile on Panomos - Panomos`,
     description: `Discover the tools that ${profile?.full_name}, is passionate about on Panomos`,
-    metadataBase: new URL('https://up.lowlevelers.com'),
+    metadataBase: new URL('https://apps.openguild.wtf'),
     alternates: {
       canonical: `${decodeURIComponent(user)}`,
     },
@@ -61,7 +61,7 @@ export async function generateMetadata({
       title: `${profile?.full_name}'s profile on Panomos - Panomos`,
       description: `Discover the tools that ${profile?.full_name}, is passionate about on Panomos`,
       images: [(profile?.avatar_url as string) || ''],
-      url: `https://up.lowlevelers.com/${decodeURIComponent(user)}`,
+      url: `https://apps.openguild.wtf/${decodeURIComponent(user)}`,
     },
     twitter: {
       title: `${profile?.full_name}'s profile on Panomos - Panomos`,
@@ -77,7 +77,7 @@ export default async ({ params: { user } }: { params: { user: string } }) => {
   const browserService = createBrowserClient();
   const profileService = new ProfileService(browserService);
   const profile = await profileService.getByUsername(username);
-  const repositories = await fetchRepositories('lowlevelers');
+  const repositories = await fetchRepositories('openguild-labs');
 
   if (profile) {
     const tools = await new ProductsService(browserService).getUserProductsById(profile?.id);

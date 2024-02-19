@@ -31,21 +31,21 @@ const ClientComponentHomePage = () => {
           {[
             {
               title: 'Community Handbook',
-              description: 'Find all information about TheLowLevelers community in the handbook',
+              description: 'Find all information about OpenGuild community in the handbook',
               img: '/jumbotron/handbook-banner.webp',
-              href: 'https://handbook.lowlevelers.com',
+              href: 'https://handbook.openguild.wtf',
             },
             {
               title: 'Discussion Forum',
               description: 'Learn more from other community members from the discussion forum',
               img: '/jumbotron/discussion-forum-banner.webp',
-              href: 'https://github.com/orgs/lowlevelers/discussions',
+              href: 'https://github.com/orgs/openguild-labs/discussions',
             },
             {
               title: 'Members',
               description: 'Discover talented people in the community',
               img: '/jumbotron/member-banner.webp',
-              href: 'http://lowlevelers.com/about',
+              href: 'http://openguild.wtf/about',
             },
           ].map(topic => (
             <div
@@ -53,7 +53,7 @@ const ClientComponentHomePage = () => {
                 minWidth: 350,
                 maxWidth: 400,
               }}
-              className="border border-gray-700 mx-3 my-5 max-w-lg overflow-hidden rounded bg-stone-950 shadow-lg">
+              className="border border-gray-500 mx-3 my-5 max-w-lg overflow-hidden rounded bg-stone-50 shadow-lg">
               <Link href={topic.href} key={topic.title}>
                 <div
                   style={{
@@ -65,7 +65,7 @@ const ClientComponentHomePage = () => {
                   }}
                 />
                 <div className="px-6 py-4">
-                  <div className="mb-2 text-md text-white font-bold">{topic.title}</div>
+                  <div className="mb-2 text-md text-black font-bold">{topic.title}</div>
                   <p className="text-base text-gray-500">{topic.description}</p>
                 </div>
               </Link>
@@ -78,13 +78,13 @@ const ClientComponentHomePage = () => {
           <ClientQuestListContianer
             containerTitle="Community Quests"
             containerDescription="Collect experience and items through open-source contribution"
-            organizationName={'lowlevelers'}
+            organizationName={'openguild-labs'}
           />
         </div>
         {!isTablet && members.length > 0 && (
           <div>
-            <div className="border-b border-gray-700 pb-4">
-              <h1 className="font-medium text-xl text-gray-50 pb-2">Members</h1>
+            <div className="border-b border-gray-400 pb-4">
+              <h1 className="font-medium text-xl text-black pb-2">Members</h1>
               <p className="text-gray-500">Connect with other members in the community</p>
             </div>
             <MemberList members={members} />

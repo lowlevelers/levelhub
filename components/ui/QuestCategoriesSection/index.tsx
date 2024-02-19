@@ -26,7 +26,7 @@ const QuestCategoriesSection = ({ categories, children }: Props) => {
           className="mt-5"
           style={{ ...MIDDLE_STYLE, justifyContent: 'space-between' }}>
           <div>
-            <h3 className="text-white text-sm font-bold">Categories</h3>
+            <h3 className="text-black text-sm font-bold">Categories</h3>
           </div>
           <div className="flex flex-wrap items-center text-sm text-gray-400 overflow-hidden mt-5">
             {categories.map(label => (
@@ -36,7 +36,7 @@ const QuestCategoriesSection = ({ categories, children }: Props) => {
                   border: selectedCategories[label.id] ? `1px solid green` : 'unset',
                   cursor: 'pointer',
                 }}
-                className="px-2 bg-slate-800 text-white rounded m-1 flex justify-center items-center">
+                className="px-2 bg-gray-100 border border-gray-500 text-black rounded m-1 flex justify-center items-center">
                 <div style={{ backgroundColor: `#${label.color}` }} className="w-2 h-2 mr-2"></div>
                 <span style={{ fontSize: 11 }} className="flex-none">
                   {label.name}

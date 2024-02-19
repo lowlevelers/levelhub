@@ -17,8 +17,8 @@ export default function QuestListContainer({
 }: Props) {
   return (
     <div>
-      <div className="border-b border-gray-700 pb-4">
-        <h1 className="font-medium text-xl text-gray-50 pb-2">{containerTitle}</h1>
+      <div className="border-b border-gray-400 pb-4">
+        <h1 className="font-medium text-xl text-black pb-2">{containerTitle}</h1>
         <p className="text-gray-500">{containerDescription}</p>
       </div>
       <div style={{ ...MIDDLE_STYLE, justifyContent: 'center', flexDirection: 'column' }}>

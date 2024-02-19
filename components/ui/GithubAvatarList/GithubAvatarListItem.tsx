@@ -25,7 +25,7 @@ const GithubAvatarListItem = ({
                 alt={item.login as string}
               />
               <Avatar.Fallback
-                className="flex items-center justify-center text-gray-300 h-full w-full bg-slate-500 text-[15px] font-medium rounded-xl"
+                className="flex items-center justify-center text-gray-300 h-full w-full bg-gray-100 text-[15px] font-medium rounded-xl"
                 delayMs={200}>
                 {item.login?.slice(0, 2).toUpperCase()}
               </Avatar.Fallback>

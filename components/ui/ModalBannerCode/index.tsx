@@ -89,7 +89,7 @@ export default ({
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
-      <script defer data-url="https://up.lowlevelers.com/tool/${toolSlug}" src="https://up.lowlevelers.com/banner/index.js"></script>
+      <script defer data-url="https://apps.openguild.wtf/tool/${toolSlug}" src="https://apps.openguild.wtf/banner/index.js"></script>
       <link rel="stylesheet" href="/normalize.css">
   </head>
   <body>
@@ -113,7 +113,7 @@ export default ({
       </div>
       <div className="mt-2">
         <CodeBlock onCopy={copyDone}>
-          {`<script defer data-url="https://up.lowlevelers.com/tool/${toolSlug}" src="https://cdn.jsdelivr.net/gh/sidiDev/devhunt-banner/indexV0.js" />`}
+          {`<script defer data-url="https://apps.openguild.wtf/tool/${toolSlug}" src="https://cdn.jsdelivr.net/gh/sidiDev/devhunt-banner/indexV0.js" />`}
         </CodeBlock>
       </div>
       <div className="mt-3 flex gap-x-3">

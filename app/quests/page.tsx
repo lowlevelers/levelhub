@@ -9,19 +9,19 @@ export default async function Quests() {
         <div className="lg:flex lg:justify-evenly">
           {[
             {
-              title: 'Nomad Quests',
+              title: 'Handbook',
               img: '/jumbotron/handbook-banner.webp',
-              href: 'https://handbook.lowlevelers.com',
+              href: 'https://handbook.openguild.wtf',
             },
             {
-              title: 'LowLevelers Quests',
+              title: 'Discussion Forum',
               img: '/jumbotron/discussion-forum-banner.webp',
-              href: 'https://github.com/orgs/lowlevelers/discussions',
+              href: 'https://github.com/orgs/openguild-labs/discussions',
             },
             {
-              title: 'Elder Quests',
+              title: 'Member Quests',
               img: '/jumbotron/member-banner.webp',
-              href: 'http://lowlevelers.com/about',
+              href: 'http://openguild.wtf/about',
             },
           ].map(topic => (
             <Link

@@ -1,4 +1,4 @@
-import { WalletAccount, Wallet, getWallets, TalismanWallet } from '@talismn/connect-wallets';
+import { WalletAccount, Wallet, getWallets } from '@talismn/connect-wallets';
 import { cloneElement, ReactElement, ReactNode, useCallback, useEffect, useState } from 'react';
 import styles from './WalletSelect.module.css';
 import { WalletList } from './WalletList';
@@ -187,13 +187,13 @@ export function WalletSelect(props: WalletSelectProps) {
         })}
       <Modal
         variant="custom"
-        className="max-w-md"
+        className="max-w-md bg-white"
         title={modalTitle}
         onCancel={onModalClose}
         isActive={isOpen}>
         <div className="text-center p-2">
           <div style={{ ...MIDDLE_STYLE, justifyContent: 'space-between' }}>
-            <h1 className="text-gray-50 text-lg font-semibold">Connect to Web3 wallet</h1>
+            <h1 className="text-black text-lg font-semibold">Connect to Web3 wallet</h1>
             <CloseOutlined onClick={onModalClose} />
           </div>
           {!selectedWallet && (

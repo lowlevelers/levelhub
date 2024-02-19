@@ -43,18 +43,18 @@ const PolkadotWalletSelector = (props: Props) => {
         walletList={[
           new TalismanWallet(),
           new SubWallet(),
-          new MantaWallet(),
-          new PolkaGate(),
-          new FearlessWallet(),
-          new EnkryptWallet(),
           new PolkadotjsWallet(),
+          // new MantaWallet(),
+          // new PolkaGate(),
+          // new FearlessWallet(),
+          // new EnkryptWallet(),
         ]}
         triggerComponent={
           (
             <Button
               child={<WalletOutlined />}
               className={mergeTW(
-                `text-sm font-medium mx-auto flex text-white bg-slate-800 hover:bg-slate-600 active:bg-gray-100 w-full justify-center`
+                `text-sm font-medium mx-auto flex text-gray-500 bg-gray-200 hover:bg-gray-300 active:bg-gray-100 w-full justify-center`
               )}>
               {walletAccount
                 ? `${walletAccount.name} (${truncateMiddle(walletAccount.address)})`

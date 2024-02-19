@@ -4,7 +4,7 @@ import { createBrowserClient } from '@/utils/supabase/browser';
 import ProfileService from '@/utils/supabase/services/profile';
 import categories from '@/utils/categories';
 
-const URL = 'https://lowlevelers.com';
+const URL = 'https://openguild.wtf';
 
 async function generateSiteMap() {
   const productsService = new ProductsService(createBrowserClient());

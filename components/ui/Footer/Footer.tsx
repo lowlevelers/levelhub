@@ -11,15 +11,15 @@ export default () => {
       name: 'About',
     },
     {
-      href: 'https://github.com/lowlevelers',
+      href: 'https://github.com/openguild-labs',
       name: 'GitHub Repository',
     },
     {
-      href: 'https://lowlevelers.com/blog',
+      href: 'https://openguild.wtf/blog',
       name: 'Blog',
     },
     {
-      href: 'https://twitter.com/lowlevelers',
+      href: 'https://twitter.com/openguildwtf',
       name: 'Contact',
     },
   ];

@@ -41,10 +41,10 @@ function prepareSuccessDto(input: string, tools: ExtendedProduct[]): ChatGtpDto 
         data_added: new Date(t.created_at).toISOString().split('T')[0],
         developer: t.profiles.full_name,
         upvotes: t.votes_count || '-',
-        upvote_link: `https://up.lowlevelers.com/tool/${t.slug}`,
+        upvote_link: `https://apps.openguild.wtf/tool/${t.slug}`,
       })),
       footer:
-        'Discover your next tool https://up.lowlevelers.com/ ![DevHunt](https://ucarecdn.com/e59542d4-3ede-4f62-855e-b668cdbaef02/)',
+        'Discover your next tool https://apps.openguild.wtf/ ![DevHunt](https://ucarecdn.com/e59542d4-3ede-4f62-855e-b668cdbaef02/)',
     },
   };
 }

@@ -37,9 +37,9 @@ const SiderBarItem = ({
       href={disabled ? '' : `/${href}`}
       style={{ fontSize: 15 }}
       className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-2 font-small ${
-        disabled ? 'text-gray-500' : 'text-white'
-      } duration-300 ease-in-out hover:bg-gray-600 dark:hover:bg-meta-4 ${
-        pathname?.includes(href) && 'bg-gray-700 dark:bg-meta-4'
+        disabled ? 'text-gray-500' : 'text-black'
+      } duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-meta-4 ${
+        pathname?.includes(href) && 'bg-gray-300 dark:bg-meta-4'
       }`}>
       {icon}
       {itemName}
@@ -94,9 +94,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     <aside
       ref={sidebar}
       style={{ maxWidth: 250 }}
-      className={`absolute bg-stone-950 left-0 top-0 z-9999 flex h-screen w-102.5 flex-col overflow-y-hidden duration-300 ease-linear lg:static lg:translate-x-0 ${
+      className={`absolute bg-white left-0 top-0 z-9999 flex h-screen w-102.5 flex-col overflow-y-hidden duration-300 ease-linear lg:static lg:translate-x-0 ${
         sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } border-r border-gray-800 `}>
+      } border-r border-gray-400 `}>
       <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
         <button
           ref={trigger}
@@ -123,18 +123,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         {/* <!-- Sidebar Menu --> */}
         <nav className="px-2 lg:mt-9 lg:px-4">
           {/* <!-- Menu Group --> */}
-          <div className="border-b border-gray-700 pb-4 mb-5">
+          <div className="border-b border-gray-400 pb-4 mb-5">
             <div style={{ ...MIDDLE_STYLE, justifyContent: 'space-between' }} className="mb-5">
               <div style={{ ...MIDDLE_STYLE }}>
                 <Brand w="30" h="30" />
-                <h1 className="text-md font-bold text-white" style={{ marginLeft: 10 }}>
-                  LevelUp!
+                <h1 className="text-sm font-bold text-black" style={{ marginLeft: 10 }}>
+                  OpenGuild Apps
                 </h1>
               </div>
               <GithubFilled
-                className="text-white"
+                className="text-black"
                 style={{ cursor: 'pointer' }}
-                onClick={() => window.open('https://github.com/lowlevelers')}
+                onClick={() => window.open('https://github.com/openguild-labs')}
               />
             </div>
             <p className="mt-4 text-sm text-gray-500">

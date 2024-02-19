@@ -48,7 +48,7 @@ export default () => {
     // },
     {
       title: 'Submit a new issue on Github',
-      path: 'https://github.com/lowlevelers/lowlevelers.com/issues/new/choose',
+      path: 'https://github.com/openguild-labs/openguild/issues/new/choose',
       className:
         'bg-green-600 hover:bg-green-600 text-white text-center rounded-lg px-3 p-2 duration-150 btnshake',
     },
@@ -75,7 +75,7 @@ export default () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-30 bg-stone-950 border-b border-gray-800 w-full">
+      <nav className="sticky top-0 z-30 bg-white border-b border-gray-400 w-full">
         <div className="custom-screen items-center py-3 lg:flex">
           <div className="flex items-center justify-between lg:block">
             <div className="flex gap-x-4 items-center lg:hidden">

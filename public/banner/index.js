@@ -2,7 +2,7 @@
   window.onload = () => {
     var scriptTag = document.querySelector('script[data-url]');
     var customUrl =
-      (scriptTag && scriptTag.getAttribute('data-url')) || 'https://up.lowlevelers.com/';
+      (scriptTag && scriptTag.getAttribute('data-url')) || 'https://apps.openguild.wtf/';
 
     var divElement = document.createElement('div');
 

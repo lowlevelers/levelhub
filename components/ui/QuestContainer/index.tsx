@@ -62,12 +62,12 @@ const QuestContainer = ({ repository, questOwner }: Props) => {
 
   return (
     <LoadableContainer isLoading={repositoryIssues.length === 0} loadComponent={<></>}>
-      <div className="border border-gray-800 p-7 my-5 bg-stone-950" style={{ width: '100%' }}>
+      <div className="border border-gray-300 p-7 my-5 bg-white" style={{ width: '100%' }}>
         <div className="border-b border-gray-700 pb-4">
-          <h1 className="font-medium text-md text-gray-50 pb-2">
+          <h1 className="font-medium text-md text-black pb-2">
             {repository.name}{' '}
             <GithubFilled
-              className="text-white"
+              className="text-black"
               style={{ cursor: 'pointer' }}
               onClick={() =>
                 window.open(`https://github.com/${repository.owner.login}/${repository.name}`)

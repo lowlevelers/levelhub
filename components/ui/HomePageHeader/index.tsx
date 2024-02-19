@@ -20,10 +20,10 @@ const HomePageHeader = (props: Props) => {
             <Space size={20}>
               <Avatar className="w-10 h-10" src={user.avatar_url || ''} />
               <div>
-                <h1 className="font-medium text-xl text-gray-50">{user.username}</h1>
+                <h1 className="font-medium text-xl text-black">{user.username}</h1>
                 <p className="text-gray-500">
                   Your current community rank is{' '}
-                  <span className="text-green-500 font-md">Nomad</span>
+                  <span className="text-purple-700 font-md">Nomad</span>
                 </p>
               </div>
             </Space>

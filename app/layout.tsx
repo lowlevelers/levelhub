@@ -19,20 +19,20 @@ import PolkadotWalletProvider from '@/components/ui/PolkadotWalletProvider';
 export type TypedSupabaseClient = SupabaseClient<Database>;
 
 const { title, description, ogImage } = {
-  title: 'LevelUp! - Community platforms of TheLowLevelers',
+  title: 'OpenGuild Apps - Community platform of OpenGuild',
   description: 'Level up your Polkadot career!',
-  ogImage: 'https://up.lowlevelers.com/levelup-og.png',
+  ogImage: 'https://apps.openguild.wtf/levelup-og.png',
 };
 
 export const metadata = {
   title,
   description,
-  metadataBase: new URL('https://up.lowlevelers.com'),
+  metadataBase: new URL('https://apps.openguild.wtf'),
   openGraph: {
     title,
     description,
     images: [ogImage],
-    url: 'https://up.lowlevelers.com',
+    url: 'https://apps.openguild.wtf',
   },
   twitter: {
     card: 'summary_large_image',
@@ -58,7 +58,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const profileNoCache = user ? await profileService.getByIdWithNoCache(user?.id) : null;
 
   return (
-    <html lang="en" className="bg-gray-900">
+    <html lang="en" className="bg-gray-50">
       <head>
         <meta httpEquiv="Content-Language" content="en" />
         <meta property="og:locale" content="en_US" />

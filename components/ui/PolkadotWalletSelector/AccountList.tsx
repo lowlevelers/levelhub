@@ -21,8 +21,8 @@ export function AccountList(props: ListWithClickProps<WalletAccount>) {
             onClick={() => onClick?.(account)}>
             <span
               style={{ textAlign: 'left', width: '100%', borderRadius: 5, padding: '5px 10px' }}
-              className="hover:bg-slate-800 full-w">
-              <div className="text-white font-medium">{account.name}</div>
+              className="hover:bg-gray-200 full-w">
+              <div className="text-black font-medium">{account.name}</div>
               <div className="text-gray-500 text-sm">{truncateMiddle(account.address)}</div>
             </span>
             <IconChevronRight />

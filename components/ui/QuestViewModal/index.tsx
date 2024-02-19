@@ -43,18 +43,18 @@ export default ({
         onCancel={close}
         variant="custom"
         classNameContainer="px-0 py-0 sm:py-8"
-        className="max-w-4xl bg-slate-950 px-0 py-8 view-modal">
+        className="max-w-4xl bg-white px-0 py-8 view-modal">
         <div>
           <div className="container-custom-screen pt-4 pb-10">
             <button
               onClick={() => router.back()}
-              className="flex items-center gap-x-2 py-2 px-4 text-gray-50 border border-gray-700 rounded-lg hover:bg-slate-500 duration-150">
+              className="flex items-center gap-x-2 py-2 px-4 text-gray-800 border border-gray-700 rounded-lg hover:bg-slate-500 duration-150">
               <IconArrowLongLeft />
               Go back
             </button>
           </div>
           <div className="container-custom-screen" id="about">
-            <h1 className="mt-3 text-gray-100 font-medium">{repositoryIssue.title}</h1>
+            <h1 className="mt-3 text-gray-950 font-medium">{repositoryIssue.title}</h1>
             <div className="text-sm mt-3 flex items-center gap-x-3">
               <LinkShiny
                 href={repositoryIssue.html_url}
@@ -71,7 +71,7 @@ export default ({
         </div>
         <Tabs
           ulClassName="container-custom-screen"
-          className="mt-20 sticky pt-2 top-0 z-10 bg-gray-900">
+          className="mt-20 sticky pt-2 top-0 z-10 bg-gray-100">
           {tabs.map((item, idx) => (
             <TabLink variant="nonlink" sectionId={item.sectionId} key={idx}>
               {item.name}
@@ -85,7 +85,7 @@ export default ({
               <div className="relative container-custom-screen mt-12">
                 <Markdown
                   remarkPlugins={[[remarkGfm]]}
-                  className={'markdown-renderer-container text-gray-100 whitespace-pre-wrap'}
+                  className={'markdown-renderer-container text-gray-900 whitespace-pre-wrap'}
                   children={repositoryIssue.body}
                   rehypePlugins={[rehypeRaw]}
                 />

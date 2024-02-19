@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 Disallow: /private/
-Sitemap: https://up.lowlevelers.com/sitemap.xml
+Sitemap: https://apps.openguild.wtf/sitemap.xml

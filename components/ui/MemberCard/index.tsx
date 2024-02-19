@@ -47,14 +47,14 @@ const MemberCard = ({ user }: Props) => {
 
   return (
     <div
-      className="bg-stone-950 border border-gray-800 px-5 py-4"
+      className="bg-white border border-gray-300 px-5 py-4"
       style={{ maxWidth: 450, width: '100%', ...MIDDLE_STYLE, justifyContent: 'space-between' }}>
       <Space size={20} style={{ width: '100%' }}>
         <Avatar className="w-10 h-10" src={user.avatar_url || ''} />
         <div>
-          <h1 className="font-medium text-xl text-gray-50">{user.username}</h1>
+          <h1 className="font-medium text-md text-black">{user.username}</h1>
           <p className="text-gray-500 text-sm">
-            Community Rank: <span className="text-green-500 font-md">Nomad Level</span>
+            Community Rank: <span className="text-purple-700 font-bold">Nomad Level</span>
           </p>
         </div>
       </Space>

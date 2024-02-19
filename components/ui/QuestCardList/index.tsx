@@ -11,26 +11,26 @@ const QuestCardList = ({ issues }: { issues: GithubRepositoryIssue[] }) => {
   const { isTablet } = useBreakpoint();
   return (
     <div>
-      <Row style={{ width: '100%' }} className="border-b border-gray-800 px-4 py-2 bg-stone-950">
+      <Row style={{ width: '100%' }} className="border-b border-gray-400 px-4 py-2 bg-gray-100">
         <Col span={16}>
-          <h3 className="text-gray-500 text-sm font-bold" style={{ fontSize: 'smaller' }}>
+          <h3 className="text-gray-400 text-sm font-bold" style={{ fontSize: 10 }}>
             TOPIC
           </h3>
         </Col>
         <Col span={isTablet ? 8 : 4}>
-          <h3 className="text-gray-500 text-sm font-bold" style={{ fontSize: 'smaller' }}>
+          <h3 className="text-gray-400 text-sm font-bold" style={{ fontSize: 10 }}>
             CONTRIBUTORS
           </h3>
         </Col>
         {!isTablet && (
           <React.Fragment>
             <Col span={2}>
-              <h3 className="text-gray-500 text-sm font-bold" style={{ fontSize: 'smaller' }}>
+              <h3 className="text-gray-400 text-sm font-bold" style={{ fontSize: 10 }}>
                 REACTIONS
               </h3>
             </Col>
             <Col span={2}>
-              <h3 className="text-gray-500 text-sm font-bold" style={{ fontSize: 'smaller' }}>
+              <h3 className="text-gray-400 text-sm font-bold" style={{ fontSize: 10 }}>
                 REPLIES
               </h3>
             </Col>
