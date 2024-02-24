@@ -14,7 +14,7 @@ const HomePageHeader = (props: Props) => {
     <div>
       {user && (
         <div
-          className="border-b border-gray-700 pb-4"
+          className="border-b border-gray-300 pb-4"
           style={{ ...MIDDLE_STYLE, justifyContent: 'space-between' }}>
           <div>
             <Space size={20}>

@@ -6,7 +6,7 @@ import {
   GithubFilled,
   HomeOutlined,
   RocketOutlined,
-  SettingOutlined,
+  MoneyCollectOutlined,
   StarOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -152,12 +152,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   href="#"
                 />
               </li>
-              <li>
+              {/* <li>
                 <SiderBarItem
                   icon={<UserOutlined />}
                   itemName="Members"
                   pathname={pathname}
                   href="members"
+                />
+              </li> */}
+              <li>
+                <SiderBarItem
+                  icon={<MoneyCollectOutlined />}
+                  itemName="Job Board"
+                  pathname={pathname}
+                  href="job-board"
                 />
               </li>
               <li>

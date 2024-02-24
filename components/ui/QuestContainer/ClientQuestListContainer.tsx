@@ -8,18 +8,24 @@ type Props = {
   containerTitle: string;
   containerDescription: string;
   organizationName: string;
+  organizationRepositories?: string[];
 };
 
 const ClientQuestListContainer = ({
   organizationName,
   containerTitle,
   containerDescription,
+  organizationRepositories,
 }: Props) => {
   const [repositories, setRepositories] = useState<GitHubRepository[]>([]);
   useEffect(() => {
     const init = async () => {
       const _repositories = await fetchOptimizedRepositories(organizationName);
-      setRepositories(_repositories);
+      setRepositories(
+        _repositories.filter(repo =>
+          organizationRepositories ? organizationRepositories.includes(repo.name) : true
+        )
+      );
     };
     init();
   }, [organizationName]);

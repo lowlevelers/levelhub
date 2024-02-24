@@ -53,7 +53,7 @@ const ClientComponentHomePage = () => {
                 minWidth: 350,
                 maxWidth: 400,
               }}
-              className="border border-gray-500 mx-3 my-5 max-w-lg overflow-hidden rounded bg-stone-50 shadow-lg">
+              className="border border-gray-300 mx-3 my-5 max-w-lg overflow-hidden rounded bg-stone-50 shadow-lg">
               <Link href={topic.href} key={topic.title}>
                 <div
                   style={{
@@ -83,7 +83,7 @@ const ClientComponentHomePage = () => {
         </div>
         {!isTablet && members.length > 0 && (
           <div>
-            <div className="border-b border-gray-400 pb-4">
+            <div className="border-b border-gray-300 pb-4">
               <h1 className="font-medium text-xl text-black pb-2">Members</h1>
               <p className="text-gray-500">Connect with other members in the community</p>
             </div>

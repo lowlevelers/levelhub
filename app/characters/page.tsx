@@ -5,7 +5,7 @@ export default async function Characters() {
     <div>
       {CHARACTER_CLASESS.map(characterClass => (
         <div>
-          <div className="border-b border-gray-700 pb-4 mt-7">
+          <div className="border-b border-gray-300 pb-4 mt-7">
             <h1 className="font-medium text-xl text-gray-50 pb-2">{characterClass.humanName}</h1>
             <p className="text-gray-500">
               Number of classe variants is {characterClass.variants.length}
